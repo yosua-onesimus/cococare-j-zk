@@ -28,7 +28,7 @@ cococare-j Recruitment:
     MySQL JDBC Driver (Optional) (Included in NetBeans IDE)
       mysql-connector-java-5.1.13-bin.jar
     j2ee.jar (Mandatory)
-    Spring Framework 2.5.6.SEC01 (Mandatory) (Included in NetBeans IDE)
+    Spring Framework 2.5.6.SEC01 (Optional) (Included in NetBeans IDE)
       cglib-2.2.jar
       org-apache-commons-logging.jar
       spring-2.5.6.SEC01.jar
@@ -61,6 +61,8 @@ cococare-j Recruitment:
       zml.jar
       zul.jar
       zweb.jar
+      sapphire.jar
+      silvertail.jar
     Other Lib (Optional) (https://github.com/yosua-onesimus/libraries/tree/master/java/common-lib)
       Access_JDBC30.jar
       barbecue-1.5-modif.jar
