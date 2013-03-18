@@ -1,7 +1,8 @@
 cococare-j Recruitment:
   Software:
+    Java SE 6 Update X (Mandatory) (http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     MyEclipse 6.0.1 (Recommended) ()
-    NetBeans IDE 7.1 (Optional) (http://netbeans.org/downloads/)
+    NetBeans IDE 7.1 Up (Optional) (http://netbeans.org/downloads/)
     MySQL Server 5.1 (Optional) (http://dev.mysql.com/downloads/mysql/)
   Plugins:
     ZK Studio 1.0.2 (Recommended) (http://www.zkoss.org/download/zkstudio)
@@ -27,7 +28,7 @@ cococare-j Recruitment:
       ejb3-persistence.jar
     MySQL JDBC Driver (Optional) (Included in NetBeans IDE)
       mysql-connector-java-5.1.13-bin.jar
-    j2ee.jar (Mandatory)
+    j2ee.jar (Mandatory) (https://github.com/yosua-onesimus/libraries/tree/master/java/j2ee-lib)
     Spring Framework 2.5.6.SEC01 (Optional) (Included in NetBeans IDE)
       cglib-2.2.jar
       org-apache-commons-logging.jar
@@ -77,6 +78,6 @@ cococare-j Recruitment:
       mail-1.4.5.jar
       rcmd.exe
       win32com.dll
-    cococare-j.jar (Mandatory) ()
-    cococare-j-zk.jar (Mandatory) ()
+    cococare-j.jar (Mandatory) (https://github.com/yosua-onesimus/cococare-j)
+    cococare-j-zk.jar (Mandatory) (https://github.com/yosua-onesimus/cococare-j-zk)
 --eof--
