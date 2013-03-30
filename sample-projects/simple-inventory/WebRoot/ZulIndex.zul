@@ -1,0 +1,44 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml">
+	<?page id="pgIndex" title="simple-inventory.com"?>
+	<window id="ZulIndex" hflex="1" vflex="1" border="none"
+		use="controller.zul.ZulIndexCtrl">
+		<borderlayout>
+			<north>
+				<hbox align="center" height="60px" hflex="1">
+					<image id="aApplLogo" height="60px" width="60px"
+						src="/icon/icon-cococare.jpg" />
+					<div hflex="1">
+						<label id="aApplName" hflex="1"
+							style="font-size:24px;" value="simple-inventory" />
+					</div>
+					<div align="right" hflex="1">
+						<label id="aCompName" hflex="1"
+							style="font-size:14px;" value="simple-inventory" />
+					</div>
+					<image id="aCompLogo" height="60px" width="60px"
+						src="/icon/icon-cococare.jpg" />
+				</hbox>
+			</north>
+			<center>
+				<borderlayout>
+					<north>
+						<menubar id="aMenuBarH" />
+					</north>
+					<west id="aMenuBarV" width="200px" />
+					<center id="aContent" />
+				</borderlayout>
+			</center>
+			<south>
+				<hbox align="center" height="30px" hflex="1">
+					<div align="center" width="200px">
+						<label id="aCopyright" style="font-size:10px;"
+							value="Copyright © 2013" />
+						<space />
+						<label id="aApplVer" style="font-size:10px;"
+							value="1.0.130317" />
+					</div>
+				</hbox>
+			</south>
+		</borderlayout>
+	</window>
+</zk>

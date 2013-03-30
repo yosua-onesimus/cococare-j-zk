@@ -1,0 +1,6 @@
+<window width="80%" title="Session Timeout" border="normal">
+	<vbox>
+		Timed Out. You have been logged off due to inactivity, please
+		log in again.
+	</vbox>
+</window>
