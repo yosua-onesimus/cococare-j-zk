@@ -1,6 +1,6 @@
 package controller.zul;
 
-import model.mdl.InventoryMain;
+import model.mdl.inv.InventoryMain;
 
 import org.zkoss.zul.Window;
 

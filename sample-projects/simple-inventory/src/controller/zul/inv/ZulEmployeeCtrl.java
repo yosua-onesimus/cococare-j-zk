@@ -1,6 +1,6 @@
-package controller.zul;
+package controller.zul.inv;
 
-import model.obj.InvEmployee;
+import model.obj.inv.InvEmployee;
 import cococare.framework.zk.CFZkCtrl;
 
 public class ZulEmployeeCtrl extends CFZkCtrl {

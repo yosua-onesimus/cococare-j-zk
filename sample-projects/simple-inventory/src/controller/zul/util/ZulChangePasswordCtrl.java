@@ -1,12 +1,12 @@
-package controller.zul;
+package controller.zul.util;
 
-import model.obj.InvInventory;
+import cococare.framework.model.obj.util.UtilUser;
 import cococare.framework.zk.CFZkCtrl;
 
-public class ZulInventoryCtrl extends CFZkCtrl {
+public class ZulChangePasswordCtrl extends CFZkCtrl {
 	@Override
 	protected Class _getEntity() {
-		return InvInventory.class;
+		return UtilUser.class;
 	}
 
 	@Override

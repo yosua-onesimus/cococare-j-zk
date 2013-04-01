@@ -1,7 +1,7 @@
-package model.dao;
+package model.dao.inv;
 
-import model.mdl.InventoryDao;
-import model.obj.InvEmployee;
+import model.mdl.inv.InventoryDao;
+import model.obj.inv.InvEmployee;
 
 public class InvEmployeeDao extends InventoryDao {
 

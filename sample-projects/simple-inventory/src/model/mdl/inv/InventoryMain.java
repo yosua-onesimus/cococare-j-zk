@@ -1,4 +1,4 @@
-package model.mdl;
+package model.mdl.inv;
 
 import org.zkoss.zul.Menubar;
 
@@ -10,8 +10,12 @@ import cococare.framework.zk.CFZkUae;
 import cococare.zk.CCMenubar;
 import cococare.zk.CCSession;
 import cococare.zk.database.CCLoginInfo;
-import controller.zul.ZulEmployeeListCtrl;
-import controller.zul.ZulInventoryListCtrl;
+import controller.zul.inv.ZulEmployeeListCtrl;
+import controller.zul.inv.ZulInventoryListCtrl;
+import controller.zul.util.ZulChangePasswordCtrl;
+import controller.zul.util.ZulLoggerListCtrl;
+import controller.zul.util.ZulUserGroupListCtrl;
+import controller.zul.util.ZulUserListCtrl;
 
 public class InventoryMain extends CFApplCtrl {
 	@Override
@@ -40,6 +44,12 @@ public class InventoryMain extends CFApplCtrl {
 		zkUae.addMenuParent(CCLanguage.Archive, null, null);
 		zkUae.addMenuChild("Inventory", null, ZulInventoryListCtrl.class);
 		zkUae.addMenuChild("Employee", null, ZulEmployeeListCtrl.class);
+		zkUae.changeMenuSide();
+		zkUae.addMenuParent(CCLanguage.Utility, null, null);
+		zkUae.addMenuChild(CCLanguage.User_Group, null, ZulUserGroupListCtrl.class);
+		zkUae.addMenuChild(CCLanguage.User, null, ZulUserListCtrl.class);
+		zkUae.addMenuChild(CCLanguage.Change_Password, null, ZulChangePasswordCtrl.class);
+		zkUae.addMenuChild(CCLanguage.Logger_History, null, ZulLoggerListCtrl.class);
 		zkUae.compileMenu();
 	}
 

@@ -1,4 +1,4 @@
-package model.mdl;
+package model.mdl.inv;
 
 import java.util.List;
 

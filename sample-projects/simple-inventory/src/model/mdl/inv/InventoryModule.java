@@ -1,8 +1,8 @@
-package model.mdl;
+package model.mdl.inv;
 
-import model.obj.InvEmployee;
-import model.obj.InvInventory;
-import model.obj.InvOwnership;
+import model.obj.inv.InvEmployee;
+import model.obj.inv.InvInventory;
+import model.obj.inv.InvOwnership;
 import cococare.database.CCHibernate;
 import cococare.database.CCHibernateModule;
 

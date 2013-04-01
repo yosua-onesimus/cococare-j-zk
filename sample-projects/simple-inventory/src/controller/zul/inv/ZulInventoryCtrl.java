@@ -1,9 +1,9 @@
-package controller.zul;
+package controller.zul.inv;
 
-import model.obj.InvInventory;
+import model.obj.inv.InvInventory;
 import cococare.framework.zk.CFZkCtrl;
 
-public class ZulInventoryListCtrl extends CFZkCtrl {
+public class ZulInventoryCtrl extends CFZkCtrl {
 	@Override
 	protected Class _getEntity() {
 		return InvInventory.class;
@@ -11,6 +11,6 @@ public class ZulInventoryListCtrl extends CFZkCtrl {
 
 	@Override
 	protected BaseFunction _getBaseFunction() {
-		return BaseFunction.LIST_FUNCTION;
+		return BaseFunction.FORM_FUNCTION;
 	}
 }

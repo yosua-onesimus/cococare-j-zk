@@ -1,4 +1,4 @@
-package model.obj;
+package model.obj.inv;
 
 import java.util.Date;
 import java.util.List;
@@ -17,13 +17,12 @@ import javax.persistence.TemporalType;
 import cococare.common.CCFieldConfig;
 import cococare.common.CCTypeConfig;
 import cococare.common.CCFieldConfig.Accessible;
-import cococare.common.CCFieldConfig.Type;
 import cococare.database.CCEntity;
 
 @Entity
-@Table(name = "inv_inventories")
-@CCTypeConfig(label = "Inventory", uniqueKey = "name")
-public class InvInventory implements CCEntity {
+@Table(name = "inv_employees")
+@CCTypeConfig(label = "Employee", uniqueKey = "name")
+public class InvEmployee implements CCEntity {
 
 	// <editor-fold defaultstate="collapsed" desc=" entity base ">
 	@Id
@@ -89,21 +88,12 @@ public class InvInventory implements CCEntity {
 
 	// </editor-fold>
 	@Column(length = 16)
-	@CCFieldConfig(componentId = "txtCode", accessible = Accessible.MANDATORY, maxLength = 16, sequence = "INV/[yyMMdd]/000", unique = true)
+	@CCFieldConfig(componentId = "txtCode", accessible = Accessible.MANDATORY, maxLength = 16, sequence = "EMP/[yyMMdd]/000", unique = true)
 	private String code;
 	@CCFieldConfig(componentId = "txtName", accessible = Accessible.MANDATORY)
 	private String name;
-	@Column(length = Integer.MAX_VALUE)
-	@CCFieldConfig(componentId = "txtDescription", maxLength = Integer.MAX_VALUE, visible = false)
-	private String description;
-	@CCFieldConfig(label = "QT", tooltiptext = "Quantity Total", componentId = "txtQuantityTotal", accessible = Accessible.MANDATORY, type = Type.NUMERIC, maxLength = 2)
-	private Integer quantityTotal = 0;
-	@CCFieldConfig(label = "QU", tooltiptext = "Quantity Used", componentId = "txtQuantityUsed", accessible = Accessible.READONLY, type = Type.NUMERIC, maxLength = 2)
-	private Integer quantityUsed = 0;
-	@CCFieldConfig(label = "QA", tooltiptext = "Quantity Available", componentId = "txtQuantityAvailable", accessible = Accessible.READONLY, type = Type.NUMERIC, maxLength = 2)
-	private Integer quantityAvailable = 0;
 	// <editor-fold defaultstate="collapsed" desc=" cascade ">
-	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "inventory")
+	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "employee")
 	private List<InvOwnership> ownerships;
 
 	// </editor-fold>
@@ -123,38 +113,6 @@ public class InvInventory implements CCEntity {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Integer getQuantityTotal() {
-		return quantityTotal;
-	}
-
-	public void setQuantityTotal(Integer quantityTotal) {
-		this.quantityTotal = quantityTotal;
-	}
-
-	public Integer getQuantityUsed() {
-		return quantityUsed;
-	}
-
-	public void setQuantityUsed(Integer quantityUsed) {
-		this.quantityUsed = quantityUsed;
-	}
-
-	public Integer getQuantityAvailable() {
-		return quantityAvailable;
-	}
-
-	public void setQuantityAvailable(Integer quantityAvailable) {
-		this.quantityAvailable = quantityAvailable;
 	}
 	// </editor-fold>
 }
