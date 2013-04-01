@@ -29,7 +29,7 @@ cococare-j Recruitment:
       ejb3-persistence.jar
     MySQL JDBC Driver (Optional) (Included in NetBeans IDE)
       mysql-connector-java-5.1.13-bin.jar
-    c3p0-0.9.1.1.jar (Mandatory) ()
+    c3p0.jar (Mandatory) (http://sourceforge.net/projects/c3p0/files/c3p0-bin/)
     j2ee.jar (Mandatory) (https://github.com/yosua-onesimus/libraries/tree/master/java/j2ee-lib)
     Spring Framework 2.5.6.SEC01 (Optional) (Included in NetBeans IDE)
       cglib-2.2.jar
@@ -68,6 +68,7 @@ cococare-j Recruitment:
     Other Lib (Optional) (https://github.com/yosua-onesimus/libraries/tree/master/java/common-lib)
       Access_JDBC30.jar
       barbecue-1.5-modif.jar
+      c3p0-0.9.1.1.jar
       comm.jar
       itext-2.1.7.jar
       jasperreports-3.1.2.jar
