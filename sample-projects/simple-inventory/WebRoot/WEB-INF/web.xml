@@ -6,7 +6,7 @@
 	id="WebApp_ID" version="2.5">
 	<!-- Spring -->
 	<!-- ZK -->
-	<display-name>simple-inventory.com</display-name>
+	<display-name>simple-inventory.qwerty</display-name>
 	<listener>
 		<description>
 			Used to cleanup when a session is destroyed

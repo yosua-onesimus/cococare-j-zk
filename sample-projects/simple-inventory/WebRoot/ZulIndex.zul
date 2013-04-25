@@ -1,4 +1,4 @@
-<?page id="pgIndex" title="simple-inventory.com" contentType="text/html;charset=UTF-8"?>
+<?page id="pgIndex" title="simple-inventory.asdfgh" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:h="http://www.w3.org/1999/xhtml">
 	<window id="ZulIndex" border="normal" hflex="1" vflex="1"
 		use="controller.zul.ZulIndexCtrl">
@@ -6,7 +6,7 @@
 			<north>
 				<hbox align="center" height="60px" hflex="1">
 					<image id="aApplLogo" height="60px" width="60px"
-						src="/icon/icon-cococare.jpg" />
+						src="/img/icon-cococare.jpg" />
 					<div hflex="1">
 						<label id="aApplName" hflex="1"
 							style="font-size:24px;" value="simple-inventory" />
@@ -16,7 +16,7 @@
 							style="font-size:14px;" value="simple-inventory" />
 					</div>
 					<image id="aCompLogo" height="60px" width="60px"
-						src="/icon/icon-cococare.jpg" />
+						src="/img/icon-cococare.jpg" />
 				</hbox>
 			</north>
 			<center>
@@ -24,7 +24,8 @@
 					<north>
 						<menubar id="aMenuBarH" />
 					</north>
-					<west id="aMenuBarV" width="200px">
+					<west id="aMenuBarV" width="200px"
+						visible="false">
 						<vbox hflex="1">
 							<button label="Menu 1." hflex="1" />
 							<hbox hflex="1">

@@ -18,6 +18,8 @@
 									width="100px" />
 								<button id="btnDelete" label="Delete"
 									width="100px" />
+								<button id="btnExport" label="Export"
+									width="100px" />
 								<space hflex="1" />
 								<textbox id="txtKeyword" width="100px" />
 							</hbox>

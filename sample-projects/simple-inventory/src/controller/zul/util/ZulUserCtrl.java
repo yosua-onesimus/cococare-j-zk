@@ -22,7 +22,6 @@ import cococare.framework.zk.CFZkCtrl;
 import cococare.zk.CCTable;
 
 public class ZulUserCtrl extends CFZkCtrl {
-
 	private UtilUserBo userBo;
 	private CCTable tblPrivilege;
 	private EventListener elSelect = new EventListener() {
@@ -61,7 +60,6 @@ public class ZulUserCtrl extends CFZkCtrl {
 		}
 		//
 		getCCBandbox(getContainer(), "bndUserGroup").addEventListenerOnSelect(new EventListener() {
-
 			public void onEvent(Event event) throws Exception {
 				userBo.getPrivileges((UtilUserGroup) getCCBandbox(getContainer(), "bndUserGroup").getObject());
 				tblPrivilege.reloadItems();
