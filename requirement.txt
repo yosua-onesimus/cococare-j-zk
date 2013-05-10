@@ -1,12 +1,13 @@
 cococare-j Recruitment:
   Software:
     Java SE 6 Update X (Mandatory) (http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-    MyEclipse 6.0.1 (Recommended) ()
+    MyEclipse 6.0.1 Up (Recommended) (http://www.myeclipseide.com/module-htmlpages-display-pid-4.html)
     NetBeans IDE 7.1 Up (Optional) (http://netbeans.org/downloads/)
+    Tomcat (Recommended) (Included in NetBeans IDE)
     MySQL Server 5.1 (Optional) (http://dev.mysql.com/downloads/mysql/)
   Plugins:
     cococare-j-templates.xml (Recommended) (https://github.com/yosua-onesimus/cococare-j)
-    ZK Studio 1.0.2 (Recommended) (http://www.zkoss.org/download/zkstudio)
+    ZK Studio 1.0.2 Up (Recommended) (http://www.zkoss.org/download/zkstudio)
   Library:
     Hibernate (Mandatory) (Included in NetBeans IDE)
       antlr-2.7.6.jar
