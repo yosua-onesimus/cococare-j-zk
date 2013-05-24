@@ -1,4 +1,4 @@
-cococare-j Recruitment:
+cococare-j Requirement:
   Software:
     Java SE 6 Update X (Mandatory) (http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     MyEclipse 6.0.1 Up (Recommended) (http://www.myeclipseide.com/module-htmlpages-display-pid-4.html)
