@@ -3,15 +3,15 @@
 	<window border="normal">
 		<vbox>
 			<hbox align="center">
-				<button id="btnEdit" label="Edit" width="100px" />
-				<button id="btnCancel" label="Cancel" width="100px" />
-				<button id="btnSave" label="Save" width="100px" />
-				<button id="btnClose" label="Close" width="100px" />
+				<button id="btnEdit" label="Edit" />
+				<button id="btnCancel" label="Cancel" />
+				<button id="btnSave" label="Save" />
+				<button id="btnClose" label="Close" />
 			</hbox>
-			<grid>
+			<grid sclass="input-field">
 				<columns>
 					<column width="100px" />
-					<column width="300px" />
+					<column />
 				</columns>
 				<rows>
 					<row>

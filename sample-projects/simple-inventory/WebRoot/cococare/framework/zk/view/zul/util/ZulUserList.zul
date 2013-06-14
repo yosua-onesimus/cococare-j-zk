@@ -10,18 +10,14 @@
 					<borderlayout>
 						<north>
 							<hbox align="center" hflex="1">
-								<button id="btnAdd" label="Add"
-									width="100px" />
-								<button id="btnView" label="View"
-									width="100px" />
-								<button id="btnEdit" label="Edit"
-									width="100px" />
-								<button id="btnDelete" label="Delete"
-									width="100px" />
-								<button id="btnExport" label="Export"
-									width="100px" />
+								<button id="btnAdd" label="Add" />
+								<button id="btnView" label="View" />
+								<button id="btnEdit" label="Edit" />
+								<button id="btnDelete" label="Delete" />
+								<button id="btnExport" label="Export" />
 								<space hflex="1" />
-								<textbox id="txtKeyword" width="100px" />
+								<textbox id="txtKeyword"
+									sclass="txtKeyword" />
 							</hbox>
 						</north>
 						<center>

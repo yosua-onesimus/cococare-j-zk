@@ -16,8 +16,10 @@
 									readonly="true" />
 								<combobox id="cmbAction" width="100px"
 									readonly="true" />
+								<button id="btnExport" label="Export" />
 								<space hflex="1" />
-								<textbox id="txtKeyword" width="100px" />
+								<textbox id="txtKeyword"
+									sclass="txtKeyword" />
 							</hbox>
 						</north>
 						<center>

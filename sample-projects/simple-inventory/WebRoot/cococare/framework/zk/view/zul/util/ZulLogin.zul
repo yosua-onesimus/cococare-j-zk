@@ -3,41 +3,26 @@
 	<window border="normal" hflex="1" vflex="1">
 		<vbox align="center" hflex="1" vflex="1">
 			<space vflex="1" />
-			<grid hflex="min">
+			<grid sclass="input-field" hflex="min">
 				<columns>
-					<column width="220px" />
-					<column width="80px" />
+					<column />
 				</columns>
 				<rows>
 					<row>
 						<label value="Username" />
-						<cell rowspan="2"></cell>
 					</row>
 					<row>
 						<textbox id="txtUsername" width="200px" />
 					</row>
 					<row>
 						<label value="Password" />
-						<cell rowspan="2">
-							<button id="btnLogin"
-								image="/img/icon-key.png" height="60px" width="60px" />
-						</cell>
 					</row>
 					<row>
 						<textbox id="txtPassword" type="password"
 							width="200px" />
 					</row>
 					<row>
-						<bandbox id="test" width="200px"
-							buttonVisible="false">
-						</bandbox>
-						<button label="test" onClick="doClick()"></button>
-						<zscript>
-	void doClick() {
-		test.setButtonVisible(true);
-		test.setStyle("background-color:yellow;");
-	}
-</zscript>
+						<button id="btnLogin" label="Login" />
 					</row>
 				</rows>
 			</grid>
