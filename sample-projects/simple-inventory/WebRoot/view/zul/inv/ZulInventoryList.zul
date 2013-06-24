@@ -14,6 +14,7 @@
 								<button id="btnView" label="View" />
 								<button id="btnEdit" label="Edit" />
 								<button id="btnDelete" label="Delete" />
+								<button id="btnExport" label="Export" />
 								<space hflex="1" />
 								<textbox id="txtKeyword"
 									sclass="txtKeyword" />

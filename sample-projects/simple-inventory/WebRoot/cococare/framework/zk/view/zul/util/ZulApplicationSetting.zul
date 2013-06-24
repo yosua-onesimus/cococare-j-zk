@@ -1,0 +1,137 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window border="none" title="Application Setting" vflex="1">
+		<vlayout vflex="1">
+			<hbox align="center">
+				<button id="btnSave" label="Save" />
+				<button id="btnClose" label="Close" />
+			</hbox>
+			<vlayout vflex="1" style="overflow:auto;">
+				<hbox>
+					<vbox>
+						<panel title="Application">
+							<panelchildren>
+								<grid sclass="input-field">
+									<columns>
+										<column width="100px" />
+										<column />
+									</columns>
+									<rows>
+										<row>
+											<label value="Language" />
+											<combobox
+												id="cmbApplLanguage" width="200px" />
+										</row>
+										<row>
+											<label
+												value="Menu Position" />
+											<combobox
+												id="cmbApplMenuPosition" width="200px" />
+										</row>
+										<row valign="top">
+											<label value="Wallpaper" />
+											<div id="attApplWallpaper" />
+										</row>
+									</rows>
+								</grid>
+							</panelchildren>
+						</panel>
+						<panel title="Owner">
+							<panelchildren>
+								<grid sclass="input-field">
+									<columns>
+										<column width="100px" />
+										<column />
+									</columns>
+									<rows>
+										<row>
+											<label value="Name" />
+											<textbox id="txtOwnerName"
+												width="200px" />
+										</row>
+										<row>
+											<label value="Position" />
+											<textbox
+												id="txtOwnerPosition" width="200px" />
+										</row>
+										<row>
+											<label value="KTP" />
+											<textbox id="txtOwnerKtp"
+												width="200px" />
+										</row>
+										<row>
+											<label value="NPWP" />
+											<textbox id="txtOwnerNpwp"
+												width="200px" />
+										</row>
+									</rows>
+								</grid>
+							</panelchildren>
+						</panel>
+					</vbox>
+					<panel title="Company">
+						<panelchildren>
+							<grid sclass="input-field">
+								<columns>
+									<column width="100px" />
+									<column />
+								</columns>
+								<rows>
+									<row valign="top">
+										<label value="Logo" />
+										<div id="attCompanyLogo" />
+									</row>
+									<row>
+										<label value="Name" />
+										<textbox id="txtCompanyName"
+											width="200px" />
+									</row>
+									<row>
+										<label value="Address" />
+										<textbox id="txtCompanyAddress"
+											width="200px" />
+									</row>
+									<row>
+										<label value="City" />
+										<combobox id="cmbCompanyCity"
+											width="200px" />
+									</row>
+									<row>
+										<label value="Province" />
+										<combobox
+											id="cmbCompanyProvince" width="200px" />
+									</row>
+									<row>
+										<label value="State" />
+										<textbox id="txtCompanyState"
+											width="200px" />
+									</row>
+									<row>
+										<label value="Phone" />
+										<textbox id="txtCompanyPhone"
+											width="200px" />
+									</row>
+									<row>
+										<label value="Fax" />
+										<textbox id="txtCompanyFax"
+											width="200px" />
+									</row>
+									<row>
+										<label value="Email" />
+										<textbox id="txtCompanyEmail"
+											width="200px" />
+									</row>
+									<row>
+										<label value="Web" />
+										<textbox id="txtCompanyWeb"
+											width="200px" />
+									</row>
+								</rows>
+							</grid>
+						</panelchildren>
+					</panel>
+				</hbox>
+			</vlayout>
+		</vlayout>
+	</window>
+</zk>

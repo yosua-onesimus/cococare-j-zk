@@ -1,0 +1,5 @@
+<zk xmlns:h="http://www.w3.org/1999/xhtml">
+	<window border="normal" hflex="1" vflex="1">
+		<iframe src="../CocoPanel.zul" hflex="1" vflex="1" />
+	</window>
+</zk>

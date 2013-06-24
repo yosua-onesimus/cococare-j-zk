@@ -1,6 +1,6 @@
 <?page contentType="text/html;charset=UTF-8"?>
 <zk>
-	<window border="normal" title="Database Setting">
+	<window border="normal" title="Database Setting" vflex="1">
 		<vbox>
 			<hbox align="center">
 				<button id="btnSave" label="Save" />

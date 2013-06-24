@@ -4,7 +4,6 @@
 		<vbox>
 			<hbox align="center">
 				<button id="btnEdit" label="Edit" />
-				<button id="btnCancel" label="Cancel" />
 				<button id="btnSave" label="Save" />
 				<button id="btnClose" label="Close" />
 			</hbox>
