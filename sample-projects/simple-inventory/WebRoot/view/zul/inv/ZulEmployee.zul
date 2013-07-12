@@ -1,7 +1,6 @@
-<?page contentType="text/html;charset=UTF-8"?>
 <zk>
-	<window border="normal">
-		<vbox>
+	<window vflex="1">
+		<vbox vflex="1">
 			<hbox align="center">
 				<button id="btnEdit" label="Edit" />
 				<button id="btnSave" label="Save" />
@@ -23,6 +22,59 @@
 					</row>
 				</rows>
 			</grid>
+			<tabbox vflex="1">
+				<tabs>
+					<tab label="Basic Data" />
+					<tab label="Ownership" />
+				</tabs>
+				<tabpanels>
+					<tabpanel>
+						<grid sclass="input-field">
+							<columns>
+								<column width="100px" />
+								<column />
+							</columns>
+							<rows>
+								<row>
+									<label value="Birth Place" />
+									<cell>
+										<textbox id="txtBirthPlace"
+											width="100px" />
+										<label value="," />
+										<datebox id="dtpBirthDate"
+											width="100px" />
+									</cell>
+								</row>
+								<row>
+									<label value="Gender" />
+									<combobox id="cmbGender"
+										width="100px" />
+								</row>
+								<row>
+									<label value="Blood Type" />
+									<combobox id="cmbBloodType"
+										width="100px" />
+								</row>
+								<row>
+									<label value="Phone" />
+									<textbox id="txtPhone"
+										width="100px" />
+								</row>
+								<row>
+									<label value="Email" />
+									<textbox id="txtEmail"
+										width="200px" />
+								</row>
+								<row>
+									<label value="Photo" />
+									<div id="attPhoto" />
+								</row>
+							</rows>
+						</grid>
+					</tabpanel>
+					<tabpanel id="pnlOwnership"></tabpanel>
+				</tabpanels>
+			</tabbox>
 		</vbox>
 	</window>
 </zk>

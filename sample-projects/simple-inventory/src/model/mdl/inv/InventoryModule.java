@@ -1,5 +1,6 @@
 package model.mdl.inv;
 
+//<editor-fold defaultstate="collapsed" desc=" import ">
 import model.obj.inv.InvEmployee;
 import model.obj.inv.InvInventory;
 import model.obj.inv.InvOwnership;

@@ -8,6 +8,7 @@ import cococare.framework.zk.controller.zul.util.ZulLoginCtrl;
 import cococare.zk.CCMenubar;
 import controller.zul.inv.ZulEmployeeListCtrl;
 import controller.zul.inv.ZulInventoryListCtrl;
+import controller.zul.inv.ZulOwnershipListCtrl;
 
 public class InventoryMain extends CFZkMain {
 	@Override
@@ -29,6 +30,7 @@ public class InventoryMain extends CFZkMain {
 		CFZkUae zkUae = new CFZkUae();
 		zkUae.reg("Inventory", "Inventory", ZulInventoryListCtrl.class);
 		zkUae.reg("Inventory", "Employee", ZulEmployeeListCtrl.class);
+		zkUae.reg("Inventory", "Ownership", ZulOwnershipListCtrl.class);
 		return _initInitialDataUaeUtility(zkUae).compile();
 	}
 
@@ -41,6 +43,7 @@ public class InventoryMain extends CFZkMain {
 		zkUae.addMenuParent(CCLanguage.Archive, null, null);
 		zkUae.addMenuChild("Inventory", null, ZulInventoryListCtrl.class);
 		zkUae.addMenuChild("Employee", null, ZulEmployeeListCtrl.class);
+		zkUae.addMenuChild("Ownership", null, ZulOwnershipListCtrl.class);
 		zkUae.changeMenuSide();
 		_applyUserConfigUaeUtility(zkUae).compileMenu();
 	}

@@ -1,5 +1,6 @@
 package model.obj.inv;
 
+//<editor-fold defaultstate="collapsed" desc=" import ">
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -86,7 +87,7 @@ public class InvOwnership implements CCEntity {
 
 	// </editor-fold>
 	@ManyToOne
-	@CCFieldConfig(componentId = "bndEmployee", accessible = Accessible.MANDATORY, uniqueKey = "name")
+	@CCFieldConfig(componentId = "bndEmployee", accessible = Accessible.MANDATORY, requestFocus = true, uniqueKey = "name")
 	private InvEmployee employee;
 	@ManyToOne
 	@CCFieldConfig(componentId = "bndInventory", accessible = Accessible.MANDATORY, uniqueKey = "name")

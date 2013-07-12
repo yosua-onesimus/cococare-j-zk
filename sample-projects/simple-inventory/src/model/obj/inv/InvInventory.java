@@ -1,5 +1,6 @@
 package model.obj.inv;
 
+//<editor-fold defaultstate="collapsed" desc=" import ">
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import javax.persistence.TemporalType;
 import cococare.common.CCFieldConfig;
 import cococare.common.CCTypeConfig;
 import cococare.common.CCFieldConfig.Accessible;
+import cococare.common.CCFieldConfig.OnDelete;
 import cococare.common.CCFieldConfig.Type;
 import cococare.database.CCEntity;
 
@@ -91,6 +93,7 @@ public class InvInventory implements CCEntity {
 	@Column(length = 16)
 	@CCFieldConfig(componentId = "txtCode", accessible = Accessible.MANDATORY, maxLength = 16, sequence = "INV/[yyMMdd]/000", requestFocus = true, unique = true)
 	private String code;
+	@Column(length = 255)
 	@CCFieldConfig(componentId = "txtName", accessible = Accessible.MANDATORY)
 	private String name;
 	@Column(length = Integer.MAX_VALUE)
@@ -104,6 +107,7 @@ public class InvInventory implements CCEntity {
 	private Integer quantityAvailable = 0;
 	// <editor-fold defaultstate="collapsed" desc=" cascade ">
 	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "inventory")
+	@CCFieldConfig(onDelete = OnDelete.RESTRICT)
 	private List<InvOwnership> ownerships;
 
 	// </editor-fold>

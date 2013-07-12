@@ -20,21 +20,9 @@
 						<label value="Name" />
 						<textbox id="txtName" width="200px" />
 					</row>
-					<row valign="top">
-						<label value="Description" />
-						<textbox id="txtDescription" height="150px"
-							width="300px" multiline="true" />
-					</row>
 					<row>
-						<label value="Quantity" />
-						<cell>
-							<intbox id="txtQuantityTotal" width="50px" />
-							<label value="-" />
-							<intbox id="txtQuantityUsed" width="50px" />
-							<label value="=" />
-							<intbox id="txtQuantityAvailable"
-								width="50px" />
-						</cell>
+						<label value="Path" />
+						<textbox id="txtPath" width="300px" />
 					</row>
 				</rows>
 			</grid>

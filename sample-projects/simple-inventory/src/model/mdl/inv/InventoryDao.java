@@ -1,5 +1,6 @@
 package model.mdl.inv;
 
+//<editor-fold defaultstate="collapsed" desc=" import ">
 import java.util.List;
 
 import cococare.database.CCHibernate;
