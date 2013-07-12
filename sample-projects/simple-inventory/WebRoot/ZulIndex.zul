@@ -8,12 +8,10 @@
 				<hbox align="center" height="60px" hflex="1">
 					<image id="aApplLogo" height="60px" width="60px" />
 					<div hflex="1">
-						<label id="aApplName" hflex="1"
-							style="font-size:24px;" />
+						<label id="aApplName" style="font-size:24px;" />
 					</div>
 					<div align="right" hflex="1">
-						<label id="aCompName" hflex="1"
-							style="font-size:14px;" />
+						<label id="aCompName" style="font-size:14px;" />
 					</div>
 					<image id="aCompLogo" height="60px" width="60px" />
 				</hbox>

@@ -1,0 +1,45 @@
+<zk>
+	<window vflex="1">
+		<vbox vflex="1">
+			<hbox align="center">
+				<button id="btnEdit" label="Edit" />
+				<button id="btnSave" label="Save" />
+				<button id="btnClose" label="Close" />
+			</hbox>
+			<grid sclass="input-field">
+				<columns>
+					<column width="100px" />
+					<column />
+					<column width="100px" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<label value="Code" />
+						<textbox id="txtCode" width="100px" />
+						<label value="Objective" />
+						<bandbox id="bndObjective" width="200px" />
+					</row>
+					<row>
+						<label value="Name" />
+						<textbox id="txtName" width="200px" />
+						<label value="Type" />
+						<combobox id="cmbType" width="200px" />
+					</row>
+				</rows>
+			</grid>
+			<tabbox>
+				<tabs>
+					<tab label="Description" />
+					<tab label="Bookmark" />
+					<tab label="Shortcut" />
+				</tabs>
+				<tabpanels>
+					<tabpanel></tabpanel>
+					<tabpanel></tabpanel>
+					<tabpanel></tabpanel>
+				</tabpanels>
+			</tabbox>
+		</vbox>
+	</window>
+</zk>

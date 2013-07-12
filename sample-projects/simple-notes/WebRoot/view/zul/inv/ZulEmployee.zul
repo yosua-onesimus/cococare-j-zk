@@ -1,0 +1,28 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window border="normal">
+		<vbox>
+			<hbox align="center">
+				<button id="btnEdit" label="Edit" />
+				<button id="btnSave" label="Save" />
+				<button id="btnClose" label="Close" />
+			</hbox>
+			<grid sclass="input-field">
+				<columns>
+					<column width="100px" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<label value="Code" />
+						<textbox id="txtCode" width="100px" />
+					</row>
+					<row>
+						<label value="Name" />
+						<textbox id="txtName" width="200px" />
+					</row>
+				</rows>
+			</grid>
+		</vbox>
+	</window>
+</zk>
