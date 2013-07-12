@@ -224,9 +224,6 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             addEventListenerOnClick(zkView.getBtnExport(), elExport);
             addEventListenerOnChange_OnOk(zkView.getTxtKeyword(), elSearch);
         } else if (BaseFunction.FORM_FUNCTION.equals(_getBaseFunction())) {
-            if (ShowMode.DIALOG_MODE.equals(_getShowMode())) {
-                addEventListenerOnCancel(getContainer(), elClose);
-            }
             elNew = new EventListener() {
                 @Override
                 public void onEvent(Event t) throws Exception {
@@ -264,6 +261,9 @@ public abstract class CFZkCtrl extends CFViewCtrl {
                     _doClose();
                 }
             };
+            if (ShowMode.DIALOG_MODE.equals(_getShowMode())) {
+                addEventListenerOnCancel(getContainer(), elClose);
+            }
             addEventListenerOnClick(zkView.getBtnNew(), elNew);
             addEventListenerOnClick(zkView.getBtnEdit(), elEdit);
             addEventListenerOnClick(zkView.getBtnSave(), elSave);
@@ -408,7 +408,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
     protected void _doCloseScreen() {
         if (ShowMode.PANEL_MODE.equals(_getShowMode())) {
             if (isNull(callerCtrl)) {
-                showPanel(getContent(), null);
+                removePanel(getContent(), getContainer());
             } else {
                 callerCtrl.init();
             }
@@ -416,7 +416,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             ((Window) zkView.getContainer()).detach();
         } else if (ShowMode.TAB_MODE.equals(_getShowMode())) {
             if (isNull(callerCtrl)) {
-                showPanel(getContent(), null);
+                removePanel(getContent(), getContainer());
             } else {
                 callerCtrl.doCloseTab(sysRef);
                 if (updateCaller) {

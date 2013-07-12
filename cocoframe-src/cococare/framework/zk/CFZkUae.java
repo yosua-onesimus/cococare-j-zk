@@ -97,6 +97,8 @@ public class CFZkUae extends CFApplUae {
     private boolean leftSide = true;
     private HashMap<Integer, MenuCandidate> leftSideMenus = new HashMap();
     private HashMap<Integer, MenuCandidate> rightSideMenus = new HashMap();
+    private List<Integer> separatorMenus = new ArrayList();
+    private Integer separatorParentCode = null;
     private HashMap<MenuCandidate, Boolean> accessibles = new HashMap();
 //</editor-fold>
 //</editor-fold>
@@ -150,6 +152,9 @@ public class CFZkUae extends CFApplUae {
 
     private void _addMenu(final MenuCandidate menuCandidate) {
         if (accessibles.get(menuCandidate)) {
+            if (isNotNull(separatorParentCode) && separatorParentCode.equals(menuCandidate.getParentCode())) {
+                menubar.addMenuSeparator(separatorParentCode);
+            }
             menubar.addMenu(menuCandidate.getParentCode(), menuCandidate.getCode(),
                     menuCandidate.getLabel(), menuCandidate.getIcon(),
                     isNull(menuCandidate.getControllerClass()) ? null
@@ -159,6 +164,10 @@ public class CFZkUae extends CFApplUae {
                     ((CFViewCtrl) newObject(menuCandidate.getControllerClass())).init();
                 }
             });
+            separatorParentCode = null;
+        }
+        if (isNull(separatorParentCode) && separatorMenus.contains(menuCandidate.getCode())) {
+            separatorParentCode = menuCandidate.getParentCode();
         }
     }
 //</editor-fold>
@@ -167,7 +176,7 @@ public class CFZkUae extends CFApplUae {
 //<editor-fold defaultstate="collapsed" desc=" public method ">
 //<editor-fold defaultstate="collapsed" desc=" register controllerClass to create privilege ">
     @Override
-    public void reg(String moduleCode, String screenName, Class controllerClass) {
+    public void reg(String moduleCode, String screenName, Class<? extends CFViewCtrl> controllerClass) {
         Component container = newContainer(controllerClass);
         if (isNotNull(container)) {
             UtilPrivilege screen = new UtilPrivilege(_getScreenComp(controllerClass), _getScreenCode(moduleCode), screenName);
@@ -199,6 +208,8 @@ public class CFZkUae extends CFApplUae {
         leftSide = true;
         leftSideMenus.clear();
         rightSideMenus.clear();
+        separatorMenus.clear();
+        separatorParentCode = null;
         accessibles.clear();
     }
 
@@ -220,9 +231,9 @@ public class CFZkUae extends CFApplUae {
             MenuCandidate parent = (leftSide ? leftSideMenus.get(parentCode) : rightSideMenus.get(parentCode));
             if (isNotNull(controllerClass)) {
                 boolean isAccessible = menuRoot.contains(controllerClass) || isAccessible(controllerClass);
-                if (!isAccessible) {
-                    return;
-                }
+//                if (!isAccessible) {
+//                    return;
+//                }
                 MenuCandidate menuCandidate = _addMenuCandidate(parentCode, code, label, icon, controllerClass);
                 accessibles.put(menuCandidate, isAccessible);
                 accessibles.put(parent, accessibles.get(parent) || isAccessible);
@@ -238,6 +249,17 @@ public class CFZkUae extends CFApplUae {
     @Override
     public void addMenuChild(String label, String icon, Class<? extends CFViewCtrl> controllerClass) {
         addMenu(pc, cc++, label, icon, controllerClass);
+    }
+
+    public void addMenuSeparator(int code) {
+        if (!separatorMenus.contains(code)) {
+            separatorMenus.add(code);
+        }
+    }
+
+    @Override
+    public void addMenuSeparator() {
+        addMenuSeparator(cc - 1);
     }
 
     public void changeMenuSide() {

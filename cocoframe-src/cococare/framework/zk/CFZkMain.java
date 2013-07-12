@@ -12,7 +12,6 @@ import cococare.framework.common.CFApplUae;
 import cococare.framework.model.obj.util.UtilConfAppl;
 import static cococare.framework.zk.CFZkMap.*;
 import cococare.framework.zk.controller.zul.util.*;
-import static cococare.zk.CCConfig.BND_BTN_SEARCH_IMAGE;
 import static cococare.zk.CCSession.getWebRoot;
 import static cococare.zk.CCZk.setImageContent;
 import cococare.zk.database.CCLoginInfo;
@@ -41,7 +40,7 @@ public abstract class CFZkMain extends CFApplCtrl {
 
     @Override
     protected void _initScreen() {
-        setImageContent(getApplLogo(), BND_BTN_SEARCH_IMAGE);
+        setImageContent(getApplLogo(), APPL_LOGO);
         getApplName().setValue(APPL_NAME);
         getApplVer().setValue(APPL_VER);
         _clearUserConfig();
@@ -84,10 +83,11 @@ public abstract class CFZkMain extends CFApplCtrl {
         applUae.addMenuChild(turn(User_Group), null, ZulUserGroupListCtrl.class);
         applUae.addMenuChild(turn(User), null, ZulUserListCtrl.class);
         applUae.addMenuChild(turn(Change_Password), null, ZulChangePasswordCtrl.class);
+        applUae.addMenuSeparator();
         applUae.addMenuChild(turn(Logger_History), null, ZulLoggerListCtrl.class);
         applUae.addMenuChild(turn(Application_Setting), null, ZulApplicationSettingCtrl.class);
         applUae.addMenuChild(turn(Database_Setting), null, ZulDatabaseSettingCtrl.class);
-        applUae.addMenuChild(turn(Log_Out), null, ZulLoginCtrl.class);
+        applUae.addMenuParent(turn(Log_Out), null, ZulLoginCtrl.class);
         return applUae;
     }
 

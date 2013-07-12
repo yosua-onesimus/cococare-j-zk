@@ -125,7 +125,7 @@ public class ZulUserCtrl extends CFZkCtrl {
 
     @Override
     protected boolean _doSaveEntity() {
-        return userBo.save();
+        return userBo.saveOrUpdate();
     }
 
     protected void _doSelect(boolean selected) {

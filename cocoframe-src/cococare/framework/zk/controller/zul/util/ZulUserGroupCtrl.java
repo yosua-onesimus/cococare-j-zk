@@ -99,7 +99,7 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
 
     @Override
     protected boolean _doSaveEntity() {
-        return userGroupBo.save();
+        return userGroupBo.saveOrUpdate();
     }
 
     protected void _doSelect(boolean selected) {
