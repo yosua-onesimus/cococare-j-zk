@@ -12,7 +12,7 @@ import controller.zul.inv.ZulInventoryListCtrl;
 public class InventoryMain extends CFZkMain {
 	@Override
 	protected void _loadInternalSetting() {
-		APPL_CODE = "smpl-invntry-zul";
+		APPL_CODE = "smpl-invntry-zk";
 		APPL_NAME = "simple-inventory";
 		super._loadInternalSetting();
 		// CCLoginInfo.INSTANCE = null;//without login
