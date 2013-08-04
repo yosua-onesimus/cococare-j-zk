@@ -1,0 +1,35 @@
+<zk>
+	<window hflex="1" vflex="1">
+		<tabbox id="tabEntity" hflex="1" vflex="1">
+			<tabs>
+				<tab label="Logger History" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<borderlayout>
+						<north>
+							<hbox align="center" hflex="1">
+								<combobox id="cmbUsername" width="100px"
+									readonly="true" />
+								<combobox id="cmbScreen" width="150px"
+									readonly="true" />
+								<combobox id="cmbAction" width="100px"
+									readonly="true" />
+								<button id="btnExport" label="Export" />
+								<space hflex="1" />
+								<textbox id="txtKeyword"
+									sclass="txtKeyword" />
+							</hbox>
+						</north>
+						<center>
+							<listbox id="tblEntity" hflex="1" vflex="1" />
+						</center>
+						<south>
+							<paging id="pgnEntity" />
+						</south>
+					</borderlayout>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>

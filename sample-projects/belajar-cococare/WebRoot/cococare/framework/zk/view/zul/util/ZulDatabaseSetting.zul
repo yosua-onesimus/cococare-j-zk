@@ -1,0 +1,53 @@
+<zk>
+	<window title="Database Setting" vflex="1">
+		<vbox>
+			<hbox align="center">
+				<button id="btnSave" label="Save" />
+				<button id="btnClose" label="Close" />
+			</hbox>
+			<grid sclass="input-field">
+				<columns>
+					<column width="100px" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<label value="Driver" />
+						<combobox id="cmbDriver" width="290px" />
+					</row>
+					<row>
+						<label value="Host" />
+						<hbox align="center">
+							<textbox id="txtHost" width="190px" />
+							<label value="Port" />
+							<textbox id="txtPort" width="50px" />
+						</hbox>
+					</row>
+					<row>
+						<label value="Database" />
+						<textbox id="txtDatabase" width="280px" />
+					</row>
+					<row>
+						<label value="Username" />
+						<textbox id="txtUsername" width="280px" />
+					</row>
+					<row>
+						<label value="Password" />
+						<textbox id="txtPassword" type="password"
+							width="280px" />
+					</row>
+					<row>
+						<space />
+						<checkbox id="chkAutoCreateDatabase"
+							label="Automatic create database if not exist" />
+					</row>
+					<row>
+						<space />
+						<checkbox id="chkInitInitialData"
+							label="Create initial data" />
+					</row>
+				</rows>
+			</grid>
+		</vbox>
+	</window>
+</zk>
