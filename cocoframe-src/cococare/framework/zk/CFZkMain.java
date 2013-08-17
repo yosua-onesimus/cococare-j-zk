@@ -4,10 +4,8 @@ package cococare.framework.zk;
 import static cococare.common.CCFormat.*;
 import cococare.common.CCLanguage;
 import static cococare.common.CCLanguage.*;
-import static cococare.datafile.CCFile.getFileSystConfPath;
-import static cococare.datafile.CCFile.initApplPath;
+import static cococare.datafile.CCFile.*;
 import cococare.framework.common.CFApplCtrl;
-import static cococare.framework.common.CFApplCtrl.*;
 import cococare.framework.common.CFApplUae;
 import cococare.framework.model.obj.util.UtilConfAppl;
 import static cococare.framework.zk.CFZkMap.*;
@@ -30,7 +28,7 @@ public abstract class CFZkMain extends CFApplCtrl {
     protected void _loadInternalSetting() {
         PLAT_MODE = PlatformMode.WEB;
         initApplPath(getWebRoot());
-        FILE_APPL_CONF = new File(getFileSystConfPath(), S_APPL_CONF);
+        FILE_APPL_CONF = new File(getFileUserConfPath(), S_APPL_CONF);
         FILE_APPL_LCNS = new File(getFileSystConfPath(), S_APPL_LCNS);
         FILE_DTBS_CONF = new File(getFileSystConfPath(), S_DTBS_CONF);
         CCLoginInfo.INSTANCE = new CCLoginInfo();
