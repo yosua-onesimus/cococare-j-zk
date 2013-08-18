@@ -2,11 +2,12 @@ package cococare.framework.zk;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import cococare.common.CCAccessibleListener;
-import static cococare.common.CCClass.getUniqueKeyValue;
-import static cococare.common.CCClass.newObject;
+import static cococare.common.CCClass.*;
 import static cococare.common.CCFinal.btnEdit;
+import static cococare.common.CCFormat.getBoolean;
 import static cococare.common.CCLanguage.*;
 import static cococare.common.CCLogic.*;
+import cococare.database.CCHibernateFilter;
 import static cococare.database.CCLoginInfo.INSTANCE_isCompAccessible;
 import cococare.framework.common.CFViewCtrl;
 import static cococare.framework.zk.CFZkMap.*;
@@ -14,7 +15,9 @@ import cococare.zk.CCEditor;
 import static cococare.zk.CCMessage.*;
 import cococare.zk.CCTable;
 import static cococare.zk.CCZk.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -127,6 +130,22 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             tblEntity = new CCTable(zkView.getTblEntity(), _getEntity());
             zkView.getTblEntity().setFocus(true);
         }
+        //parent-childs-screen
+        if (isNotNull(parameter.get(toString() + parentValue))) {
+            final Object dummy = this;
+            tblEntity.setHqlFilters(new CCHibernateFilter() {
+                @Override
+                public String getFieldName() {
+                    return parameter.get(dummy.toString() + parentField).toString();
+                }
+
+                @Override
+                public Object getFieldValue() {
+                    return parameter.get(dummy.toString() + parentValue);
+                }
+            });
+        }
+
     }
 
     @Override
@@ -152,6 +171,10 @@ public abstract class CFZkCtrl extends CFViewCtrl {
     @Override
     protected void _initObjEntity() {
         edtEntity.initSequence(objEntity);
+        //parent-childs-screen
+        if (isNotNull(parameter.get(toString() + parentValue))) {
+            setValue(objEntity, parameter.get(toString() + parentField).toString(), parameter.get(toString() + parentValue));
+        }
     }
 
     @Override
@@ -296,7 +319,12 @@ public abstract class CFZkCtrl extends CFViewCtrl {
 
     @Override
     protected boolean _doDeleteEntity() {
-        return tblEntity.deleteById(_getSelectedItem()) > 0;
+        //parent-childs-screen
+        if (getBoolean(parameter.get(toString() + parentNewEntity))) {
+            return ((List) parameter.get(toString() + childsValue)).remove(_getSelectedItem());
+        } else {
+            return tblEntity.deleteById(_getSelectedItem()) > 0;
+        }
     }
 
     @Override
@@ -355,7 +383,14 @@ public abstract class CFZkCtrl extends CFViewCtrl {
 
     @Override
     protected boolean _doSaveEntity() {
-        return edtEntity.saveOrUpdate(objEntity);
+        //return edtEntity.saveOrUpdate(objEntity);
+        //parent-childs-screen
+        if (getBoolean(parameter.get(toString() + parentNewEntity))) {
+            List list = (List) parameter.get(toString() + childsValue);
+            return list.contains(objEntity) ? true : list.add(objEntity);
+        } else {
+            return edtEntity.saveOrUpdate(objEntity, _getEntityChilds());
+        }
     }
 
     @Override
@@ -376,15 +411,18 @@ public abstract class CFZkCtrl extends CFViewCtrl {
 
     @Override
     protected void _doShowScreen() {
-        if (ShowMode.PANEL_MODE.equals(_getShowMode())) {
-            showPanel(getContent(), zkView.getContainer());
-        } else if (ShowMode.DIALOG_MODE.equals(_getShowMode())) {
-            showDialog((Window) zkView.getContainer());
-        } else if (ShowMode.TAB_MODE.equals(_getShowMode())) {
-            if (isNull(callerCtrl)) {
+        //parent-childs-screen
+        if (BaseFunction.FORM_FUNCTION.equals(_getBaseFunction()) || isNull(parameter.get(toString() + parentValue))) {
+            if (ShowMode.PANEL_MODE.equals(_getShowMode())) {
                 showPanel(getContent(), zkView.getContainer());
-            } else {
-                callerCtrl.doShowTab(sysRef, newEntity ? turn(New) : coalesce(getUniqueKeyValue(objEntity), readonly ? turn(View) : turn(Edit)).toString(), this);
+            } else if (ShowMode.DIALOG_MODE.equals(_getShowMode())) {
+                showDialog((Window) zkView.getContainer());
+            } else if (ShowMode.TAB_MODE.equals(_getShowMode())) {
+                if (isNull(callerCtrl)) {
+                    showPanel(getContent(), zkView.getContainer());
+                } else {
+                    callerCtrl.doShowTab(sysRef, newEntity ? turn(New) : coalesce(getUniqueKeyValue(objEntity), readonly ? turn(View) : turn(Edit)).toString(), this);
+                }
             }
         }
     }
@@ -435,7 +473,12 @@ public abstract class CFZkCtrl extends CFViewCtrl {
     @Override
     public void doUpdateTable() {
         if (_hasTblEntity()) {
-            tblEntity.search();
+            //parent-childs-screen
+            if (getBoolean(parameter.get(toString() + parentNewEntity))) {
+                tblEntity.setList((List) parameter.get(toString() + childsValue));
+            } else {
+                tblEntity.search();
+            }
         }
     }
 
@@ -455,4 +498,15 @@ public abstract class CFZkCtrl extends CFViewCtrl {
         }
     }
 //</editor-fold>
+
+    //parent-childs-screen
+    protected void _addChildScreen(String parentField, CFZkCtrl childCtrl, String childView) {
+        parameter.put(childCtrl.toString() + this.parentField, parentField);
+        parameter.put(childCtrl.toString() + this.parentValue, objEntity);
+        parameter.put(childCtrl.toString() + this.parentNewEntity, newEntity);
+        parameter.put(childCtrl.toString() + this.childsValue, new ArrayList());
+        childCtrl.with(parameter).init();
+        showPanel(getComponent(getContainer(), childView), childCtrl.getContainer());
+        childsValueKeys.add(childCtrl.toString() + this.childsValue);
+    }
 }
