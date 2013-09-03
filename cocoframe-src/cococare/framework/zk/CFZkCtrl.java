@@ -145,7 +145,6 @@ public abstract class CFZkCtrl extends CFViewCtrl {
                 }
             });
         }
-
     }
 
     @Override

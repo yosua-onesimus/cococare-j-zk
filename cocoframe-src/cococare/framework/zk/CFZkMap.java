@@ -7,10 +7,7 @@ import cococare.zk.CCZk;
 import static cococare.zk.CCZk.*;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Path;
-import org.zkoss.zul.Image;
-import org.zkoss.zul.Label;
-import org.zkoss.zul.Menubar;
-import org.zkoss.zul.Progressmeter;
+import org.zkoss.zul.*;
 //</editor-fold>
 
 /**
@@ -198,8 +195,8 @@ public class CFZkMap {
      *
      * @return the menu bar.
      */
-    public static Component getMenubarV() {
-        return getComponent(getMainScreen(), aMenuBarV);
+    public static West getMenubarV() {
+        return getWest(getMainScreen(), aMenuBarV);
     }
 
     /**

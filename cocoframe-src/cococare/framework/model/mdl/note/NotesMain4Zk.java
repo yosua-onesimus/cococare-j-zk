@@ -4,6 +4,7 @@ package cococare.framework.model.mdl.note;
 import static cococare.framework.model.mdl.note.NotesLanguage.*;
 import cococare.framework.zk.CFZkMain;
 import static cococare.framework.zk.CFZkMap.getMenubarH;
+import static cococare.framework.zk.CFZkMap.getMenubarV;
 import cococare.framework.zk.CFZkUae;
 import cococare.framework.zk.controller.zul.note.ZulBookmarkListCtrl;
 import cococare.framework.zk.controller.zul.note.ZulObjectiveListCtrl;
@@ -52,7 +53,7 @@ public class NotesMain4Zk extends CFZkMain {
     @Override
     protected void _applyUserConfig() {
         CFZkUae zkUae = new CFZkUae();
-        zkUae.initMenuBar(new CCMenubar(getMenubarH()));
+        zkUae.initMenuBar(MenuPosition.LEFT_SIDE.equals(MENU_POST) ? new CCMenubar(getMenubarV()) : new CCMenubar(getMenubarH()));
         zkUae.addMenuRoot(ZulLoginCtrl.class);
         zkUae.addMenuParent(turn(Notes), null, null);
         zkUae.addMenuChild(turn(Bookmark), null, ZulBookmarkListCtrl.class);
@@ -61,13 +62,5 @@ public class NotesMain4Zk extends CFZkMain {
         zkUae.addMenuChild(turn(Tracker), null, ZulTrackerListCtrl.class);
         zkUae.changeMenuSide();
         _applyUserConfigUaeUtility(zkUae).compileMenu();
-    }
-
-    @Override
-    protected void _clearUserConfig() {
-        CFZkUae zkUae = new CFZkUae();
-        getMenubarH().setVisible(true);
-        zkUae.initMenuBar(new CCMenubar(getMenubarH()));
-        zkUae.compileMenu();
     }
 }

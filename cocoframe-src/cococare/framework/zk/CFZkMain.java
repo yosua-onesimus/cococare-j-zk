@@ -57,6 +57,9 @@ public abstract class CFZkMain extends CFApplCtrl {
         applUae.reg(turn(Utility), turn(Logger_History), ZulLoggerListCtrl.class);
         applUae.reg(turn(Utility), turn(Application_Setting), ZulApplicationSettingCtrl.class);
         applUae.reg(turn(Utility), turn(Database_Setting), ZulDatabaseSettingCtrl.class);
+        if (LICENSE_ACTIVE) {
+            //applUae.reg(turn(Utility), turn(Registration), null);
+        }
         return applUae;
     }
 
@@ -91,7 +94,7 @@ public abstract class CFZkMain extends CFApplCtrl {
 
     @Override
     protected void _clearUserConfig() {
-        getMenubarH().setVisible(false);
+        getMenubarH().getParent().setVisible(false);
         getMenubarV().setVisible(false);
     }
 
