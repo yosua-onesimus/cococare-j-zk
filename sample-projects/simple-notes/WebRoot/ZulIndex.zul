@@ -21,53 +21,7 @@
 					<north>
 						<menubar id="aMenuBarH" />
 					</north>
-					<west id="aMenuBarV" width="200px"
-						visible="false">
-						<vlayout hflex="1" vflex="1"
-							style="overflow:auto;">
-							<button label="Menu 1." hflex="1"
-								onClick="h1.setVisible(!h1.isVisible())" />
-							<hbox id="h1" hflex="1">
-								<space width="10px" />
-								<vbox hflex="1">
-									<button label="Menu 1.1." hflex="1" />
-									<hbox hflex="1">
-										<space width="10px" />
-										<vbox hflex="1">
-											<button label="Menu 1.1.1."
-												hflex="1" />
-											<button label="Menu 1.1.2."
-												hflex="1" />
-											<button label="Menu 1.1.3."
-												hflex="1" />
-										</vbox>
-									</hbox>
-									<button label="Menu 1.2." hflex="1" />
-									<button label="Menu 1.3." hflex="1" />
-								</vbox>
-							</hbox>
-							<button label="Menu 2." hflex="1" />
-							<hbox id="h2" hflex="1">
-								<space width="10px" />
-								<vbox hflex="1">
-									<button label="Menu 2.1." hflex="1" />
-									<hbox hflex="1">
-										<space width="10px" />
-										<vbox hflex="1">
-											<button label="Menu 2.1.1."
-												hflex="1" />
-											<button label="Menu 2.1.2."
-												hflex="1" />
-											<button label="Menu 2.1.3."
-												hflex="1" />
-										</vbox>
-									</hbox>
-									<button label="Menu 2.2." hflex="1" />
-									<button label="Menu 2.3." hflex="1" />
-								</vbox>
-							</hbox>
-						</vlayout>
-					</west>
+					<west id="aMenuBarV" width="200px" />
 					<center id="aContent" />
 				</borderlayout>
 			</center>

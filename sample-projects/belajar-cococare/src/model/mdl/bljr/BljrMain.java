@@ -1,9 +1,10 @@
 package model.mdl.bljr;
 
+import static cococare.framework.zk.CFZkMap.getMenubarH;
+import static cococare.framework.zk.CFZkMap.getMenubarV;
 import cococare.common.CCLanguage;
 import cococare.database.CCLoginInfo;
 import cococare.framework.zk.CFZkMain;
-import cococare.framework.zk.CFZkMap;
 import cococare.framework.zk.CFZkUae;
 import cococare.framework.zk.controller.zul.util.ZulLoginCtrl;
 import cococare.zk.CCMenubar;
@@ -32,21 +33,12 @@ public class BljrMain extends CFZkMain {
 	@Override
 	protected void _applyUserConfig() {
 		CFZkUae zkUae = new CFZkUae();
-		CFZkMap.getMenubarH().setVisible(true);
-		zkUae.initMenuBar(new CCMenubar(CFZkMap.getMenubarH()));
+		zkUae.initMenuBar(MenuPosition.LEFT_SIDE.equals(MENU_POST) ? new CCMenubar(getMenubarV()) : new CCMenubar(getMenubarH()));
 		zkUae.addMenuRoot(ZulLoginCtrl.class);
 		zkUae.addMenuParent(CCLanguage.Archive, null, null);
 		zkUae.addMenuChild("Employee", null, ZulEmployeeListCtrl.class);
 		zkUae.changeMenuSide();
 		_applyUserConfigUaeUtility(zkUae).compileMenu();
-	}
-
-	@Override
-	protected void _clearUserConfig() {
-		CFZkUae zkUae = new CFZkUae();
-		CFZkMap.getMenubarH().setVisible(true);
-		zkUae.initMenuBar(new CCMenubar(CFZkMap.getMenubarH()));
-		zkUae.compileMenu();
 	}
 
 	@Override
