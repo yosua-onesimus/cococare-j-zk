@@ -8,13 +8,13 @@
 				</columns>
 				<rows>
 					<row>
-						<label value="Username" />
+						<label id="xUsername" value="Username" />
 					</row>
 					<row>
 						<textbox id="txtUsername" width="200px" />
 					</row>
 					<row>
-						<label value="Password" />
+						<label id="xPassword" value="Password" />
 					</row>
 					<row>
 						<textbox id="txtPassword" type="password"

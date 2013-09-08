@@ -15,15 +15,15 @@
 				</columns>
 				<rows>
 					<row>
-						<label value="Code" />
+						<label id="xCode" value="Code" />
 						<textbox id="txtCode" width="100px" />
-						<label value="Objective" />
+						<label id="xObjective" value="Objective" />
 						<bandbox id="bndObjective" width="200px" />
 					</row>
 					<row>
-						<label value="Name" />
+						<label id="xName" value="Name" />
 						<textbox id="txtName" width="200px" />
-						<label value="Type" />
+						<label id="xType" value="Type" />
 						<combobox id="cmbType" width="200px" />
 					</row>
 				</rows>
@@ -37,7 +37,8 @@
 				<tabpanels>
 					<tabpanel>
 						<vbox hflex="1" vflex="1">
-							<label value="Description" />
+							<label id="xDescription"
+								value="Description" />
 							<textbox id="txtDescription" hflex="1"
 								vflex="1" multiline="true" />
 						</vbox>

@@ -86,7 +86,8 @@ input[type="checkbox"],input[type="radio"] {
 
 .z-bandbox .z-bandbox-btn-over,.z-bandbox-focus .z-bandbox-btn-over
 ,.z-combobox .z-combobox-btn-over,.z-combobox-focus .z-combobox-btn-over
-,.z-datebox .z-datebox-btn-over,.z-datebox-focus .z-datebox-btn-over {
+,.z-datebox .z-datebox-btn-over,.z-datebox-focus .z-datebox-btn-over
+{
     background-position: -22px -0px;
 }
 
@@ -168,4 +169,29 @@ a:hover
     border: none;
     color: black;
     font-weight: bold;
+}
+
+/* Selectors Element : Menubar */
+.menu-space {
+    width: 100%;
+}
+
+.menu-space .z-menu-item-cnt {
+    display: none;
+}
+
+.aMenuBarV .z-vlayout-inner {
+    margin-top: 5px;
+}
+
+.aMenuBarV .z-hbox
+,.aMenuBarV .z-button
+,.aMenuBarV .z-separator-hor-bar {
+    margin-top: -4px;
+}
+
+.aMenuBarV .z-button .z-button-cm {
+    height: 12px;
+    text-align: left;
+    text-transform: capitalize;
 }

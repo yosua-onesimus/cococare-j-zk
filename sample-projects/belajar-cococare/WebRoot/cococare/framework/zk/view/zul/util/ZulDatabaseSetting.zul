@@ -12,27 +12,27 @@
 				</columns>
 				<rows>
 					<row>
-						<label value="Driver" />
+						<label id="xDriver" value="Driver" />
 						<combobox id="cmbDriver" width="290px" />
 					</row>
 					<row>
-						<label value="Host" />
+						<label id="xHost" value="Host" />
 						<hbox align="center">
 							<textbox id="txtHost" width="190px" />
-							<label value="Port" />
+							<label id="xPort" value="Port" />
 							<textbox id="txtPort" width="50px" />
 						</hbox>
 					</row>
 					<row>
-						<label value="Database" />
+						<label id="xDatabase" value="Database" />
 						<textbox id="txtDatabase" width="280px" />
 					</row>
 					<row>
-						<label value="Username" />
+						<label id="xUsername" value="Username" />
 						<textbox id="txtUsername" width="280px" />
 					</row>
 					<row>
-						<label value="Password" />
+						<label id="xPassword" value="Password" />
 						<textbox id="txtPassword" type="password"
 							width="280px" />
 					</row>

@@ -13,15 +13,15 @@
 				</columns>
 				<rows>
 					<row>
-						<label value="Code" />
+						<label id="xCode" value="Code" />
 						<textbox id="txtCode" width="100px" />
 					</row>
 					<row>
-						<label value="Name" />
+						<label id="xName" value="Name" />
 						<textbox id="txtName" width="200px" />
 					</row>
 					<row>
-						<label value="Url" />
+						<label id="xUrl" value="Url" />
 						<textbox id="txtUrl" width="300px" />
 					</row>
 				</rows>
