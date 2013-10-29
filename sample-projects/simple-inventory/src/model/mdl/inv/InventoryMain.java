@@ -28,6 +28,7 @@ public class InventoryMain extends CFZkMain {
 
 	@Override
 	public boolean initInitialData() {
+		super.initInitialData();
 		CFZkUae zkUae = new CFZkUae();
 		zkUae.reg("Inventory", "Inventory", ZulInventoryListCtrl.class);
 		zkUae.reg("Inventory", "Employee", ZulEmployeeListCtrl.class);

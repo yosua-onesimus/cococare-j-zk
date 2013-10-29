@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 import cococare.common.CCFieldConfig;
 import cococare.common.CCTypeConfig;
@@ -22,8 +23,6 @@ import cococare.database.CCEntity;
 @Table(name = "inv_ownerships")
 @CCTypeConfig(label = "Ownership")
 public class InvOwnership implements CCEntity {
-
-	// <editor-fold defaultstate="collapsed" desc=" entity base ">
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -35,6 +34,7 @@ public class InvOwnership implements CCEntity {
 	private String logChangedBy;
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date logChangedOn;
+	@Version
 	private Integer logSaveTimes = 0;
 
 	public Long getId() {
@@ -85,7 +85,6 @@ public class InvOwnership implements CCEntity {
 		this.logSaveTimes = logSaveTimes;
 	}
 
-	// </editor-fold>
 	@ManyToOne
 	@CCFieldConfig(componentId = "bndEmployee", accessible = Accessible.MANDATORY, requestFocus = true, uniqueKey = "name")
 	private InvEmployee employee;

@@ -25,6 +25,7 @@ public class BljrMain extends CFZkMain {
 
 	@Override
 	public boolean initInitialData() {
+		super.initInitialData();
 		CFZkUae zkUae = new CFZkUae();
 		zkUae.reg("Bljr", "Employee", ZulEmployeeListCtrl.class);
 		return _initInitialDataUaeUtility(zkUae).compile();

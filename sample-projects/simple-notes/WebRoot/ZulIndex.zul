@@ -21,7 +21,8 @@
 					<north>
 						<menubar id="aMenuBarH" />
 					</north>
-					<west id="aMenuBarV" width="200px" />
+					<west id="aMenuBarV" width="200px"
+						sclass="aMenuBarV" />
 					<center id="aContent" />
 				</borderlayout>
 			</center>

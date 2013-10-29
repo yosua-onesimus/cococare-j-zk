@@ -1,0 +1,11 @@
+<zk>
+	<window vflex="1">
+		<vbox vflex="1">
+			<hbox align="center">
+				<button id="btnSave" label="Save" />
+				<button id="btnClose" label="Close" />
+			</hbox>
+			<grid id="pnlGenerator" sclass="input-field" />
+		</vbox>
+	</window>
+</zk>

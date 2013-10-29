@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 import cococare.common.CCFieldConfig;
 import cococare.common.CCTypeConfig;
@@ -32,6 +33,7 @@ public class Employee implements CCEntity {
 	private String logChangedBy;
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date logChangedOn;
+	@Version
 	private Integer logSaveTimes = 0;
 
 	public Long getId() {
