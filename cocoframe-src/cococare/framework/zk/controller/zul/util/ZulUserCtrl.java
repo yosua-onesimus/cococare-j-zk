@@ -2,6 +2,7 @@ package cococare.framework.zk.controller.zul.util;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import cococare.common.CCCustomField;
+import static cococare.common.CCFinal._padding_left_10px;
 import static cococare.common.CCLogic.isNotNull;
 import static cococare.common.CCLogic.isNotNullAndNotEmpty;
 import cococare.framework.model.bo.util.UtilUserBo;
@@ -60,9 +61,9 @@ public class ZulUserCtrl extends CFZkCtrl {
         //
         if (!newEntity) {
             edtEntity.unreg("txtPassword");
-            edtEntity.unreg("xPassword");
+            edtEntity.unreg("rowPassword");
             edtEntity.unreg("txtRetypePassword");
-            edtEntity.unreg("xRetypePassword");
+            edtEntity.unreg("rowRetypePassword");
         }
         bndUserGroup = getCCBandbox(getContainer(), "bndUserGroup");
         bndUserGroup.getTable().setHqlFilters(UtilFilter.IsUserGroupNotRoot);
@@ -94,7 +95,7 @@ public class ZulUserCtrl extends CFZkCtrl {
                 UtilPrivilege privilege = (UtilPrivilege) object;
                 Label label = new Label(privilege.getName());
                 if (isNotNull(privilege.getParent())) {
-                    setStyle(label, "padding-left:10px;");
+                    setStyle(label, _padding_left_10px);
                 }
                 return label;
             }

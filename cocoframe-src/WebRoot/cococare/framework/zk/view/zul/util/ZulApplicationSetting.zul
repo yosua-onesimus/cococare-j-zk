@@ -17,18 +17,20 @@
 									</columns>
 									<rows>
 										<row>
-											<label value="Language" />
+											<label id="xLanguage"
+												value="Language" />
 											<combobox
 												id="cmbApplLanguage" width="200px" />
 										</row>
 										<row>
-											<label
+											<label id="xMenuPosition"
 												value="Menu Position" />
 											<combobox
 												id="cmbApplMenuPosition" width="200px" />
 										</row>
 										<row valign="top">
-											<label value="Wallpaper" />
+											<label id="xWallpaper"
+												value="Wallpaper" />
 											<div id="attApplWallpaper" />
 										</row>
 									</rows>
@@ -44,22 +46,26 @@
 									</columns>
 									<rows>
 										<row>
-											<label value="Name" />
+											<label id="xName"
+												value="Name" />
 											<textbox id="txtOwnerName"
 												width="200px" />
 										</row>
 										<row>
-											<label value="Position" />
+											<label id="xPosition"
+												value="Position" />
 											<textbox
 												id="txtOwnerPosition" width="200px" />
 										</row>
 										<row>
-											<label value="KTP" />
+											<label id="xKTP"
+												value="KTP" />
 											<textbox id="txtOwnerKtp"
 												width="200px" />
 										</row>
 										<row>
-											<label value="NPWP" />
+											<label id="xNPWP"
+												value="NPWP" />
 											<textbox id="txtOwnerNpwp"
 												width="200px" />
 										</row>
@@ -77,51 +83,56 @@
 								</columns>
 								<rows>
 									<row valign="top">
-										<label value="Logo" />
+										<label id="xLogo" value="Logo" />
 										<div id="attCompanyLogo" />
 									</row>
 									<row>
-										<label value="Name" />
+										<label id="xName_" value="Name" />
 										<textbox id="txtCompanyName"
 											width="200px" />
 									</row>
 									<row>
-										<label value="Address" />
+										<label id="xAddress"
+											value="Address" />
 										<textbox id="txtCompanyAddress"
 											width="200px" />
 									</row>
 									<row>
-										<label value="City" />
+										<label id="xCity" value="City" />
 										<combobox id="cmbCompanyCity"
 											width="200px" />
 									</row>
 									<row>
-										<label value="Province" />
+										<label id="xProvince"
+											value="Province" />
 										<combobox
 											id="cmbCompanyProvince" width="200px" />
 									</row>
 									<row>
-										<label value="State" />
+										<label id="xState"
+											value="State" />
 										<textbox id="txtCompanyState"
 											width="200px" />
 									</row>
 									<row>
-										<label value="Phone" />
+										<label id="xPhone"
+											value="Phone" />
 										<textbox id="txtCompanyPhone"
 											width="200px" />
 									</row>
 									<row>
-										<label value="Fax" />
+										<label id="xFax" value="Fax" />
 										<textbox id="txtCompanyFax"
 											width="200px" />
 									</row>
 									<row>
-										<label value="Email" />
+										<label id="xEmail"
+											value="Email" />
 										<textbox id="txtCompanyEmail"
 											width="200px" />
 									</row>
 									<row>
-										<label value="Web" />
+										<label id="xWeb" value="Web" />
 										<textbox id="txtCompanyWeb"
 											width="200px" />
 									</row>

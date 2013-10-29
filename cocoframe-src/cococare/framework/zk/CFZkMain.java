@@ -54,11 +54,12 @@ public abstract class CFZkMain extends CFApplCtrl {
         applUae.reg(turn(Utility), turn(User_Group), ZulUserGroupListCtrl.class);
         applUae.reg(turn(Utility), turn(User), ZulUserListCtrl.class);
         applUae.reg(turn(Utility), turn(Change_Password), ZulChangePasswordCtrl.class);
+        applUae.reg(turn(Utility), turn(Parameter), ZulParameterListCtrl.class);
         applUae.reg(turn(Utility), turn(Logger_History), ZulLoggerListCtrl.class);
         applUae.reg(turn(Utility), turn(Application_Setting), ZulApplicationSettingCtrl.class);
         applUae.reg(turn(Utility), turn(Database_Setting), ZulDatabaseSettingCtrl.class);
         if (LICENSE_ACTIVE) {
-            //applUae.reg(turn(Utility), turn(Registration), null);
+            //
         }
         return applUae;
     }
@@ -85,9 +86,20 @@ public abstract class CFZkMain extends CFApplCtrl {
         applUae.addMenuChild(turn(User), null, ZulUserListCtrl.class);
         applUae.addMenuChild(turn(Change_Password), null, ZulChangePasswordCtrl.class);
         applUae.addMenuSeparator();
+        if (!HIBERNATE.getParameterClasses().isEmpty()) {
+            applUae.addMenuChild(turn(Parameter), null, ZulParameterListCtrl.class);
+        }
         applUae.addMenuChild(turn(Logger_History), null, ZulLoggerListCtrl.class);
+        applUae.addMenuSeparator();
+        if (!HIBERNATE.getCustomizableClasses().isEmpty()) {
+            //
+        }
         applUae.addMenuChild(turn(Application_Setting), null, ZulApplicationSettingCtrl.class);
         applUae.addMenuChild(turn(Database_Setting), null, ZulDatabaseSettingCtrl.class);
+        if (LICENSE_ACTIVE) {
+            applUae.addMenuSeparator();
+            //
+        }
         applUae.addMenuParent(turn(Log_Out), null, ZulLoginCtrl.class);
         return applUae;
     }

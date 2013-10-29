@@ -42,6 +42,7 @@ public class NotesMain4Zk extends CFZkMain {
 
     @Override
     public boolean initInitialData() {
+        super.initInitialData();
         CFZkUae zkUae = new CFZkUae();
         zkUae.reg(turn(Note), turn(Bookmark), ZulBookmarkListCtrl.class);
         zkUae.reg(turn(Note), turn(Shortcut), ZulShortcutListCtrl.class);

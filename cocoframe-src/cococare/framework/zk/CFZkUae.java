@@ -17,10 +17,7 @@ import cococare.framework.model.obj.util.UtilPrivilege;
 import static cococare.framework.zk.CFZkMap.newContainer;
 import cococare.zk.CCMenubar;
 import static cococare.zk.CCZk.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -95,8 +92,8 @@ public class CFZkUae extends CFApplUae {
     private int pc = 1;
     private int cc = 1;
     private boolean leftSide = true;
-    private HashMap<Integer, MenuCandidate> leftSideMenus = new HashMap();
-    private HashMap<Integer, MenuCandidate> rightSideMenus = new HashMap();
+    private HashMap<Integer, MenuCandidate> leftSideMenus = new LinkedHashMap();
+    private HashMap<Integer, MenuCandidate> rightSideMenus = new LinkedHashMap();
     private List<Integer> separatorMenus = new ArrayList();
     private Integer separatorParentCode = null;
     private HashMap<MenuCandidate, Boolean> accessibles = new HashMap();
@@ -177,6 +174,7 @@ public class CFZkUae extends CFApplUae {
 //<editor-fold defaultstate="collapsed" desc=" register controllerClass to create privilege ">
     @Override
     public void reg(String moduleCode, String screenName, Class<? extends CFViewCtrl> controllerClass) {
+        screenName = turn(screenName);
         Component container = newContainer(controllerClass);
         if (isNotNull(container)) {
             UtilPrivilege screen = new UtilPrivilege(_getScreenComp(controllerClass), _getScreenCode(moduleCode), screenName);
@@ -218,6 +216,7 @@ public class CFZkUae extends CFApplUae {
     }
 
     public void addMenu(Integer parentCode, int code, String label, String icon, Class<? extends CFViewCtrl> controllerClass) {
+        label = turn(label);
         if (isNull(parentCode)) {
             boolean isAccessible = false;
             if (isNotNull(controllerClass)) {

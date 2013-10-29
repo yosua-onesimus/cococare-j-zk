@@ -13,19 +13,19 @@
 				</columns>
 				<rows>
 					<row>
-						<label value="Code" />
+						<label id="xCode" value="Code" />
 						<textbox id="txtCode" width="100px" />
 					</row>
 					<row>
-						<label value="Name" />
+						<label id="xName" value="Name" />
 						<textbox id="txtName" width="200px" />
 					</row>
 					<row>
-						<label value="Description" />
+						<label id="xDescription" value="Description" />
 						<textbox id="txtDescription" width="300px" />
 					</row>
 					<row>
-						<label value="Status" />
+						<label id="xStatus" value="Status" />
 						<combobox id="cmbStatus" width="200px" />
 					</row>
 				</rows>

@@ -2,6 +2,7 @@ package cococare.framework.zk.controller.zul.util;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import cococare.common.CCCustomField;
+import static cococare.common.CCFinal._padding_left_10px;
 import static cococare.common.CCLogic.isNotNull;
 import static cococare.common.CCLogic.isNotNullAndNotEmpty;
 import cococare.framework.model.bo.util.UtilUserGroupBo;
@@ -81,7 +82,7 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
                 UtilPrivilege privilege = (UtilPrivilege) object;
                 Label label = new Label(privilege.getName());
                 if (isNotNull(privilege.getParent())) {
-                    setStyle(label, "padding-left:10px;");
+                    setStyle(label, _padding_left_10px);
                 }
                 return label;
             }
