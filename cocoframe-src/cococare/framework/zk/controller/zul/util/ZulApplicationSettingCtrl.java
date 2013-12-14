@@ -16,7 +16,9 @@ import cococare.framework.zk.CFZkCtrl;
  */
 public class ZulApplicationSettingCtrl extends CFZkCtrl {
 
+//<editor-fold defaultstate="collapsed" desc=" private object ">
     private UtilConfigBo configBo;
+//</editor-fold>
 
     @Override
     protected Class _getEntity() {

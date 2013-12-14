@@ -20,9 +20,11 @@ import org.zkoss.zul.Textbox;
  */
 public class ZulLoginCtrl extends CFZkCtrl {
 
+//<editor-fold defaultstate="collapsed" desc=" private object ">
     private Textbox txtUsername;
     private Textbox txtPassword;
     private Button btnLogin;
+//</editor-fold>
 
     @Override
     protected Class _getEntity() {
@@ -54,7 +56,7 @@ public class ZulLoginCtrl extends CFZkCtrl {
         addEventListenerOnClick(btnLogin, elLogin);
     }
 
-    protected void _doLogin() {
+    private void _doLogin() {
         if (_hasEdtEntity()) {
             if (_isValueValid()) {
                 _getValueFromEditor();

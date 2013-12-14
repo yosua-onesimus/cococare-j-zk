@@ -2,11 +2,13 @@ package cococare.framework.zk;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import cococare.common.CCAccessibleListener;
-import static cococare.common.CCClass.*;
+import static cococare.common.CCClass.newObject;
+import static cococare.common.CCClass.setValue;
 import static cococare.common.CCFinal.btnEdit;
 import static cococare.common.CCFormat.getBoolean;
-import static cococare.common.CCLanguage.*;
-import static cococare.common.CCLogic.*;
+import static cococare.common.CCLogic.isNotNull;
+import static cococare.common.CCLogic.isNull;
+import static cococare.common.CCMessage.logp;
 import cococare.database.CCHibernateFilter;
 import static cococare.database.CCLoginInfo.INSTANCE_isCompAccessible;
 import cococare.framework.common.CFViewCtrl;
@@ -83,14 +85,18 @@ public abstract class CFZkCtrl extends CFViewCtrl {
 
     @Override
     public void doCloseTab(String sysRef) {
-        zkView.getTabEntity().getTabs().removeChild(sysRef_tab.remove(sysRef));
-        sysRef_zkCtrl.remove(sysRef);
-        Tabpanel tabpanel = sysRef_tabpanel.get(sysRef);
-        tabpanel = (Tabpanel) (isNotNull(tabpanel.getNextSibling())
-                ? tabpanel.getNextSibling()
-                : tabpanel.getPreviousSibling());
-        zkView.getTabEntity().getTabpanels().removeChild(sysRef_tabpanel.remove(sysRef));
-        zkView.getTabEntity().setSelectedPanel(tabpanel);
+        try {
+            zkView.getTabEntity().getTabs().removeChild(sysRef_tab.remove(sysRef));
+            sysRef_zkCtrl.remove(sysRef);
+            Tabpanel tabpanel = sysRef_tabpanel.get(sysRef);
+            tabpanel = (Tabpanel) (isNotNull(tabpanel.getNextSibling())
+                    ? tabpanel.getNextSibling()
+                    : tabpanel.getPreviousSibling());
+            zkView.getTabEntity().getTabpanels().removeChild(sysRef_tabpanel.remove(sysRef));
+            zkView.getTabEntity().setSelectedPanel(tabpanel);
+        } catch (Exception exception) {
+            logp(exception.toString());
+        }
     }
 
     @Override
@@ -421,7 +427,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
                 if (isNull(callerCtrl)) {
                     showPanel(getContent(), zkView.getContainer());
                 } else {
-                    callerCtrl.doShowTab(sysRef, newEntity ? turn(New) : coalesce(getUniqueKeyValue(objEntity), readonly ? turn(View) : turn(Edit)).toString(), this);
+                    callerCtrl.doShowTab(sysRef, _getTabTitle(), this);
                 }
             }
         }

@@ -21,8 +21,7 @@ public class CFSetup {
         if (isNullOrEmpty(setupPath)) {
             setupPath = getApplPath() + "\\WebRoot";
         }
-        setup.setSetupPath(setupPath);
-        setup.initSetupMap();
+        setup.initSetupMap(setupPath);
         return setup.execute() && delete(new File(getApplPath(), "files"));
     }
 }

@@ -44,10 +44,10 @@ public class NotesMain4Zk extends CFZkMain {
     public boolean initInitialData() {
         super.initInitialData();
         CFZkUae zkUae = new CFZkUae();
-        zkUae.reg(turn(Note), turn(Bookmark), ZulBookmarkListCtrl.class);
-        zkUae.reg(turn(Note), turn(Shortcut), ZulShortcutListCtrl.class);
-        zkUae.reg(turn(Note), turn(Objective), ZulObjectiveListCtrl.class);
-        zkUae.reg(turn(Note), turn(Tracker), ZulTrackerListCtrl.class);
+        zkUae.reg(Note, Bookmark, ZulBookmarkListCtrl.class);
+        zkUae.reg(Note, Shortcut, ZulShortcutListCtrl.class);
+        zkUae.reg(Note, Objective, ZulObjectiveListCtrl.class);
+        zkUae.reg(Note, Tracker, ZulTrackerListCtrl.class);
         return _initInitialDataUaeUtility(zkUae).compile();
     }
 
@@ -56,11 +56,11 @@ public class NotesMain4Zk extends CFZkMain {
         CFZkUae zkUae = new CFZkUae();
         zkUae.initMenuBar(MenuPosition.LEFT_SIDE.equals(MENU_POST) ? new CCMenubar(getMenubarV()) : new CCMenubar(getMenubarH()));
         zkUae.addMenuRoot(ZulLoginCtrl.class);
-        zkUae.addMenuParent(turn(Notes), null, null);
-        zkUae.addMenuChild(turn(Bookmark), null, ZulBookmarkListCtrl.class);
-        zkUae.addMenuChild(turn(Shortcut), null, ZulShortcutListCtrl.class);
-        zkUae.addMenuChild(turn(Objective), null, ZulObjectiveListCtrl.class);
-        zkUae.addMenuChild(turn(Tracker), null, ZulTrackerListCtrl.class);
+        zkUae.addMenuParent(Notes, null, null);
+        zkUae.addMenuChild(Bookmark, null, ZulBookmarkListCtrl.class);
+        zkUae.addMenuChild(Shortcut, null, ZulShortcutListCtrl.class);
+        zkUae.addMenuChild(Objective, null, ZulObjectiveListCtrl.class);
+        zkUae.addMenuChild(Tracker, null, ZulTrackerListCtrl.class);
         zkUae.changeMenuSide();
         _applyUserConfigUaeUtility(zkUae).compileMenu();
     }

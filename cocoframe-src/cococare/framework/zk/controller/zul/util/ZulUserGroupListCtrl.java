@@ -26,6 +26,6 @@ public class ZulUserGroupListCtrl extends CFZkCtrl {
     @Override
     protected void _initTable() {
         super._initTable();
-        tblEntity.setHqlFilters(UtilFilter.IsUserGroupNotRoot);
+        tblEntity.setHqlFilters(UtilFilter.isUserGroupNotRoot);
     }
 }

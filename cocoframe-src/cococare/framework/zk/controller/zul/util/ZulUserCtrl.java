@@ -27,6 +27,7 @@ import org.zkoss.zul.Label;
  */
 public class ZulUserCtrl extends CFZkCtrl {
 
+//<editor-fold defaultstate="collapsed" desc=" private object ">
     private UtilUserBo userBo;
     private CCBandbox bndUserGroup;
     private CCTable tblPrivilege;
@@ -37,6 +38,7 @@ public class ZulUserCtrl extends CFZkCtrl {
             _doSelect(((Checkbox) event.getTarget()).isChecked());
         }
     };
+//</editor-fold>
 
     @Override
     protected Class _getEntity() {
@@ -66,12 +68,12 @@ public class ZulUserCtrl extends CFZkCtrl {
             edtEntity.unreg("rowRetypePassword");
         }
         bndUserGroup = getCCBandbox(getContainer(), "bndUserGroup");
-        bndUserGroup.getTable().setHqlFilters(UtilFilter.IsUserGroupNotRoot);
+        bndUserGroup.getTable().setHqlFilters(UtilFilter.isUserGroupNotRoot);
         //privilege
         _initTblPrivilege();
     }
 
-    protected void _initTblPrivilege() {
+    private void _initTblPrivilege() {
         tblPrivilege = newCCTable(getContainer(), "tblPrivilege", UtilPrivilege.class);
         tblPrivilege.setVisibleField(false, "name");
         tblPrivilege.addField(0, new CCCustomField() {
@@ -129,7 +131,7 @@ public class ZulUserCtrl extends CFZkCtrl {
         return userBo.saveOrUpdate();
     }
 
-    protected void _doSelect(boolean selected) {
+    private void _doSelect(boolean selected) {
         UtilPrivilege privilege = (UtilPrivilege) tblPrivilege.getSelectedItem();
         privilege.setSelected(selected);
         tblPrivilege.reloadSelectedItem();
@@ -156,7 +158,7 @@ public class ZulUserCtrl extends CFZkCtrl {
         _doUpdateTblPrivilege();
     }
 
-    protected void _doUpdateTblPrivilege() {
+    private void _doUpdateTblPrivilege() {
         tblPrivilege.setList(userBo.getPrivileges());
     }
 }

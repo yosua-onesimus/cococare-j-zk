@@ -2,7 +2,6 @@
 	<window vflex="1">
 		<vbox vflex="1">
 			<hbox align="center">
-				<button id="btnEdit" label="Edit" />
 				<button id="btnSave" label="Save" />
 				<button id="btnClose" label="Close" />
 			</hbox>

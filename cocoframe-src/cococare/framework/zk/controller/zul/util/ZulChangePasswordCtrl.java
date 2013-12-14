@@ -15,7 +15,9 @@ import cococare.framework.zk.CFZkCtrl;
  */
 public class ZulChangePasswordCtrl extends CFZkCtrl {
 
+//<editor-fold defaultstate="collapsed" desc=" private object ">
     private UtilUserBo userBo;
+//</editor-fold>
 
     @Override
     protected Class _getEntity() {

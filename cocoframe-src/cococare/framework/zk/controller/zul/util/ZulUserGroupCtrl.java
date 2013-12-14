@@ -24,6 +24,7 @@ import org.zkoss.zul.Label;
  */
 public class ZulUserGroupCtrl extends CFZkCtrl {
 
+//<editor-fold defaultstate="collapsed" desc=" private object ">
     private UtilUserGroupBo userGroupBo;
     private CCTable tblPrivilege;
     private EventListener elSelect = new EventListener() {
@@ -33,6 +34,7 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
             _doSelect(((Checkbox) event.getTarget()).isChecked());
         }
     };
+//</editor-fold>
 
     @Override
     protected Class _getEntity() {
@@ -58,7 +60,7 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
         _initTblPrivilege();
     }
 
-    protected void _initTblPrivilege() {
+    private void _initTblPrivilege() {
         tblPrivilege = newCCTable(getContainer(), "tblPrivilege", UtilPrivilege.class);
         tblPrivilege.setVisibleField(false, "name");
         tblPrivilege.addField(0, new CCCustomField() {
@@ -103,7 +105,7 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
         return userGroupBo.saveOrUpdate();
     }
 
-    protected void _doSelect(boolean selected) {
+    private void _doSelect(boolean selected) {
         UtilPrivilege privilege = (UtilPrivilege) tblPrivilege.getSelectedItem();
         privilege.setSelected(selected);
         tblPrivilege.reloadSelectedItem();
@@ -130,7 +132,7 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
         _doUpdateTblPrivilege();
     }
 
-    protected void _doUpdateTblPrivilege() {
+    private void _doUpdateTblPrivilege() {
         tblPrivilege.setList(userGroupBo.getPrivileges());
     }
 }

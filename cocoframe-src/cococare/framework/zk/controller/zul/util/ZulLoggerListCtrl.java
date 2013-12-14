@@ -21,9 +21,11 @@ import org.zkoss.zul.Combobox;
  */
 public class ZulLoggerListCtrl extends CFZkCtrl {
 
+//<editor-fold defaultstate="collapsed" desc=" private object ">
     private Combobox cmbUsername;
     private Combobox cmbScreen;
     private Combobox cmbAction;
+//</editor-fold>
 
     @Override
     protected Class _getEntity() {

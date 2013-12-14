@@ -26,7 +26,7 @@ public class ZulUserListCtrl extends CFZkCtrl {
     @Override
     protected void _initTable() {
         super._initTable();
-        tblEntity.setHqlFilters(UtilFilter.IsUserNotRoot);
+        tblEntity.setHqlFilters(UtilFilter.isUserNotRoot);
     }
 
     @Override
