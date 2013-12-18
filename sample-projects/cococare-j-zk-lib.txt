@@ -1,3 +1,4 @@
+cococare-j-zk-lib:
 Access_JDBC30.jar
 antlr-2.7.6.jar
 asm-attrs.jar
@@ -33,6 +34,7 @@ junique-1.0.2.jar
 jxl.jar
 mail-1.4.5.jar
 mysql-connector-java-5.1.13-bin.jar
+ojdbc6.jar
 org-apache-commons-logging.jar
 sapphire.jar
 silvertail.jar
@@ -47,3 +49,4 @@ zkplus.jar
 zml.jar
 zul.jar
 zweb.jar
+--eof--

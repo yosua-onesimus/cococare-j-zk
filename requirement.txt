@@ -1,4 +1,4 @@
-cococare-j Requirement:
+cococare-j-zk Requirement:
   Software:
     Java SE 6 Update X (Mandatory) (http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     MyEclipse 6.0.1 Up (Recommended) (http://www.myeclipseide.com/module-htmlpages-display-pid-4.html)
@@ -79,6 +79,7 @@ cococare-j Requirement:
       junique-1.0.2.jar
       jxl.jar
       mail-1.4.5.jar
+	  ojdbc6.jar
       rcmd.exe
       win32com.dll
     cococare-j.jar (Mandatory) (https://github.com/yosua-onesimus/cococare-j)
