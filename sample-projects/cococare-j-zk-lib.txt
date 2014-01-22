@@ -36,6 +36,7 @@ mail-1.4.5.jar
 mysql-connector-java-5.1.13-bin.jar
 ojdbc6.jar
 org-apache-commons-logging.jar
+postgresql-9.1-901.jdbc4.jar
 sapphire.jar
 silvertail.jar
 zcommon.jar
