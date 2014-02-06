@@ -6,6 +6,11 @@ import cococare.database.CCDatabaseConfig;
 import cococare.framework.common.CFApplCtrl;
 import cococare.framework.model.mdl.util.UtilityModule;
 import cococare.framework.zk.CFZkCtrl;
+import static cococare.zk.CCZk.addEventListenerOnChange_OnOk;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zul.Combobox;
+import org.zkoss.zul.Textbox;
 //</editor-fold>
 
 /**
@@ -14,6 +19,12 @@ import cococare.framework.zk.CFZkCtrl;
  * @version 13.03.17
  */
 public class ZulDatabaseSettingCtrl extends CFZkCtrl {
+
+//<editor-fold defaultstate="collapsed" desc=" private object ">
+    private Combobox cmbDriver;
+    private Textbox txtPort;
+    private Textbox txtUsername;
+//</editor-fold>
 
     @Override
     protected Class _getEntity() {
@@ -28,6 +39,17 @@ public class ZulDatabaseSettingCtrl extends CFZkCtrl {
     @Override
     protected void _initObjEntity() {
         objEntity = coalesce(UtilityModule.INSTANCE.getCCHibernate().getDatabaseConfig(), new CCDatabaseConfig());
+    }
+
+    @Override
+    protected void _initListener() {
+        super._initListener();
+        addEventListenerOnChange_OnOk(cmbDriver, new EventListener() {
+            @Override
+            public void onEvent(Event t) throws Exception {
+                _doCmbDriver();
+            }
+        });
     }
 
     @Override
@@ -48,5 +70,11 @@ public class ZulDatabaseSettingCtrl extends CFZkCtrl {
         } else {
             CFApplCtrl.INSTANCE.reloadDatabaseConfig();
         }
+    }
+
+    private void _doCmbDriver() {
+        CCDatabaseConfig.SupportedDatabase supportedDatabase = CCDatabaseConfig.SupportedDatabase.values()[cmbDriver.getSelectedIndex()];
+        txtPort.setText(supportedDatabase.getDefaultPort());
+        txtUsername.setText(supportedDatabase.getDefaultUsername());
     }
 }

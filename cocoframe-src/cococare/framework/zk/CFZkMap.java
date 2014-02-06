@@ -86,7 +86,7 @@ public class CFZkMap {
      * @param clazz ZUL | CONTROLLER_ZUL_LIST | CONTROLLER_ZUL
      * @return CONTROLLER_ZUL
      */
-    public static Class getControllerZul(Class clazz) {
+    public static Class<? extends CFZkCtrl> getControllerZul(Class clazz) {
         String className = clazz.getName();
         String controllerForm = null;
         if (_isClassType(className, ClassType.ZUL)) {

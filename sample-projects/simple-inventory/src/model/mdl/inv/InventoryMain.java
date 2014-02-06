@@ -29,24 +29,24 @@ public class InventoryMain extends CFZkMain {
 	@Override
 	public boolean initInitialData() {
 		super.initInitialData();
-		CFZkUae zkUae = new CFZkUae();
-		zkUae.reg("Inventory", "Inventory", ZulInventoryListCtrl.class);
-		zkUae.reg("Inventory", "Employee", ZulEmployeeListCtrl.class);
-		zkUae.reg("Inventory", "Ownership", ZulOwnershipListCtrl.class);
-		return _initInitialDataUaeUtility(zkUae).compile();
+		CFZkUae uae = new CFZkUae();
+		uae.reg("Inventory", "Inventory", ZulInventoryListCtrl.class);
+		uae.reg("Inventory", "Employee", ZulEmployeeListCtrl.class);
+		uae.reg("Inventory", "Ownership", ZulOwnershipListCtrl.class);
+		return _initInitialDataUaeUtility(uae).compile();
 	}
 
 	@Override
 	protected void _applyUserConfig() {
-		CFZkUae zkUae = new CFZkUae();
-		zkUae.initMenuBar(MenuPosition.LEFT_SIDE.equals(MENU_POST) ? new CCMenubar(getMenubarV()) : new CCMenubar(getMenubarH()));
-		zkUae.addMenuRoot(ZulLoginCtrl.class);
-		zkUae.addMenuParent(CCLanguage.Archive, null, null);
-		zkUae.addMenuChild("Inventory", null, ZulInventoryListCtrl.class);
-		zkUae.addMenuChild("Employee", null, ZulEmployeeListCtrl.class);
-		zkUae.addMenuChild("Ownership", null, ZulOwnershipListCtrl.class);
-		zkUae.changeMenuSide();
-		_applyUserConfigUaeUtility(zkUae).compileMenu();
+		CFZkUae uae = new CFZkUae();
+		uae.initMenuBar(MenuPosition.LEFT_SIDE.equals(MENU_POST) ? new CCMenubar(getMenubarV()) : new CCMenubar(getMenubarH()));
+		uae.addMenuRoot(ZulLoginCtrl.class);
+		uae.addMenuParent(CCLanguage.Archive, null, null);
+		uae.addMenuChild("Inventory", null, ZulInventoryListCtrl.class);
+		uae.addMenuChild("Employee", null, ZulEmployeeListCtrl.class);
+		uae.addMenuChild("Ownership", null, ZulOwnershipListCtrl.class);
+		uae.changeMenuSide();
+		_applyUserConfigUaeUtility(uae).compileMenu();
 	}
 
 	@Override

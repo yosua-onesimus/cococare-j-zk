@@ -36,7 +36,6 @@ public class ZulScreenSettingListCtrl extends CFZkCtrl {
     @Override
     protected void _initComponent() {
         super._initComponent();
-        //
         cmbEntity = newCCCombobox(getContainer(), "cmbEntity", null, CCCustomFieldConfig.class, "entityName");
         cmbEntity.setList(customFieldConfigBo.getListDistinctEntity());
     }
@@ -44,7 +43,6 @@ public class ZulScreenSettingListCtrl extends CFZkCtrl {
     @Override
     protected void _initTable() {
         super._initTable();
-        //
         tblEntity.setHqlFilters(new CCHibernateFilter() {
             @Override
             public String getFieldName() {
@@ -61,7 +59,6 @@ public class ZulScreenSettingListCtrl extends CFZkCtrl {
     @Override
     protected void _initListener() {
         super._initListener();
-        //
         cmbEntity.addEventListenerOnSelect(new EventListener() {
             @Override
             public void onEvent(Event event) throws Exception {

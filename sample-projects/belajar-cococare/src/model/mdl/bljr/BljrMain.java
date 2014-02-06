@@ -26,20 +26,20 @@ public class BljrMain extends CFZkMain {
 	@Override
 	public boolean initInitialData() {
 		super.initInitialData();
-		CFZkUae zkUae = new CFZkUae();
-		zkUae.reg("Bljr", "Employee", ZulEmployeeListCtrl.class);
-		return _initInitialDataUaeUtility(zkUae).compile();
+		CFZkUae uae = new CFZkUae();
+		uae.reg("Bljr", "Employee", ZulEmployeeListCtrl.class);
+		return _initInitialDataUaeUtility(uae).compile();
 	}
 
 	@Override
 	protected void _applyUserConfig() {
-		CFZkUae zkUae = new CFZkUae();
-		zkUae.initMenuBar(MenuPosition.LEFT_SIDE.equals(MENU_POST) ? new CCMenubar(getMenubarV()) : new CCMenubar(getMenubarH()));
-		zkUae.addMenuRoot(ZulLoginCtrl.class);
-		zkUae.addMenuParent(CCLanguage.Archive, null, null);
-		zkUae.addMenuChild("Employee", null, ZulEmployeeListCtrl.class);
-		zkUae.changeMenuSide();
-		_applyUserConfigUaeUtility(zkUae).compileMenu();
+		CFZkUae uae = new CFZkUae();
+		uae.initMenuBar(MenuPosition.LEFT_SIDE.equals(MENU_POST) ? new CCMenubar(getMenubarV()) : new CCMenubar(getMenubarH()));
+		uae.addMenuRoot(ZulLoginCtrl.class);
+		uae.addMenuParent(CCLanguage.Archive, null, null);
+		uae.addMenuChild("Employee", null, ZulEmployeeListCtrl.class);
+		uae.changeMenuSide();
+		_applyUserConfigUaeUtility(uae).compileMenu();
 	}
 
 	@Override

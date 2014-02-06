@@ -4,6 +4,7 @@ package cococare.framework.zk;
 import static cococare.common.CCFormat.*;
 import cococare.common.CCLanguage;
 import static cococare.common.CCLanguage.*;
+import static cococare.common.CCMessage.logp;
 import static cococare.datafile.CCFile.*;
 import cococare.framework.common.CFApplCtrl;
 import cococare.framework.common.CFApplUae;
@@ -46,7 +47,7 @@ public abstract class CFZkMain extends CFApplCtrl {
 
     @Override
     public void end() {
-        throw new UnsupportedOperationException(turn(Not_supported_yet));
+        throw logp(new UnsupportedOperationException(turn(Not_supported_yet)));
     }
 
     @Override

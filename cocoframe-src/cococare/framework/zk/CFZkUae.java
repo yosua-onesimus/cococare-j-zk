@@ -9,6 +9,7 @@ import static cococare.common.CCLanguage.Not_supported_yet;
 import static cococare.common.CCLanguage.turn;
 import static cococare.common.CCLogic.isNotNull;
 import static cococare.common.CCLogic.isNull;
+import static cococare.common.CCMessage.logp;
 import static cococare.database.CCLoginInfo.INSTANCE_isCompAccessible;
 import cococare.framework.common.CFApplUae;
 import cococare.framework.common.CFViewCtrl;
@@ -126,7 +127,7 @@ public class CFZkUae extends CFApplUae {
         } else if (component instanceof Menuitem) {
             return toHumanizeCase(component.getId().replaceFirst("mi", ""));
         } else {
-            throw new UnsupportedOperationException(turn(Not_supported_yet));
+            throw logp(new UnsupportedOperationException(turn(Not_supported_yet)));
         }
     }
 
@@ -158,7 +159,7 @@ public class CFZkUae extends CFApplUae {
                     : new EventListener() {
                 @Override
                 public void onEvent(Event t) throws Exception {
-                    ((CFViewCtrl) newObject(menuCandidate.getControllerClass())).init();
+                    newObject(menuCandidate.getControllerClass()).init();
                 }
             });
             separatorParentCode = null;

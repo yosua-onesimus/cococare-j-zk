@@ -43,25 +43,25 @@ public class NotesMain4Zk extends CFZkMain {
     @Override
     public boolean initInitialData() {
         super.initInitialData();
-        CFZkUae zkUae = new CFZkUae();
-        zkUae.reg(Note, Bookmark, ZulBookmarkListCtrl.class);
-        zkUae.reg(Note, Shortcut, ZulShortcutListCtrl.class);
-        zkUae.reg(Note, Objective, ZulObjectiveListCtrl.class);
-        zkUae.reg(Note, Tracker, ZulTrackerListCtrl.class);
-        return _initInitialDataUaeUtility(zkUae).compile();
+        CFZkUae uae = new CFZkUae();
+        uae.reg(Note, Bookmark, ZulBookmarkListCtrl.class);
+        uae.reg(Note, Shortcut, ZulShortcutListCtrl.class);
+        uae.reg(Note, Objective, ZulObjectiveListCtrl.class);
+        uae.reg(Note, Tracker, ZulTrackerListCtrl.class);
+        return _initInitialDataUaeUtility(uae).compile();
     }
 
     @Override
     protected void _applyUserConfig() {
-        CFZkUae zkUae = new CFZkUae();
-        zkUae.initMenuBar(MenuPosition.LEFT_SIDE.equals(MENU_POST) ? new CCMenubar(getMenubarV()) : new CCMenubar(getMenubarH()));
-        zkUae.addMenuRoot(ZulLoginCtrl.class);
-        zkUae.addMenuParent(Notes, null, null);
-        zkUae.addMenuChild(Bookmark, null, ZulBookmarkListCtrl.class);
-        zkUae.addMenuChild(Shortcut, null, ZulShortcutListCtrl.class);
-        zkUae.addMenuChild(Objective, null, ZulObjectiveListCtrl.class);
-        zkUae.addMenuChild(Tracker, null, ZulTrackerListCtrl.class);
-        zkUae.changeMenuSide();
-        _applyUserConfigUaeUtility(zkUae).compileMenu();
+        CFZkUae uae = new CFZkUae();
+        uae.initMenuBar(MenuPosition.LEFT_SIDE.equals(MENU_POST) ? new CCMenubar(getMenubarV()) : new CCMenubar(getMenubarH()));
+        uae.addMenuRoot(ZulLoginCtrl.class);
+        uae.addMenuParent(Notes, null, null);
+        uae.addMenuChild(Bookmark, null, ZulBookmarkListCtrl.class);
+        uae.addMenuChild(Shortcut, null, ZulShortcutListCtrl.class);
+        uae.addMenuChild(Objective, null, ZulObjectiveListCtrl.class);
+        uae.addMenuChild(Tracker, null, ZulTrackerListCtrl.class);
+        uae.changeMenuSide();
+        _applyUserConfigUaeUtility(uae).compileMenu();
     }
 }

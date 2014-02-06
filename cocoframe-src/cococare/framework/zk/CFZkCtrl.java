@@ -314,7 +314,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
     }
 
     @Override
-    protected Object _getSelectedItem() {
+    protected <T> T _getSelectedItem() {
         return tblEntity.getSelectedItem();
     }
 
@@ -442,7 +442,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             zkView.getTabEntity().setSelectedPanel(sysRef_tabpanel.get(sysRef));
             return false;
         } else {
-            return ((CFZkCtrl) newObject(getControllerZul(getClass()))).with(parameter).with(this).with(readonly).init(objEntity);
+            return newObject(getControllerZul(getClass())).with(parameter).with(this).with(readonly).init(objEntity);
         }
     }
 //</editor-fold>

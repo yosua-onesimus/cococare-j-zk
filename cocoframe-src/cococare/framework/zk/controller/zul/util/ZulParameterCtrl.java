@@ -35,7 +35,6 @@ public class ZulParameterCtrl extends CFZkCtrl {
     @Override
     protected void _initEditor() {
         super._initEditor();
-        //
         edtEntity.generateDefaultEditor(pnlGenerator);
     }
 }

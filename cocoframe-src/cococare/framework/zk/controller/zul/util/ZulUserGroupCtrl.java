@@ -106,7 +106,7 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
     }
 
     private void _doSelect(boolean selected) {
-        UtilPrivilege privilege = (UtilPrivilege) tblPrivilege.getSelectedItem();
+        UtilPrivilege privilege = tblPrivilege.getSelectedItem();
         privilege.setSelected(selected);
         tblPrivilege.reloadSelectedItem();
         if (selected) {
