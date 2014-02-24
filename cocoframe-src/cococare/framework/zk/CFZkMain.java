@@ -65,7 +65,7 @@ public abstract class CFZkMain extends CFApplCtrl {
         applUae.reg(Utility, Application_Setting, ZulApplicationSettingCtrl.class);
         applUae.reg(Utility, Database_Setting, ZulDatabaseSettingCtrl.class);
         if (LICENSE_ACTIVE) {
-            //
+            applUae.reg(Utility, Registration, ZulRegistrationCtrl.class);
         }
         return applUae;
     }
@@ -104,7 +104,7 @@ public abstract class CFZkMain extends CFApplCtrl {
         applUae.addMenuChild(Database_Setting, null, ZulDatabaseSettingCtrl.class);
         if (LICENSE_ACTIVE) {
             applUae.addMenuSeparator();
-            //
+            applUae.addMenuChild(Registration, null, ZulRegistrationCtrl.class);
         }
         applUae.addMenuParent(Log_Out, null, ZulLoginCtrl.class);
         return applUae;

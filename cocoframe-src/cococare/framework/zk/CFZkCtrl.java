@@ -39,6 +39,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
     //
     protected CFZkView zkView;
     //
+    protected List<Component> reinitComponents = new ArrayList();
     protected CCTable tblEntity;
     protected EventListener elAdd;
     protected EventListener elView;
@@ -125,7 +126,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
 
     @Override
     protected void _initComponent() {
-        initComponent(getContainer(), this);
+        initComponent(getContainer(), this, reinitComponents);
         super._initComponent();
     }
 
