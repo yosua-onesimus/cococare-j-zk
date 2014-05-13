@@ -95,7 +95,7 @@ public class ZulUserCtrl extends CFZkCtrl {
             @Override
             public Object getCustomView(Object object) {
                 UtilPrivilege privilege = (UtilPrivilege) object;
-                Label label = new Label(privilege.getName());
+                Label label = new Label(privilege.getCode() + "-" + privilege.getName());
                 if (isNotNull(privilege.getParent())) {
                     setStyle(label, _padding_left_10px);
                 }
