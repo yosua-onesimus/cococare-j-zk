@@ -6,8 +6,7 @@ import static cococare.common.CCClass.newObject;
 import static cococare.common.CCClass.setValue;
 import static cococare.common.CCFinal.btnEdit;
 import static cococare.common.CCFormat.getBoolean;
-import static cococare.common.CCLogic.isNotNull;
-import static cococare.common.CCLogic.isNull;
+import static cococare.common.CCLogic.*;
 import static cococare.common.CCMessage.logp;
 import cococare.database.CCHibernateFilter;
 import static cococare.database.CCLoginInfo.INSTANCE_isCompAccessible;
@@ -29,6 +28,9 @@ import org.zkoss.zul.Window;
 //</editor-fold>
 
 /**
+ * CFZkCtrl is an abstract class which functions as an view controller, in
+ * charge of controlling the flow of applications in specific view.
+ *
  * @author Yosua Onesimus
  * @since 13.03.17
  * @version 13.03.17
@@ -75,11 +77,10 @@ public abstract class CFZkCtrl extends CFViewCtrl {
         sysRef_tab.put(sysRef, tab);
         tab.setParent(zkView.getTabEntity().getTabs());
         //
-        Tabpanel tabpanel = new Tabpanel();
-        sysRef_zkCtrl.put(sysRef, ((CFZkCtrl) viewCtrl));
-        ((CFZkCtrl) viewCtrl).getContainer().setParent(tabpanel);
-        sysRef_tabpanel.put(sysRef, tabpanel);
-        tabpanel.setParent(zkView.getTabEntity().getTabpanels());
+        sysRef_tabpanel.put(sysRef, new Tabpanel());
+        sysRef_zkCtrl.put(sysRef, (CFZkCtrl) viewCtrl);
+        sysRef_zkCtrl.get(sysRef).getContainer().setParent(sysRef_tabpanel.get(sysRef));
+        sysRef_tabpanel.get(sysRef).setParent(zkView.getTabEntity().getTabpanels());
         //
         zkView.getTabEntity().setSelectedPanel(sysRef_tabpanel.get(sysRef));
     }
@@ -90,9 +91,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             zkView.getTabEntity().getTabs().removeChild(sysRef_tab.remove(sysRef));
             sysRef_zkCtrl.remove(sysRef);
             Tabpanel tabpanel = sysRef_tabpanel.get(sysRef);
-            tabpanel = (Tabpanel) (isNotNull(tabpanel.getNextSibling())
-                    ? tabpanel.getNextSibling()
-                    : tabpanel.getPreviousSibling());
+            tabpanel = (Tabpanel) coalesce(tabpanel.getNextSibling(), tabpanel.getPreviousSibling());
             zkView.getTabEntity().getTabpanels().removeChild(sysRef_tabpanel.remove(sysRef));
             zkView.getTabEntity().setSelectedPanel(tabpanel);
         } catch (Exception exception) {

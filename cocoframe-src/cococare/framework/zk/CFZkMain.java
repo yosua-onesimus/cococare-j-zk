@@ -18,6 +18,9 @@ import java.io.File;
 //</editor-fold>
 
 /**
+ * CFZkMain is an abstract class which functions as an application controller,
+ * in charge of controlling the flow of applications in general.
+ *
  * @author Yosua Onesimus
  * @since 13.03.17
  * @version 13.03.17
