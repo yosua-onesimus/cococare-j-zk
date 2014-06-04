@@ -1,0 +1,34 @@
+<zk>
+	<window vflex="1">
+		<vbox vflex="1">
+			<hbox align="center">
+				<button id="btnSave" label="Save" />
+				<button id="btnClose" label="Close" />
+			</hbox>
+			<grid sclass="input-field">
+				<columns>
+					<column width="100px" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<label id="xBook" value="Book" />
+						<bandbox id="bndBook" width="200px" />
+					</row>
+					<row>
+						<label id="xBorrowingCost" value="B. Cost" />
+						<doublebox id="txtBorrowingCost" width="100px" />
+					</row>
+					<row>
+						<label id="xDateReturn" value="Date Return" />
+						<datebox id="dtpDateReturn" width="100px" />
+					</row>
+					<row>
+						<label id="xBorrowingFine" value="B. Fine" />
+						<doublebox id="txtBorrowingFine" width="100px" />
+					</row>
+				</rows>
+			</grid>
+		</vbox>
+	</window>
+</zk>

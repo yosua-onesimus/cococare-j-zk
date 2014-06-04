@@ -1,0 +1,30 @@
+<zk>
+	<window vflex="1">
+		<vbox vflex="1">
+			<hbox align="center">
+				<button id="btnSave" label="Save" />
+				<button id="btnClose" label="Close" />
+			</hbox>
+			<grid sclass="input-field">
+				<columns>
+					<column width="100px" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<label id="xCode" value="Code" />
+						<textbox id="txtCode" width="100px" />
+					</row>
+					<row>
+						<label id="xName" value="Name" />
+						<textbox id="txtName" width="200px" />
+					</row>
+					<row>
+						<label id="xPath" value="Path" />
+						<textbox id="txtPath" width="300px" />
+					</row>
+				</rows>
+			</grid>
+		</vbox>
+	</window>
+</zk>
