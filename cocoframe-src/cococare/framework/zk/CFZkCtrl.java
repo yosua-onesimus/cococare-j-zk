@@ -135,22 +135,22 @@ public abstract class CFZkCtrl extends CFViewCtrl {
         if (_hasEntity() && isNotNull(zkView.getTblEntity())) {
             tblEntity = new CCTable(zkView.getTblEntity(), _getEntity());
             zkView.getTblEntity().setFocus(true);
-        }
-        //parent-childs-screen
-        if (isNotNull(parameter.get(toString() + parentValue))) {
-            final Object dummy = this;
-            tblEntity.setVisibleField(false, parameter.get(toString() + parentField).toString());
-            tblEntity.setHqlFilters(new CCHibernateFilter() {
-                @Override
-                public String getFieldName() {
-                    return parameter.get(dummy.toString() + parentField).toString();
-                }
+            //parent-childs-screen
+            if (isNotNull(parameter.get(toString() + parentValue))) {
+                final Object dummy = this;
+                tblEntity.setVisibleField(false, parameter.get(toString() + parentField).toString());
+                tblEntity.setHqlFilters(new CCHibernateFilter() {
+                    @Override
+                    public String getFieldName() {
+                        return parameter.get(dummy.toString() + parentField).toString();
+                    }
 
-                @Override
-                public Object getFieldValue() {
-                    return parameter.get(dummy.toString() + parentValue);
-                }
-            });
+                    @Override
+                    public Object getFieldValue() {
+                        return parameter.get(dummy.toString() + parentValue);
+                    }
+                });
+            }
         }
     }
 
@@ -168,6 +168,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
     protected void _initEditor() {
         if (_hasEntity()) {
             edtEntity = new CCEditor(getContainer(), _getEntity());
+            edtEntity.getAfterMount().compile().setParent(getContainer());
             if (newEntity) {
                 _initObjEntity();
             }
