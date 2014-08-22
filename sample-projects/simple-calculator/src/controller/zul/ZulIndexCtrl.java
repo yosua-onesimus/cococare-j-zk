@@ -10,6 +10,7 @@ import cococare.common.CCConfig;
 import cococare.common.CCFormat;
 import cococare.common.CCMath;
 import cococare.common.CCFieldConfig.Type;
+import cococare.zk.CCAfterMount;
 import cococare.zk.CCZk;
 
 public class ZulIndexCtrl extends Window {
@@ -52,12 +53,12 @@ public class ZulIndexCtrl extends Window {
 	}
 
 	private void initComponents() {
-		CCZk.initComponent(this, this);
+		CCZk.initComponent(this, this, null);
 	}
 
 	private void _init() {
-		CCZk.applyFormat(txtLabelPrev, Type.DECIMAL);
-		CCZk.applyFormat(txtLabelCurr, Type.DECIMAL);
+		CCAfterMount.applyFormatStyle(txtLabelPrev, Type.DECIMAL);
+		CCAfterMount.applyFormatStyle(txtLabelCurr, Type.DECIMAL);
 		EventListener elTypingCurr = new EventListener() {
 			public void onEvent(Event event) throws Exception {
 				_typingCurr(((Button) event.getTarget()).getLabel());

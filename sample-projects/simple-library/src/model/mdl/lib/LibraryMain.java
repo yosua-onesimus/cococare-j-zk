@@ -6,8 +6,6 @@ import static cococare.common.CCLanguage.Transaction;
 import static cococare.common.CCLanguage.init;
 import static cococare.common.CCLogic.isNotNull;
 import static cococare.database.CCLoginInfo.INSTANCE_getUserLogin;
-import static cococare.framework.zk.CFZkMap.getMenubarH;
-import static cococare.framework.zk.CFZkMap.getMenubarV;
 import static model.mdl.lib.LibraryLanguage.Book;
 import static model.mdl.lib.LibraryLanguage.Borrowing;
 import static model.mdl.lib.LibraryLanguage.Config;
@@ -15,11 +13,9 @@ import static model.mdl.lib.LibraryLanguage.Lib;
 import static model.mdl.lib.LibraryLanguage.Member;
 import static model.mdl.lib.LibraryLanguage.Returning;
 import model.obj.lib.LibReport;
+import cococare.framework.common.CFApplUae;
 import cococare.framework.model.obj.util.UtilUser;
 import cococare.framework.zk.CFZkMain;
-import cococare.framework.zk.CFZkUae;
-import cococare.framework.zk.controller.zul.util.ZulLoginCtrl;
-import cococare.zk.CCMenubar;
 import controller.zul.lib.ZulBookListCtrl;
 import controller.zul.lib.ZulBorrowingListCtrl;
 import controller.zul.lib.ZulConfigCtrl;
@@ -58,24 +54,17 @@ public class LibraryMain extends CFZkMain {
 	}
 
 	@Override
-	public boolean initInitialData() {
-		super.initInitialData();
-		CFZkUae uae = new CFZkUae();
+	protected void _initInitialUaeBody(CFApplUae uae) {
 		uae.reg(Lib, Config, ZulConfigCtrl.class);
 		uae.reg(Lib, Book, ZulBookListCtrl.class);
 		uae.reg(Lib, Member, ZulMemberListCtrl.class);
 		uae.reg(Lib, Borrowing, ZulBorrowingListCtrl.class);
 		uae.reg(Lib, Returning, ZulReturningListCtrl.class);
 		uae.reg(Lib, Report, ZulReportListCtrl.class);
-		return _initInitialDataUaeUtility(uae).compile();
 	}
 
 	@Override
-	protected void _applyUserConfig() {
-		CFZkUae uae = new CFZkUae();
-		uae.initMenuBar(MenuPosition.LEFT_SIDE.equals(MENU_POST) ? new CCMenubar(getMenubarV()) : new CCMenubar(getMenubarH()));
-		// screen that does not require privileged
-		uae.addMenuRoot(ZulLoginCtrl.class);
+	protected void _applyUserConfigUaeBody(CFApplUae uae) {
 		if (isNotNull(INSTANCE_getUserLogin()) && ((UtilUser) INSTANCE_getUserLogin()).getUserGroup().isRoot()) {
 			// login with root-root to access the following two examples
 			uae.addMenuRoot(ZulBook2ListCtrl.class, ZulBook3ListCtrl.class);
@@ -92,8 +81,6 @@ public class LibraryMain extends CFZkMain {
 		uae.addMenuParent("Other Flow Sample", "/img/Sample.png", null);
 		uae.addMenuChild("Dialog Flow Sample", "/img/Sample.png", ZulBook2ListCtrl.class);
 		uae.addMenuChild("Panel Flow Sample", "/img/Sample.png", ZulBook3ListCtrl.class);
-		uae.changeMenuSide();
-		_applyUserConfigUaeUtility(uae).compileMenu();
 	}
 
 	public static void main(String[] args) {
