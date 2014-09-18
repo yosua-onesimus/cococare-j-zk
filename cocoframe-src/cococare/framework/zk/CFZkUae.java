@@ -212,6 +212,7 @@ public class CFZkUae extends CFApplUae {
         accessibles.clear();
     }
 
+    @Override
     public void addMenuRoot(Class<? extends CFViewCtrl>... controllerClasses) {
         menuRoot.addAll(Arrays.asList(controllerClasses));
     }
@@ -262,6 +263,7 @@ public class CFZkUae extends CFApplUae {
         addMenuSeparator(cc - 1);
     }
 
+    @Override
     public void changeMenuSide() {
         leftSide = !leftSide;
     }

@@ -178,17 +178,8 @@ public class CFZkMap {
      *
      * @return the menu bar.
      */
-    public static Component getMenubar() {
-        return getComponent(getMainScreen(), aMenuBar);
-    }
-
-    /**
-     * Returns a menu bar.
-     *
-     * @return the menu bar.
-     */
     public static Menubar getMenubarH() {
-        return CCZk.getMenubar(getMainScreen(), aMenuBarH);
+        return getMenubar(getMainScreen(), aMenuBarH);
     }
 
     /**

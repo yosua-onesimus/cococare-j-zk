@@ -183,21 +183,30 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             setValue(objEntity, parameter.get(toString() + parentField).toString(), parameter.get(toString() + parentValue));
         }
     }
+//</editor-fold>
 
     @Override
     protected void _initAccessible() {
-        if (isNotNull(getControllerZul(getClass())) && !INSTANCE_isCompAccessible(getControllerZul(getClass()).getName() + "." + btnEdit)) {
-            addAccessibleListener(zkView.getBtnEdit(), CCAccessibleListener.nonAccessible);
+        if (_hasTblEntity()) {
+            addAccessibleListener(zkView.getBtnAdd(), accessibleIfEditable);
+            addAccessibleListener(zkView.getBtnEdit(), accessibleIfEditable);
+            addAccessibleListener(zkView.getBtnDelete(), accessibleIfEditable);
+        } else if (_hasEdtEntity()) {
+            if (isNotNull(getControllerZul(getClass())) && !INSTANCE_isCompAccessible(getControllerZul(getClass()).getName() + "." + btnEdit)) {
+                addAccessibleListener(zkView.getBtnEdit(), CCAccessibleListener.nonAccessible);
+            }
+            addAccessibleListener(zkView.getBtnEdit(), accessibleIfReadonly);
+            addAccessibleListener(zkView.getBtnSave(), accessibleIfEditable);
+            addAccessibleListener(zkView.getBtnSaveAndNew(), accessibleIfEditable);
+            addAccessibleListener(zkView.getBtnCancel(), accessibleIfEditable);
         }
-        addAccessibleListener(zkView.getBtnEdit(), accessibleIfReadonly);
-        addAccessibleListener(zkView.getBtnSave(), accessibleIfEditable);
-        addAccessibleListener(zkView.getBtnSaveAndNew(), accessibleIfEditable);
-        addAccessibleListener(zkView.getBtnCancel(), accessibleIfEditable);
     }
 
     @Override
     protected void _doUpdateAccessible() {
-        if (_hasEdtEntity()) {
+        if (_hasTblEntity()) {
+            applyAccessible(zkView.getBtnAdd(), zkView.getBtnEdit(), zkView.getBtnDelete());
+        } else if (_hasEdtEntity()) {
             applyAccessible(zkView.getBtnEdit(), zkView.getBtnSave(), zkView.getBtnSaveAndNew(), zkView.getBtnCancel());
             if (readonly) {
                 edtEntity.setAccessible2Readonly();
@@ -206,7 +215,6 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             }
         }
     }
-//</editor-fold>
 
     @Override
     protected void _initListener() {

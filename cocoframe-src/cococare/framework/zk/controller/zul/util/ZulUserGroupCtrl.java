@@ -89,6 +89,11 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
                 addEventListenerOnClick(checkbox, elSelect);
                 return checkbox;
             }
+
+            @Override
+            public Integer getColumnWidth() {
+                return 40;
+            }
         });
         tblPrivilege.addField(1, new CCCustomField() {
             @Override
@@ -107,7 +112,6 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
             }
         });
         tblPrivilege.setCheckboxColumn(true, 0);
-        tblPrivilege.setColumnWidth(0, 40);
     }
 
     private void _initTblIp() {

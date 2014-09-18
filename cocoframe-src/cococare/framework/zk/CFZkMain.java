@@ -9,8 +9,10 @@ import static cococare.datafile.CCFile.*;
 import cococare.framework.common.CFApplCtrl;
 import cococare.framework.common.CFApplUae;
 import cococare.framework.model.obj.util.UtilConfAppl;
+import cococare.framework.model.obj.util.UtilConfAppl.MenuPosition;
 import static cococare.framework.zk.CFZkMap.*;
 import cococare.framework.zk.controller.zul.util.*;
+import cococare.zk.CCMenubar;
 import static cococare.zk.CCSession.getWebRoot;
 import static cococare.zk.CCZk.setImageContent;
 import cococare.zk.database.CCLoginInfo;
@@ -54,23 +56,28 @@ public abstract class CFZkMain extends CFApplCtrl {
     }
 
     @Override
-    protected CFApplUae _initInitialDataUaeUtility(CFApplUae applUae) {
-        applUae.reg(Utility, User_Group, ZulUserGroupListCtrl.class);
-        applUae.reg(Utility, User, ZulUserListCtrl.class);
-        applUae.reg(Utility, Change_Password, ZulChangePasswordCtrl.class);
+    protected CFApplUae _initInitialUaeBegin() {
+        return new CFZkUae();
+    }
+
+    @Override
+    protected boolean _initInitialUaeEnd(CFApplUae uae) {
+        uae.reg(Utility, User_Group, ZulUserGroupListCtrl.class);
+        uae.reg(Utility, User, ZulUserListCtrl.class);
+        uae.reg(Utility, Change_Password, ZulChangePasswordCtrl.class);
         if (!HIBERNATE.getParameterClasses().isEmpty()) {
-            applUae.reg(Utility, Parameter, ZulParameterListCtrl.class);
+            uae.reg(Utility, Parameter, ZulParameterListCtrl.class);
         }
-        applUae.reg(Utility, Logger_History, ZulLoggerListCtrl.class);
+        uae.reg(Utility, Logger_History, ZulLoggerListCtrl.class);
         if (!HIBERNATE.getCustomizableClasses().isEmpty()) {
-            applUae.reg(Utility, Screen_Setting, ZulScreenSettingListCtrl.class);
+            uae.reg(Utility, Screen_Setting, ZulScreenSettingListCtrl.class);
         }
-        applUae.reg(Utility, Application_Setting, ZulApplicationSettingCtrl.class);
-        applUae.reg(Utility, Database_Setting, ZulDatabaseSettingCtrl.class);
+        uae.reg(Utility, Application_Setting, ZulApplicationSettingCtrl.class);
+        uae.reg(Utility, Database_Setting, ZulDatabaseSettingCtrl.class);
         if (LICENSE_ACTIVE) {
-            applUae.reg(Utility, Registration, ZulRegistrationCtrl.class);
+            uae.reg(Utility, Registration, ZulRegistrationCtrl.class);
         }
-        return applUae;
+        return uae.compile();
     }
 
     @Override
@@ -81,7 +88,6 @@ public abstract class CFZkMain extends CFApplCtrl {
     @Override
     public void updateNonContent(Object object) {
         if (object instanceof UtilConfAppl) {
-            UtilConfAppl confAppl = (UtilConfAppl) object;
             load(CCLanguage.LanguagePack.values()[parseInt(confAppl.getApplLanguage())]);
             setImageContent(getCompLogo(), confAppl.getCompanyLogo());
             getCompName().setValue(wordWrap(new String[]{getStringOrBlank(confAppl.getCompanyName()), getStringOrBlank(confAppl.getCompanyAddress())}, false));
@@ -89,28 +95,36 @@ public abstract class CFZkMain extends CFApplCtrl {
     }
 
     @Override
-    protected CFApplUae _applyUserConfigUaeUtility(CFApplUae applUae) {
-        applUae.addMenuParent(Utility, null, null);
-        applUae.addMenuChild(User_Group, null, ZulUserGroupListCtrl.class);
-        applUae.addMenuChild(User, null, ZulUserListCtrl.class);
-        applUae.addMenuChild(Change_Password, null, ZulChangePasswordCtrl.class);
-        applUae.addMenuSeparator();
+    protected CFApplUae _applyUserConfigUaeBegin() {
+        CFZkUae uae = new CFZkUae();
+        uae.initMenuBar(new CCMenubar(MenuPosition.LEFT_SIDE.ordinal() == confAppl.getApplMenuPosition().intValue() ? getMenubarV() : getMenubarH()));
+        uae.addMenuRoot(ZulLoginCtrl.class);
+        return uae;
+    }
+
+    @Override
+    protected void _applyUserConfigUaeEnd(CFApplUae uae) {
+        uae.addMenuParent(Utility, null, null);
+        uae.addMenuChild(User_Group, null, ZulUserGroupListCtrl.class);
+        uae.addMenuChild(User, null, ZulUserListCtrl.class);
+        uae.addMenuChild(Change_Password, null, ZulChangePasswordCtrl.class);
+        uae.addMenuSeparator();
         if (!HIBERNATE.getParameterClasses().isEmpty()) {
-            applUae.addMenuChild(Parameter, null, ZulParameterListCtrl.class);
+            uae.addMenuChild(Parameter, null, ZulParameterListCtrl.class);
         }
-        applUae.addMenuChild(Logger_History, null, ZulLoggerListCtrl.class);
-        applUae.addMenuSeparator();
+        uae.addMenuChild(Logger_History, null, ZulLoggerListCtrl.class);
+        uae.addMenuSeparator();
         if (!HIBERNATE.getCustomizableClasses().isEmpty()) {
-            applUae.addMenuChild(Screen_Setting, null, ZulScreenSettingListCtrl.class);
+            uae.addMenuChild(Screen_Setting, null, ZulScreenSettingListCtrl.class);
         }
-        applUae.addMenuChild(Application_Setting, null, ZulApplicationSettingCtrl.class);
-        applUae.addMenuChild(Database_Setting, null, ZulDatabaseSettingCtrl.class);
+        uae.addMenuChild(Application_Setting, null, ZulApplicationSettingCtrl.class);
+        uae.addMenuChild(Database_Setting, null, ZulDatabaseSettingCtrl.class);
         if (LICENSE_ACTIVE) {
-            applUae.addMenuSeparator();
-            applUae.addMenuChild(Registration, null, ZulRegistrationCtrl.class);
+            uae.addMenuSeparator();
+            uae.addMenuChild(Registration, null, ZulRegistrationCtrl.class);
         }
-        applUae.addMenuParent(Log_Out, null, ZulLoginCtrl.class);
-        return applUae;
+        uae.addMenuParent(Log_Out, null, ZulLoginCtrl.class);
+        uae.compileMenu();
     }
 
     @Override

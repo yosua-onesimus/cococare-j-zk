@@ -3,6 +3,7 @@ package cococare.framework.zk.controller.zul.util;
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import static cococare.common.CCLogic.coalesce;
 import cococare.database.CCDatabaseConfig;
+import cococare.database.CCDatabaseConfig.SupportedDatabase;
 import cococare.framework.common.CFApplCtrl;
 import cococare.framework.model.mdl.util.UtilityModule;
 import cococare.framework.zk.CFZkCtrl;
@@ -46,7 +47,7 @@ public class ZulDatabaseSettingCtrl extends CFZkCtrl {
         super._initListener();
         addEventListenerOnChange_OnOk(cmbDriver, new EventListener() {
             @Override
-            public void onEvent(Event t) throws Exception {
+            public void onEvent(Event event) throws Exception {
                 _doCmbDriver();
             }
         });
@@ -73,7 +74,7 @@ public class ZulDatabaseSettingCtrl extends CFZkCtrl {
     }
 
     private void _doCmbDriver() {
-        CCDatabaseConfig.SupportedDatabase supportedDatabase = CCDatabaseConfig.SupportedDatabase.values()[cmbDriver.getSelectedIndex()];
+        SupportedDatabase supportedDatabase = SupportedDatabase.values()[cmbDriver.getSelectedIndex()];
         txtPort.setText(supportedDatabase.getDefaultPort());
         txtUsername.setText(supportedDatabase.getDefaultUsername());
     }
