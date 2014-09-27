@@ -17,7 +17,7 @@
 					</row>
 					<row>
 						<label id="xName" value="Name" />
-						<textbox id="txtName" width="200px" />
+						<textbox id="txtName" width="300px" />
 					</row>
 					<row>
 						<space />
@@ -26,7 +26,28 @@
 					</row>
 				</rows>
 			</grid>
-			<listbox id="tblPrivilege" vflex="1" />
+			<tabbox id="tabEntity" hflex="1" vflex="1">
+				<tabs>
+					<tab label="Privilege" />
+					<tab label="IP" />
+				</tabs>
+				<tabpanels>
+					<tabpanel>
+						<listbox id="tblPrivilege" vflex="1" />
+					</tabpanel>
+					<tabpanel>
+						<vbox vflex="1">
+							<hbox align="center">
+								<label id="xIp" value="IP" />
+								<textbox id="txtIp" width="150px" />
+								<button id="btnIpAdd" label="Add" />
+								<button id="btnIpRemove" label="Remove" />
+							</hbox>
+							<listbox id="tblIp" vflex="1" />
+						</vbox>
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
 		</vbox>
 	</window>
 </zk>
