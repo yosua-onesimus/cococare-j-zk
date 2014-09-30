@@ -9,7 +9,7 @@ import model.obj.lib.LibBook;
 import model.obj.lib.LibBorrowing;
 import model.obj.lib.LibBorrowingItem;
 import cococare.database.CCHibernateBo;
-import cococare.database.CCHibernateDao.Transaction;
+import cococare.database.CCHibernate.Transaction;
 
 /**
  * @author Yosua Onesimus

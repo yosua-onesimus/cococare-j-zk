@@ -12,7 +12,7 @@ import model.obj.lib.LibMember;
 import model.obj.lib.LibReturning;
 import model.obj.lib.LibReturningItem;
 import cococare.database.CCHibernateBo;
-import cococare.database.CCHibernateDao.Transaction;
+import cococare.database.CCHibernate.Transaction;
 
 /**
  * @author Yosua Onesimus
