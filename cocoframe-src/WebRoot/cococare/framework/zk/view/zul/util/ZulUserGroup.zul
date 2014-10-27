@@ -26,11 +26,10 @@
 					</row>
 				</rows>
 			</grid>
-			<tabbox hflex="1" vflex="1">
+			<tabbox id="tabEntity" hflex="1" vflex="1">
 				<tabs>
 					<tab label="Privilege" />
 					<tab label="IP" />
-					<tab label="Area" />
 				</tabs>
 				<tabpanels>
 					<tabpanel>
@@ -45,18 +44,6 @@
 								<button id="btnIpRemove" label="Remove" />
 							</hbox>
 							<listbox id="tblIp" vflex="1" />
-						</vbox>
-					</tabpanel>
-					<tabpanel>
-						<vbox vflex="1">
-							<hbox align="center">
-								<label id="xArea" value="Area" />
-								<bandbox id="bndArea" width="200px" />
-								<button id="btnAreaAdd" label="Add" />
-								<button id="btnAreaRemove"
-									label="Remove" />
-							</hbox>
-							<listbox id="tblArea" vflex="1" />
 						</vbox>
 					</tabpanel>
 				</tabpanels>

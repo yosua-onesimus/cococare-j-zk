@@ -1,27 +1,27 @@
 package cococare.framework.zk.controller.zul.util;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
-import static cococare.common.CCClass.extract;
+import static cococare.common.CCClass.getCCTypeConfig;
 import cococare.common.CCCustomField;
 import static cococare.common.CCFinal._padding_left_10px;
 import static cococare.common.CCLanguage.Privilege;
 import static cococare.common.CCLanguage.turn;
 import static cococare.common.CCLogic.*;
 import static cococare.common.CCMessage.IS_NOT_IP;
+import cococare.common.CCTypeConfig;
 import cococare.framework.model.bo.util.UtilUserGroupBo;
-import cococare.framework.model.obj.util.UtilFilter.isIdNotInIds;
-import cococare.framework.model.obj.util.*;
+import cococare.framework.model.obj.util.UtilPrivilege;
+import cococare.framework.model.obj.util.UtilUserGroup;
+import cococare.framework.model.obj.util.UtilUserGroupIp;
 import cococare.framework.zk.CFZkCtrl;
-import cococare.zk.CCBandbox;
 import static cococare.zk.CCMessage.showInformation;
+import cococare.zk.CCOptionbox;
 import cococare.zk.CCTable;
 import static cococare.zk.CCZk.*;
+import java.util.HashMap;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
-import org.zkoss.zul.Button;
-import org.zkoss.zul.Checkbox;
-import org.zkoss.zul.Label;
-import org.zkoss.zul.Textbox;
+import org.zkoss.zul.*;
 //</editor-fold>
 
 /**
@@ -45,10 +45,7 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
     private Button btnIpAdd;
     private Button btnIpRemove;
     private CCTable tblIp;
-    private CCBandbox bndArea;
-    private Button btnAreaAdd;
-    private Button btnAreaRemove;
-    private CCTable tblArea;
+    private HashMap<Class, CCOptionbox> clazz_optionBox = new HashMap();
 //</editor-fold>
 
     @Override
@@ -74,7 +71,7 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
         //privilege
         _initTblPrivilege();
         _initTblIp();
-        _initTblArea();
+        _initAdditionalTab();
     }
 
     private void _initTblPrivilege() {
@@ -119,16 +116,20 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
         tblIp.setNaviElements(null, null, btnIpRemove);
     }
 
-    private void _initTblArea() {
-        bndArea = newCCBandbox(getContainer(), "bndArea", UtilArea.class, "name");
-        bndArea.getTable().setHqlFilters(new isIdNotInIds() {
-            @Override
-            public Object getFieldValue() {
-                return extract(tblArea.getList(), "area.id");
-            }
-        });
-        tblArea = newCCTable(getContainer(), "tblArea", UtilUserGroupArea.class);
-        tblArea.setNaviElements(null, null, btnAreaRemove);
+    private void _initAdditionalTab() {
+        for (Class clazz : userGroupBo.getUtilAdditionalTabClass()) {
+            CCTypeConfig typeConfig = getCCTypeConfig(clazz);
+            Tab tab = new Tab(typeConfig.label());
+            tab.setParent(zkView.getTabEntity().getTabs());
+            Tabpanel tabpanel = new Tabpanel();
+            tabpanel.setParent(zkView.getTabEntity().getTabpanels());
+            Grid grid = new Grid();
+            grid.setParent(tabpanel);
+            CCOptionbox optionbox = newCCOptionbox(grid, false, clazz, typeConfig.uniqueKey());
+            optionbox.setList(userGroupBo.getListBy(clazz));
+            optionbox.setSelectedItem(true, userGroupBo.getSelectedItem(clazz).toArray());
+            clazz_optionBox.put(clazz, optionbox);
+        }
     }
 
     @Override
@@ -153,18 +154,14 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
                 _doIpRemove();
             }
         });
-        addEventListenerOnClick(btnAreaAdd, new EventListener() {
-            @Override
-            public void onEvent(Event event) throws Exception {
-                _doAreaAdd();
-            }
-        });
-        addEventListenerOnClick(btnAreaRemove, new EventListener() {
-            @Override
-            public void onEvent(Event event) throws Exception {
-                _doAreaRemove();
-            }
-        });
+    }
+
+    @Override
+    protected void _getValueFromEditor() {
+        super._getValueFromEditor();
+        for (Class clazz : userGroupBo.getUtilAdditionalTabClass()) {
+            userGroupBo.addChild(clazz, clazz_optionBox.get(clazz).getSelectedItems());
+        }
     }
 
     @Override
@@ -209,30 +206,12 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
         _doUpdateTblIp();
     }
 
-    private void _doAreaAdd() {
-        UtilArea area = bndArea.getObject();
-        if (isNotNull(area)) {
-            userGroupBo.addUserGroupArea(area);
-            bndArea.setObject(null);
-            bndArea.getTable().search();
-            _doUpdateTblArea();
-        }
-    }
-
-    private void _doAreaRemove() {
-        bndArea.setObject(null);
-        bndArea.getTable().search();
-        userGroupBo.removeUserGroupArea(tblArea.getSelectedRow());
-        _doUpdateTblArea();
-    }
-
     @Override
     protected void _doUpdateComponent() {
         super._doUpdateComponent();
         //privilege
         _doUpdateTblPrivilege();
         _doUpdateTblIp();
-        _doUpdateTblArea();
     }
 
     private void _doUpdateTblPrivilege() {
@@ -241,9 +220,5 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
 
     private void _doUpdateTblIp() {
         tblIp.setList(userGroupBo.getUserGroupIps());
-    }
-
-    private void _doUpdateTblArea() {
-        tblArea.setList(userGroupBo.getUserGroupAreas());
     }
 }

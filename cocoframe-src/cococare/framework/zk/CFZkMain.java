@@ -67,6 +67,10 @@ public abstract class CFZkMain extends CFApplCtrl {
         uae.reg(Utility, Change_Password, ZulChangePasswordCtrl.class);
         if (!HIBERNATE.getParameterClasses().isEmpty()) {
             uae.reg(Utility, Parameter, ZulParameterListCtrl.class);
+            uae.reg(Utility, Export_Import, ZulExportImportCtrl.class);
+        }
+        if (!HIBERNATE.getAuditableClasses().isEmpty()) {
+            uae.reg(Utility, Audit_Trail, ZulAuditTrailListCtrl.class);
         }
         uae.reg(Utility, Logger_History, ZulLoggerListCtrl.class);
         if (!HIBERNATE.getCustomizableClasses().isEmpty()) {
@@ -104,6 +108,7 @@ public abstract class CFZkMain extends CFApplCtrl {
 
     @Override
     protected void _applyUserConfigUaeEnd(CFApplUae uae) {
+        uae.changeMenuSide();
         uae.addMenuParent(Utility, null, null);
         uae.addMenuChild(User_Group, null, ZulUserGroupListCtrl.class);
         uae.addMenuChild(User, null, ZulUserListCtrl.class);
@@ -111,6 +116,10 @@ public abstract class CFZkMain extends CFApplCtrl {
         uae.addMenuSeparator();
         if (!HIBERNATE.getParameterClasses().isEmpty()) {
             uae.addMenuChild(Parameter, null, ZulParameterListCtrl.class);
+            uae.addMenuChild(Export_Import, null, ZulExportImportCtrl.class);
+        }
+        if (!HIBERNATE.getAuditableClasses().isEmpty()) {
+            uae.addMenuChild(Audit_Trail, null, ZulAuditTrailListCtrl.class);
         }
         uae.addMenuChild(Logger_History, null, ZulLoggerListCtrl.class);
         uae.addMenuSeparator();

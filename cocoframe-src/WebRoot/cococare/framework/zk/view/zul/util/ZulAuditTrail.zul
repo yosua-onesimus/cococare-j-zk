@@ -1,0 +1,12 @@
+<zk>
+	<window vflex="1">
+		<vbox vflex="1">
+			<hbox align="center">
+				<button id="btnApprove" label="Approve" />
+				<button id="btnClose" label="Close" />
+			</hbox>
+			<listbox id="tblAuditTrail" />
+			<grid id="tblOldVsNew" sclass="input-field" />
+		</vbox>
+	</window>
+</zk>
