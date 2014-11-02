@@ -39,14 +39,14 @@ public class ZulBorrowingItemListCtrl extends CFZkCtrl {
 	protected void _initTable() {
 		super._initTable();
 		tblEntity.addListenerOnSelect(new EventListener() {
-			public void onEvent(Event arg0) throws Exception {
-				_doUpdateParentField();
+			public void onEvent(Event event) throws Exception {
+				_doUpdateParentField(event);
 			}
 		});
 	}
 
-	private void _doUpdateParentField() {
-		execute((EventListener) parameter.get(callerCtrl.toString() + (tblEntity.getRowCount() == 0 ? "dtpDate-MANDATORY" : "dtpDate-MANDATORY_READONLY")));
+	private void _doUpdateParentField(Event event) {
+		execute((EventListener) parameter.get(callerCtrl.toString() + (tblEntity.getRowCount() == 0 ? "dtpDate-MANDATORY" : "dtpDate-MANDATORY_READONLY")), event);
 		txtTotalItem.setValue(tblEntity.getRowCount());
 		double totalCost = 0;
 		for (Object object : tblEntity.getList()) {

@@ -64,58 +64,58 @@ public class ZulIndexCtrl extends Window {
 				_typingCurr(((Button) event.getTarget()).getLabel());
 			}
 		};
-		CCZk.addEventListenerOnClick(btnPoint, elTypingCurr);
-		CCZk.addEventListenerOnClick(btn0, elTypingCurr);
-		CCZk.addEventListenerOnClick(btn1, elTypingCurr);
-		CCZk.addEventListenerOnClick(btn2, elTypingCurr);
-		CCZk.addEventListenerOnClick(btn3, elTypingCurr);
-		CCZk.addEventListenerOnClick(btn4, elTypingCurr);
-		CCZk.addEventListenerOnClick(btn5, elTypingCurr);
-		CCZk.addEventListenerOnClick(btn6, elTypingCurr);
-		CCZk.addEventListenerOnClick(btn7, elTypingCurr);
-		CCZk.addEventListenerOnClick(btn8, elTypingCurr);
-		CCZk.addEventListenerOnClick(btn9, elTypingCurr);
+		CCZk.addListener(btnPoint, elTypingCurr);
+		CCZk.addListener(btn0, elTypingCurr);
+		CCZk.addListener(btn1, elTypingCurr);
+		CCZk.addListener(btn2, elTypingCurr);
+		CCZk.addListener(btn3, elTypingCurr);
+		CCZk.addListener(btn4, elTypingCurr);
+		CCZk.addListener(btn5, elTypingCurr);
+		CCZk.addListener(btn6, elTypingCurr);
+		CCZk.addListener(btn7, elTypingCurr);
+		CCZk.addListener(btn8, elTypingCurr);
+		CCZk.addListener(btn9, elTypingCurr);
 		EventListener elTypingSign = new EventListener() {
 			public void onEvent(Event event) throws Exception {
 				_typingCurrSign();
 			}
 		};
-		CCZk.addEventListenerOnClick(btnSign, elTypingSign);
+		CCZk.addListener(btnSign, elTypingSign);
 		EventListener elTypingBackspace = new EventListener() {
 			public void onEvent(Event event) throws Exception {
 				_typingCurrBackspace();
 			}
 		};
-		CCZk.addEventListenerOnClick(btnBackspace, elTypingBackspace);
+		CCZk.addListener(btnBackspace, elTypingBackspace);
 		EventListener elClearCurr = new EventListener() {
 			public void onEvent(Event event) throws Exception {
 				_clearCurr();
 			}
 		};
-		CCZk.addEventListenerOnClick(btnCE, elClearCurr);
+		CCZk.addListener(btnCE, elClearCurr);
 		EventListener elTypingOperator = new EventListener() {
 			public void onEvent(Event event) throws Exception {
 				_typingOperator(((Button) event.getTarget()).getLabel());
 			}
 		};
-		CCZk.addEventListenerOnClick(btnSquareRoot, elTypingOperator);
-		CCZk.addEventListenerOnClick(btnPower, elTypingOperator);
-		CCZk.addEventListenerOnClick(btnMultiplication, elTypingOperator);
-		CCZk.addEventListenerOnClick(btnDivision, elTypingOperator);
-		CCZk.addEventListenerOnClick(btnAddition, elTypingOperator);
-		CCZk.addEventListenerOnClick(btnSubtraction, elTypingOperator);
+		CCZk.addListener(btnSquareRoot, elTypingOperator);
+		CCZk.addListener(btnPower, elTypingOperator);
+		CCZk.addListener(btnMultiplication, elTypingOperator);
+		CCZk.addListener(btnDivision, elTypingOperator);
+		CCZk.addListener(btnAddition, elTypingOperator);
+		CCZk.addListener(btnSubtraction, elTypingOperator);
 		EventListener elTypingEqual = new EventListener() {
 			public void onEvent(Event event) throws Exception {
 				_typingEqual();
 			}
 		};
-		CCZk.addEventListenerOnClick(btnEqual, elTypingEqual);
+		CCZk.addListener(btnEqual, elTypingEqual);
 		EventListener elClearAll = new EventListener() {
 			public void onEvent(Event event) throws Exception {
 				_clearAll();
 			}
 		};
-		CCZk.addEventListenerOnClick(btnC, elClearAll);
+		CCZk.addListener(btnC, elClearAll);
 	}
 
 	private void _typingCurr(String string) {

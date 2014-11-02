@@ -44,13 +44,13 @@ public class ZulReturningItemListCtrl extends CFZkCtrl {
 		super._initTable();
 		tblEntity.addListenerOnSelect(new EventListener() {
 			public void onEvent(Event event) throws Exception {
-				_doUpdateParentField();
+				_doUpdateParentField(event);
 			}
 		});
 	}
 
-	private void _doUpdateParentField() {
-		execute((EventListener) parameter.get(callerCtrl.toString() + (tblEntity.getRowCount() == 0 ? "returningInfo-MANDATORY" : "returningInfo-MANDATORY_READONLY")));
+	private void _doUpdateParentField(Event event) {
+		execute((EventListener) parameter.get(callerCtrl.toString() + (tblEntity.getRowCount() == 0 ? "returningInfo-MANDATORY" : "returningInfo-MANDATORY_READONLY")), event);
 		txtTotalItem.setValue(tblEntity.getRowCount());
 		double totalFine = 0;
 		for (Object object : tblEntity.getList()) {

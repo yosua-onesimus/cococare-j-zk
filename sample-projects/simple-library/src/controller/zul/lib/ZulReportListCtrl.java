@@ -1,6 +1,6 @@
 package controller.zul.lib;
 
-import static cococare.zk.CCZk.addEventListenerOnClick;
+import static cococare.zk.CCZk.addListener;
 import model.obj.lib.LibReport;
 
 import org.zkoss.zk.ui.event.Event;
@@ -32,7 +32,7 @@ public class ZulReportListCtrl extends CFZkCtrl {
 	@Override
 	protected void _initListener() {
 		super._initListener();
-		addEventListenerOnClick(_btnView, new EventListener() {
+		addListener(_btnView, new EventListener() {
 			public void onEvent(Event event) throws Exception {
 				_doView();
 			}
