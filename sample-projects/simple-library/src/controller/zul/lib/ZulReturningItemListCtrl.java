@@ -42,7 +42,7 @@ public class ZulReturningItemListCtrl extends CFZkCtrl {
 	@Override
 	protected void _initTable() {
 		super._initTable();
-		tblEntity.addEventListenerOnChange(new EventListener() {
+		tblEntity.addListenerOnSelect(new EventListener() {
 			public void onEvent(Event event) throws Exception {
 				_doUpdateParentField();
 			}

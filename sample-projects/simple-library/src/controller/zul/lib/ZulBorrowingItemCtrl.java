@@ -80,7 +80,7 @@ public class ZulBorrowingItemCtrl extends CFZkCtrl {
 	@Override
 	protected void _initListener() {
 		super._initListener();
-		bndBook.addEventListenerOnSelect(new EventListener() {
+		bndBook.addListenerOnSelect(new EventListener() {
 			public void onEvent(Event arg0) throws Exception {
 				_doUpdateBookInfo();
 			}
