@@ -7,7 +7,7 @@ import static cococare.common.CCFormat.getString;
 import cococare.database.CCHibernateFilter;
 import cococare.framework.model.obj.util.UtilLogger;
 import cococare.framework.zk.CFZkCtrl;
-import static cococare.zk.CCZk.addEventListenerOnChange_OnOk;
+import static cococare.zk.CCZk.addListener;
 import static cococare.zk.CCZk.fillUp;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -103,8 +103,8 @@ public class ZulLoggerListCtrl extends CFZkCtrl {
                 _doSearch();
             }
         };
-        addEventListenerOnChange_OnOk(cmbUsername, elSearch);
-        addEventListenerOnChange_OnOk(cmbScreen, elSearch);
-        addEventListenerOnChange_OnOk(cmbAction, elSearch);
+        addListener(cmbUsername, elSearch);
+        addListener(cmbScreen, elSearch);
+        addListener(cmbAction, elSearch);
     }
 }

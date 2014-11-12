@@ -13,7 +13,7 @@ import cococare.framework.zk.CFZkCtrl;
 import cococare.zk.CCEditor;
 import static cococare.zk.CCEditor.requestFocusInWindow;
 import static cococare.zk.CCMessage.showInformation;
-import static cococare.zk.CCZk.addEventListenerOnClick;
+import static cococare.zk.CCZk.addListener;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Button;
@@ -68,14 +68,14 @@ public class ZulRegistrationCtrl extends CFZkCtrl {
     protected void _initListener() {
         super._initListener();
         if (hasRegister) {
-            addEventListenerOnClick(btnRegister, new EventListener() {
+            addListener(btnRegister, new EventListener() {
                 @Override
                 public void onEvent(Event event) throws Exception {
                     _doRegister();
                 }
             });
         } else {
-            addEventListenerOnClick(btnRegister, new EventListener() {
+            addListener(btnRegister, new EventListener() {
                 @Override
                 public void onEvent(Event event) throws Exception {
                     _doRegister();

@@ -5,8 +5,7 @@ import cococare.framework.common.CFApplCtrl;
 import cococare.framework.model.obj.util.UtilUser;
 import cococare.framework.zk.CFZkCtrl;
 import static cococare.zk.CCMessage.showError;
-import static cococare.zk.CCZk.addEventListenerOnClick;
-import static cococare.zk.CCZk.addEventListenerOnOk;
+import static cococare.zk.CCZk.addListener;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Button;
@@ -51,9 +50,9 @@ public class ZulLoginCtrl extends CFZkCtrl {
                 _doLogin();
             }
         };
-        addEventListenerOnOk(txtUsername, elLogin);
-        addEventListenerOnOk(txtPassword, elLogin);
-        addEventListenerOnClick(btnLogin, elLogin);
+        addListener(txtUsername, elLogin);
+        addListener(txtPassword, elLogin);
+        addListener(btnLogin, elLogin);
     }
 
     private void _doLogin() {

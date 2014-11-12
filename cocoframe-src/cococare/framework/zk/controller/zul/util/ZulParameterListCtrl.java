@@ -64,7 +64,7 @@ public class ZulParameterListCtrl extends CFZkCtrl {
     @Override
     protected void _initListener() {
         super._initListener();
-        addEventListenerOnChange_OnOk(cmbEntity, new EventListener() {
+        addListener(cmbEntity, new EventListener() {
             @Override
             public void onEvent(Event arg0) throws Exception {
                 _doSearch();

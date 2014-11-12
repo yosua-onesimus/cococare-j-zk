@@ -2,7 +2,6 @@
 	<window vflex="1">
 		<vbox vflex="1">
 			<hbox align="center">
-				<button id="btnEdit" label="Edit" />
 				<button id="btnSave" label="Save" />
 				<button id="btnClose" label="Close" />
 			</hbox>
@@ -21,12 +20,15 @@
 						<textbox id="txtName" width="200px" />
 					</row>
 					<row>
-						<label id="xDescription" value="Description" />
-						<textbox id="txtDescription" width="300px" />
+						<label id="xType" value="Type" />
+						<combobox id="cmbType" width="100px" />
 					</row>
 					<row>
-						<label id="xStatus" value="Status" />
-						<combobox id="cmbStatus" width="200px" />
+						<label id="xValue" value="Value" />
+						<cell>
+							<div id="attByteA" />
+							<textbox id="txtValue" width="200px" />
+						</cell>
 					</row>
 				</rows>
 			</grid>

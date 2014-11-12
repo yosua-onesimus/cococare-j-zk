@@ -15,6 +15,7 @@ import static cococare.framework.zk.CFZkMap.*;
 import cococare.zk.CCEditor;
 import static cococare.zk.CCMessage.*;
 import cococare.zk.CCTable;
+import cococare.zk.CCZk;
 import static cococare.zk.CCZk.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -255,12 +256,12 @@ public abstract class CFZkCtrl extends CFViewCtrl {
                     _doSearch();
                 }
             };
-            addEventListenerOnClick(zkView.getBtnAdd(), elAdd);
-            addEventListenerOnClick(zkView.getBtnView(), elView);
-            addEventListenerOnClick(zkView.getBtnEdit(), elEdit);
-            addEventListenerOnClick(zkView.getBtnDelete(), elDelete);
-            addEventListenerOnClick(zkView.getBtnExport(), elExport);
-            addEventListenerOnChange_OnOk(zkView.getTxtKeyword(), elSearch);
+            addListener(zkView.getBtnAdd(), elAdd);
+            addListener(zkView.getBtnView(), elView);
+            addListener(zkView.getBtnEdit(), elEdit);
+            addListener(zkView.getBtnDelete(), elDelete);
+            addListener(zkView.getBtnExport(), elExport);
+            addListener(zkView.getTxtKeyword(), elSearch);
         } else if (BaseFunction.FORM_FUNCTION.equals(_getBaseFunction())) {
             elNew = new EventListener() {
                 @Override
@@ -300,14 +301,14 @@ public abstract class CFZkCtrl extends CFViewCtrl {
                 }
             };
             if (ShowMode.DIALOG_MODE.equals(_getShowMode())) {
-                addEventListenerOnCancel(getContainer(), elClose);
+                addListener(getContainer(), elClose, CCZk.EventName.onCancel);
             }
-            addEventListenerOnClick(zkView.getBtnNew(), elNew);
-            addEventListenerOnClick(zkView.getBtnEdit(), elEdit);
-            addEventListenerOnClick(zkView.getBtnSave(), elSave);
-            addEventListenerOnClick(zkView.getBtnSaveAndNew(), elSaveAndNew);
-            addEventListenerOnClick(zkView.getBtnCancel(), elCancel);
-            addEventListenerOnClick(zkView.getBtnClose(), elClose);
+            addListener(zkView.getBtnNew(), elNew);
+            addListener(zkView.getBtnEdit(), elEdit);
+            addListener(zkView.getBtnSave(), elSave);
+            addListener(zkView.getBtnSaveAndNew(), elSaveAndNew);
+            addListener(zkView.getBtnCancel(), elCancel);
+            addListener(zkView.getBtnClose(), elClose);
         }
     }
 

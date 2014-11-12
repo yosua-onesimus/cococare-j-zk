@@ -2,7 +2,6 @@
 	<window vflex="1">
 		<vbox vflex="1">
 			<hbox align="center">
-				<button id="btnEdit" label="Edit" />
 				<button id="btnSave" label="Save" />
 				<button id="btnClose" label="Close" />
 			</hbox>
@@ -13,16 +12,8 @@
 				</columns>
 				<rows>
 					<row>
-						<label id="xCode" value="Code" />
-						<textbox id="txtCode" width="100px" />
-					</row>
-					<row>
-						<label id="xName" value="Name" />
-						<textbox id="txtName" width="200px" />
-					</row>
-					<row>
-						<label id="xUrl" value="Url" />
-						<textbox id="txtUrl" width="300px" />
+						<label id="xReference" value="Reference" />
+						<bandbox id="bndReference" width="200px" />
 					</row>
 				</rows>
 			</grid>

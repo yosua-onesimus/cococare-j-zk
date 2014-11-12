@@ -7,7 +7,7 @@ import cococare.database.CCDatabaseConfig.SupportedDatabase;
 import cococare.framework.common.CFApplCtrl;
 import cococare.framework.model.mdl.util.UtilityModule;
 import cococare.framework.zk.CFZkCtrl;
-import static cococare.zk.CCZk.addEventListenerOnChange_OnOk;
+import static cococare.zk.CCZk.addListener;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Combobox;
@@ -45,7 +45,7 @@ public class ZulDatabaseSettingCtrl extends CFZkCtrl {
     @Override
     protected void _initListener() {
         super._initListener();
-        addEventListenerOnChange_OnOk(cmbDriver, new EventListener() {
+        addListener(cmbDriver, new EventListener() {
             @Override
             public void onEvent(Event event) throws Exception {
                 _doCmbDriver();

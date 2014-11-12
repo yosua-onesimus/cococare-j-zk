@@ -94,7 +94,7 @@ public abstract class CFZkMain extends CFApplCtrl {
         if (object instanceof UtilConfAppl) {
             load(CCLanguage.LanguagePack.values()[parseInt(confAppl.getApplLanguage())]);
             setImageContent(getCompLogo(), confAppl.getCompanyLogo());
-            getCompName().setValue(wordWrap(new String[]{getStringOrBlank(confAppl.getCompanyName()), getStringOrBlank(confAppl.getCompanyAddress())}, false));
+            getCompName().setValue(wordWrap(false, getStringOrBlank(confAppl.getCompanyName()), getStringOrBlank(confAppl.getCompanyAddress())));
         }
     }
 

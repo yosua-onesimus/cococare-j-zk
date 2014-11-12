@@ -12,16 +12,8 @@
 				</columns>
 				<rows>
 					<row>
-						<label id="xCode" value="Code" />
-						<textbox id="txtCode" width="100px" />
-					</row>
-					<row>
-						<label id="xName" value="Name" />
-						<textbox id="txtName" width="200px" />
-					</row>
-					<row>
-						<label id="xUrl" value="Url" />
-						<textbox id="txtUrl" width="300px" />
+						<label id="xReference" value="Reference" />
+						<bandbox id="bndReference" width="200px" />
 					</row>
 				</rows>
 			</grid>

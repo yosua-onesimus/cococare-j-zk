@@ -13,6 +13,7 @@ public class CFSetup {
     /**
      * Execute setup for WebRoot file.
      *
+     * @param setupPath the setupPath.
      * @return true if success; false if fail.
      */
     public static boolean executeWebRootFile(String setupPath) {

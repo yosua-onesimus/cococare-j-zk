@@ -1,7 +1,7 @@
 package cococare.framework.zk.controller.zul.note;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
-import cococare.framework.model.obj.note.NoteTracker;
+import cococare.framework.model.obj.note.NoteNoteReference;
 import cococare.framework.zk.CFZkCtrl;
 //</editor-fold>
 
@@ -10,15 +10,15 @@ import cococare.framework.zk.CFZkCtrl;
  * @since 13.03.17
  * @version 13.03.17
  */
-public class ZulTrackerListCtrl extends CFZkCtrl {
+public class ZulNoteReferenceCtrl extends CFZkCtrl {
 
     @Override
     protected Class _getEntity() {
-        return NoteTracker.class;
+        return NoteNoteReference.class;
     }
 
     @Override
     protected BaseFunction _getBaseFunction() {
-        return BaseFunction.LIST_FUNCTION;
+        return BaseFunction.FORM_FUNCTION;
     }
 }

@@ -79,19 +79,19 @@ public class ZulExportImportCtrl extends CFZkCtrl {
     @Override
     protected void _initListener() {
         super._initListener();
-        addEventListenerOnClick(zkView.getBtnExport(), new EventListener() {
+        addListener(zkView.getBtnExport(), new EventListener() {
             @Override
             public void onEvent(Event event) throws Exception {
                 _doExport(true);
             }
         });
-        addEventListenerOnClick(btnTemplate, new EventListener() {
+        addListener(btnTemplate, new EventListener() {
             @Override
             public void onEvent(Event event) throws Exception {
                 _doExport(false);
             }
         });
-        addEventListenerOnClick(btnImport, new EventListener() {
+        addListener(btnImport, new EventListener() {
             @Override
             public void onEvent(Event event) throws Exception {
                 _doImport();

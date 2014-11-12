@@ -112,7 +112,8 @@ public class ZulAuditTrailCtrl extends CFZkCtrl {
     @Override
     protected void _initListener() {
         super._initListener();
-        tblAuditTrail.addEventListenerOnSelect(new EventListener() {
+        tblAuditTrail.addListenerOnSelect(new EventListener() {
+            @Override
             public void onEvent(Event event) throws Exception {
                 tblOldVsNew.removeRows();
                 if (tblAuditTrail.isSelected()) {
@@ -127,7 +128,7 @@ public class ZulAuditTrailCtrl extends CFZkCtrl {
                 }
             }
         });
-        addEventListenerOnClick(btnApprove, elSave);
+        addListener(btnApprove, elSave);
     }
 
     @Override

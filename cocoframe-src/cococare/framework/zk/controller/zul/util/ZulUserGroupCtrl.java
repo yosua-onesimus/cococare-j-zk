@@ -83,7 +83,7 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
                 UtilPrivilege privilege = (UtilPrivilege) object;
                 Checkbox checkbox = new Checkbox();
                 checkbox.setChecked(privilege.isSelected());
-                addEventListenerOnClick(checkbox, elSelect);
+                addListener(checkbox, elSelect);
                 return checkbox;
             }
 
@@ -142,13 +142,13 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
     @Override
     protected void _initListener() {
         super._initListener();
-        addEventListenerOnClick(btnIpAdd, new EventListener() {
+        addListener(btnIpAdd, new EventListener() {
             @Override
             public void onEvent(Event event) throws Exception {
                 _doIpAdd();
             }
         });
-        addEventListenerOnClick(btnIpRemove, new EventListener() {
+        addListener(btnIpRemove, new EventListener() {
             @Override
             public void onEvent(Event event) throws Exception {
                 _doIpRemove();

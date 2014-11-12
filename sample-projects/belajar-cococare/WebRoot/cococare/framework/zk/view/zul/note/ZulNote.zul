@@ -16,15 +16,22 @@
 						<textbox id="txtCode" width="100px" />
 					</row>
 					<row>
-						<label id="xName" value="Name" />
-						<textbox id="txtName" width="200px" />
+						<label id="xTitle" value="Title" />
+						<textbox id="txtTitle" hflex="1" />
 					</row>
 					<row>
-						<label id="xPath" value="Path" />
-						<textbox id="txtPath" width="300px" />
+						<label id="xContent" value="Content" />
+						<textbox id="txtContent" height="59px" hflex="1"
+							multiline="true" />
 					</row>
 				</rows>
 			</grid>
+			<hbox hflex="1" vflex="1">
+				<div id="zulNoteReference" hflex="2" vflex="1" />
+				<hbox hflex="1" vflex="1">
+					<grid id="optTag" />
+				</hbox>
+			</hbox>
 		</vbox>
 	</window>
 </zk>

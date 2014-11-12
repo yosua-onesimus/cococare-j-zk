@@ -59,7 +59,7 @@ public class ZulScreenSettingListCtrl extends CFZkCtrl {
     @Override
     protected void _initListener() {
         super._initListener();
-        cmbEntity.addEventListenerOnSelect(new EventListener() {
+        cmbEntity.addListenerOnSelect(new EventListener() {
             @Override
             public void onEvent(Event event) throws Exception {
                 _doSearch();
