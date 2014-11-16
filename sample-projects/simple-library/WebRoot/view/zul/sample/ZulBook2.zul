@@ -23,8 +23,8 @@
 						<textbox id="txtTitle" width="200px" />
 					</row>
 					<row>
-						<label id="xDescription" value="Description" />
-						<textbox id="txtDescription" width="200px" />
+						<label id="xRemarks" value="Remarks" />
+						<textbox id="txtRemarks" width="200px" />
 					</row>
 					<row>
 						<label id="xBookType" value="Book Type" />

@@ -95,8 +95,8 @@ public class LibBookType implements CCEntity {
 	@CCFieldConfig(componentId = "txtName", accessible = Accessible.MANDATORY, maxLength = 32)
 	private String name;
 	@Column(length = 255)
-	@CCFieldConfig(componentId = "txtDescription")
-	private String description;
+	@CCFieldConfig(componentId = "txtRemarks")
+	private String remarks;
 
 	public String getCode() {
 		return code;
@@ -114,11 +114,11 @@ public class LibBookType implements CCEntity {
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getRemarks() {
+		return remarks;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
 	}
 }
