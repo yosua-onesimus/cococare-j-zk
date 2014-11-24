@@ -1,6 +1,5 @@
 package controller.zul.lib;
 
-import static cococare.zk.CCZk.getCCBandbox;
 import static model.obj.lib.LibFilter.isSuspendFalse;
 import model.bo.lib.LibBorrowingBo;
 import model.obj.lib.LibBorrowing;
@@ -54,7 +53,6 @@ public class ZulBorrowingCtrl extends CFZkCtrl {
 	@Override
 	protected void _initEditor() {
 		super._initEditor();
-		bndMember = getCCBandbox(getContainer(), "bndMember");
 		bndMember.getTable().setHqlFilters(isSuspendFalse);
 	}
 

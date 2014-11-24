@@ -4,7 +4,7 @@ import static cococare.common.CCClass.extract;
 import static cococare.common.CCFormat.formatNumber;
 import static cococare.common.CCFormat.getMinTime;
 import static cococare.common.CCLogic.isNotNull;
-import static cococare.zk.CCZk.getCCBandbox;
+import static cococare.zk.CCZk.addListener;
 import static model.obj.lib.LibFilter.isReturnedFalse;
 
 import java.util.List;
@@ -50,7 +50,6 @@ public class ZulReturningItemCtrl extends CFZkCtrl {
 	@Override
 	protected void _initEditor() {
 		super._initEditor();
-		bndBorrowingItem = getCCBandbox(getContainer(), "bndBorrowingItem");
 		bndBorrowingItem.getTable().setHqlFilters(isReturnedFalse, new CCHibernateFilter() {
 			@Override
 			public String getFieldName() {
@@ -91,7 +90,7 @@ public class ZulReturningItemCtrl extends CFZkCtrl {
 	@Override
 	protected void _initListener() {
 		super._initListener();
-		bndBorrowingItem.addListenerOnSelect(new EventListener() {
+		addListener(bndBorrowingItem.getBandbox(), new EventListener() {
 			public void onEvent(Event event) throws Exception {
 				_doUpdateBookInfo();
 			}

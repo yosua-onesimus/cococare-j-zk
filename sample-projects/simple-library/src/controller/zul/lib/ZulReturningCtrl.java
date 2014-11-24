@@ -1,7 +1,6 @@
 package controller.zul.lib;
 
 import static cococare.common.CCClass.getIds;
-import static cococare.zk.CCZk.getCCBandbox;
 import model.bo.lib.LibReturningBo;
 import model.obj.lib.LibReturning;
 
@@ -56,7 +55,6 @@ public class ZulReturningCtrl extends CFZkCtrl {
 	@Override
 	protected void _initEditor() {
 		super._initEditor();
-		bndMember = getCCBandbox(getContainer(), "bndMember");
 		bndMember.getTable().setHqlFilters(new CCHibernateFilter() {
 			@Override
 			public String getFieldName() {
