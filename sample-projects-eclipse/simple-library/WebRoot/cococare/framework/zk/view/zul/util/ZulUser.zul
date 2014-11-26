@@ -1,0 +1,67 @@
+<zk>
+	<window vflex="1">
+		<vbox vflex="1">
+			<hbox align="center">
+				<button id="btnSave" label="Save" />
+				<button id="btnClose" label="Close" />
+			</hbox>
+			<grid sclass="input-field">
+				<columns>
+					<column width="100px" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<label id="xUsername" value="Username" />
+						<textbox id="txtUsername" width="200px" />
+					</row>
+					<row id="rowPassword">
+						<label id="xPassword" value="Password" />
+						<textbox id="txtPassword" type="password"
+							width="200px" />
+					</row>
+					<row id="rowRetypePassword">
+						<label id="xRetypePassword"
+							value="Retype Password" />
+						<textbox id="txtRetypePassword" type="password"
+							width="200px" />
+					</row>
+					<row>
+						<label id="xFullname" value="Fullname" />
+						<textbox id="txtFullname" width="300px" />
+					</row>
+					<row>
+						<label id="xUserGroup" value="User Group" />
+						<bandbox id="bndUserGroup" width="200px" />
+					</row>
+					<row>
+						<space />
+						<checkbox id="chkActive" label="Active" />
+					</row>
+				</rows>
+			</grid>
+			<tabbox id="tabEntity" hflex="1" vflex="1">
+				<tabs>
+					<tab label="Privilege" />
+					<tab label="IP" />
+				</tabs>
+				<tabpanels>
+					<tabpanel>
+						<listbox id="tblPrivilege" vflex="1" />
+					</tabpanel>
+					<tabpanel>
+						<vbox vflex="1">
+							<hbox align="center">
+								<label id="xIp" value="IP" />
+								<textbox id="txtIp" width="150px" />
+								<button id="btnIpAdd" label="Add" />
+								<button id="btnIpRemove" label="Remove" />
+							</hbox>
+							<listbox id="tblIp" vflex="1" />
+						</vbox>
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+		</vbox>
+	</window>
+</zk>

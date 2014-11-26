@@ -1,0 +1,37 @@
+<zk>
+	<window vflex="1">
+		<vbox vflex="1">
+			<hbox align="center">
+				<button id="btnSave" label="Save" />
+				<button id="btnClose" label="Close" />
+			</hbox>
+			<grid sclass="input-field">
+				<columns>
+					<column width="100px" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<label id="xCode" value="Code" />
+						<textbox id="txtCode" width="100px" />
+					</row>
+					<row>
+						<label id="xTitle" value="Title" />
+						<textbox id="txtTitle" hflex="1" />
+					</row>
+					<row>
+						<label id="xContent" value="Content" />
+						<textbox id="txtContent" height="59px" hflex="1"
+							multiline="true" />
+					</row>
+				</rows>
+			</grid>
+			<hlayout hflex="1" vflex="1">
+				<div id="zulNoteReference" hflex="2" vflex="1" />
+				<hlayout hflex="1" vflex="1" style="overflow:auto;">
+					<grid id="optTag" />
+				</hlayout>
+			</hlayout>
+		</vbox>
+	</window>
+</zk>

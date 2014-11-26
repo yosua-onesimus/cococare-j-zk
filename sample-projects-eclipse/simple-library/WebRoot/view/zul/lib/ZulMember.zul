@@ -1,0 +1,49 @@
+<zk>
+	<window vflex="1">
+		<vbox vflex="1">
+			<hbox align="center">
+				<button id="btnSave" label="Save" />
+				<button id="btnClose" label="Close" />
+			</hbox>
+			<grid sclass="input-field">
+				<columns>
+					<column width="100px" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<label id="xCode" value="Code" />
+						<cell>
+							<textbox id="txtCode" width="100px" />
+							<checkbox id="chkSuspend" label="Suspend" />
+						</cell>
+					</row>
+					<row>
+						<label id="xFullName" value="Full Name" />
+						<textbox id="txtFullName" width="200px" />
+					</row>
+					<row>
+						<label id="xBirthDate" value="BirthDate" />
+						<datebox id="dtpBirthDate" width="100px" />
+					</row>
+					<row>
+						<label id="xGender" value="Gender" />
+						<combobox id="cmbGender" width="100px" />
+					</row>
+					<row>
+						<label id="xAddress" value="Address" />
+						<textbox id="txtAddress" width="200px" />
+					</row>
+					<row>
+						<label id="xPhone" value="Phone" />
+						<textbox id="txtPhone" width="100px" />
+					</row>
+					<row>
+						<label id="xKtp" value="Ktp" />
+						<textbox id="txtKtp" width="100px" />
+					</row>
+				</rows>
+			</grid>
+		</vbox>
+	</window>
+</zk>

@@ -1,0 +1,13 @@
+compilation of:
+- Hibernate,
+- Persistence,
+- MySQL JDBC Driver,
+- PostgreSQL JDBC Driver,
+- c3p0.jar,
+- j2ee.jar,
+- ZK CE 6.5.3 (+ CKEditor 4.0.1.0),
+- ZK EE 6.5.3,
+- Common Library,
+- cococare-j.jar,
+- cococare-j-zk.jar
+--eof--

@@ -1,0 +1,22 @@
+<zk>
+	<window vflex="1">
+		<vbox vflex="1">
+			<hbox align="center">
+				<button id="btnSave" label="Save" />
+				<button id="btnClose" label="Close" />
+			</hbox>
+			<grid sclass="input-field">
+				<columns>
+					<column width="100px" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<label id="xReference" value="Reference" />
+						<bandbox id="bndReference" width="200px" />
+					</row>
+				</rows>
+			</grid>
+		</vbox>
+	</window>
+</zk>

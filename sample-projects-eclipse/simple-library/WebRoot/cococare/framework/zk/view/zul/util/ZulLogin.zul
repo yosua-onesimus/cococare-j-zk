@@ -1,0 +1,31 @@
+<zk>
+	<window hflex="1" vflex="1">
+		<vbox align="center" hflex="1" vflex="1">
+			<space vflex="1" />
+			<grid sclass="input-field" hflex="min">
+				<columns>
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<label id="xUsername" value="Username" />
+					</row>
+					<row>
+						<textbox id="txtUsername" width="200px" />
+					</row>
+					<row>
+						<label id="xPassword" value="Password" />
+					</row>
+					<row>
+						<textbox id="txtPassword" type="password"
+							width="200px" />
+					</row>
+					<row>
+						<button id="btnLogin" label="Login" />
+					</row>
+				</rows>
+			</grid>
+			<space vflex="1" />
+		</vbox>
+	</window>
+</zk>

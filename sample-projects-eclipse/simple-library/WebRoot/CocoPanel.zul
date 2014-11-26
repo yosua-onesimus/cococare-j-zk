@@ -1,0 +1,4 @@
+<?page id="pgIndex" title="CocoPanel @2013.03.17 w.ZK.${desktop.webApp.version}" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<include src="/CocoPanel/ZulIndex.zul" hflex="1" vflex="1" />
+</zk>
