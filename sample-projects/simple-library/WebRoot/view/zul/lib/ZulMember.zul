@@ -35,6 +35,14 @@
 						<textbox id="txtAddress" width="200px" />
 					</row>
 					<row>
+						<label id="xRegency" value="Regency" />
+						<combobox id="cmbRegency" width="200px" />
+					</row>
+					<row>
+						<label id="xProvince" value="Province" />
+						<combobox id="cmbProvince" width="200px" />
+					</row>
+					<row>
 						<label id="xPhone" value="Phone" />
 						<textbox id="txtPhone" width="100px" />
 					</row>
