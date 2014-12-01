@@ -20,7 +20,10 @@ public class LibBorrowingItemDao extends LibraryDao {
 	}
 
 	public List<LibBook> getUnlimitedBorrowedBooks() {
-		hql.start().alias("borrowingItem").select("borrowingItem.book").where("borrowingItem.returned = FALSE");
+		hql.start().//
+				alias("borrowingItem").//
+				select("borrowingItem.book").//
+				where("borrowingItem.returned = FALSE");
 		return getListUnlimitedBy(hql.value(), parameters.value());
 	}
 
@@ -29,7 +32,10 @@ public class LibBorrowingItemDao extends LibraryDao {
 	}
 
 	public List<LibMember> getUnlimitedBorrowingMembers() {
-		hql.start().alias("borrowingItem").select("borrowingItem.borrowing.member_").where("borrowingItem.returned = FALSE");
+		hql.start().//
+				alias("borrowingItem").//
+				select("borrowingItem.borrowing.member_").//
+				where("borrowingItem.returned = FALSE");
 		return getListUnlimitedBy(hql.value(), parameters.value());
 	}
 }
