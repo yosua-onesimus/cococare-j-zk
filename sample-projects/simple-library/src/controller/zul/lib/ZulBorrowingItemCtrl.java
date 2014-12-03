@@ -1,10 +1,10 @@
 package controller.zul.lib;
 
 import static cococare.common.CCClass.extract;
-import static cococare.common.CCClass.getIds;
 import static cococare.common.CCFormat.formatNumber;
 import static cococare.common.CCLogic.isNotNull;
 import static cococare.zk.CCZk.addListener;
+import static model.obj.lib.LibFilter.isBorrowedFalse;
 import static model.obj.lib.LibFilter.isSuspendFalse;
 
 import java.util.List;
@@ -18,7 +18,7 @@ import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Doublebox;
 
-import cococare.database.CCHibernateFilter;
+import cococare.framework.model.obj.util.UtilFilter.isIdNotInIds;
 import cococare.framework.zk.CFZkCtrl;
 import cococare.zk.CCBandbox;
 
@@ -49,29 +49,11 @@ public class ZulBorrowingItemCtrl extends CFZkCtrl {
 	@Override
 	protected void _initEditor() {
 		super._initEditor();
-		bndBook.getTable().setHqlFilters(isSuspendFalse, new CCHibernateFilter() {
-			@Override
-			public String getFieldName() {
-				return "id";
-			}
-
-			@Override
-			public String getExpression() {
-				return "id NOT IN (:ids)";
-			}
-
-			@Override
-			public String getParameterName() {
-				return "ids";
-			}
-
+		bndBook.getTable().setHqlFilters(isSuspendFalse, isBorrowedFalse, new isIdNotInIds() {
 			@Override
 			public Object getFieldValue() {
-				// get borrowed books from database
-				List<LibBook> borrowedBooks = borrowingItemBo.getUnlimitedBorrowedBooks();
 				// get borrowed books from screen
-				borrowedBooks.addAll(extract((List) parameter.get(callerCtrl.toString() + childsValue), "book"));
-				return getIds(borrowedBooks);
+				return extract((List) parameter.get(callerCtrl.toString() + childsValue), "book.id");
 			}
 		});
 	}

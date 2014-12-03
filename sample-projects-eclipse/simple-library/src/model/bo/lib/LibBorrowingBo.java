@@ -8,8 +8,8 @@ import model.dao.lib.LibBorrowingItemDao;
 import model.obj.lib.LibBook;
 import model.obj.lib.LibBorrowing;
 import model.obj.lib.LibBorrowingItem;
-import cococare.database.CCHibernateBo;
 import cococare.database.CCHibernate.Transaction;
+import cococare.database.CCHibernateBo;
 
 /**
  * @author Yosua Onesimus

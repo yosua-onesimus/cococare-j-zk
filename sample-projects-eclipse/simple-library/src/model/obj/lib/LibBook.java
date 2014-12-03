@@ -14,9 +14,9 @@ import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 import cococare.common.CCFieldConfig;
-import cococare.common.CCTypeConfig;
 import cococare.common.CCFieldConfig.Accessible;
 import cococare.common.CCFieldConfig.Type;
+import cococare.common.CCTypeConfig;
 import cococare.database.CCEntity;
 
 /**

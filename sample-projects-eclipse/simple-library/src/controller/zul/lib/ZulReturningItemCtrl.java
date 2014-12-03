@@ -9,9 +9,8 @@ import static model.obj.lib.LibFilter.isReturnedFalse;
 
 import java.util.List;
 
-import model.bo.lib.LibReturningItemBo;
 import model.obj.lib.LibBorrowingItem;
-import model.obj.lib.LibMember;
+import model.obj.lib.LibFilter.isBorrowingMember;
 import model.obj.lib.LibReturningItem;
 
 import org.zkoss.zk.ui.event.Event;
@@ -19,12 +18,11 @@ import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Doublebox;
 
-import cococare.database.CCHibernateFilter;
+import cococare.framework.model.obj.util.UtilFilter.isIdNotInIds;
 import cococare.framework.zk.CFZkCtrl;
 import cococare.zk.CCBandbox;
 
 public class ZulReturningItemCtrl extends CFZkCtrl {
-	private LibReturningItemBo returningItemBo;
 	private Datebox dtpdate;
 	private CCBandbox bndMember;
 	private CCBandbox bndBorrowingItem;
@@ -50,39 +48,16 @@ public class ZulReturningItemCtrl extends CFZkCtrl {
 	@Override
 	protected void _initEditor() {
 		super._initEditor();
-		bndBorrowingItem.getTable().setHqlFilters(isReturnedFalse, new CCHibernateFilter() {
-			@Override
-			public String getFieldName() {
-				return "borrowing.member_";
-			}
-
+		bndBorrowingItem.getTable().setHqlFilters(isReturnedFalse, new isBorrowingMember() {
 			@Override
 			public Object getFieldValue() {
 				return bndMember.getObject();
 			}
-		}, new CCHibernateFilter() {
-			@Override
-			public String getFieldName() {
-				return "id";
-			}
-
-			@Override
-			public String getExpression() {
-				return "id NOT IN (:ids)";
-			}
-
-			@Override
-			public String getParameterName() {
-				return "ids";
-			}
-
+		}, new isIdNotInIds() {
 			@Override
 			public Object getFieldValue() {
-				// get borrowed items from database
-				List ids = extract(returningItemBo.getUnlimitedReturningItems((LibMember) bndMember.getObject()), "borrowingItem.id");
 				// get borrowed items from screen
-				ids.addAll(extract((List) parameter.get(callerCtrl.toString() + childsValue), "borrowingItem.id"));
-				return ids;
+				return extract((List) parameter.get(callerCtrl.toString() + childsValue), "borrowingItem.id");
 			}
 		});
 	}

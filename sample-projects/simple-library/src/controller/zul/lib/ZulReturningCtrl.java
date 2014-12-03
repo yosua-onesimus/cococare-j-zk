@@ -11,7 +11,7 @@ import org.zkoss.zul.Doublebox;
 import org.zkoss.zul.Intbox;
 
 import cococare.common.CCFieldConfig.Accessible;
-import cococare.database.CCHibernateFilter;
+import cococare.framework.model.obj.util.UtilFilter.isIdInIds;
 import cococare.framework.zk.CFZkCtrl;
 import cococare.zk.CCBandbox;
 
@@ -55,17 +55,7 @@ public class ZulReturningCtrl extends CFZkCtrl {
 	@Override
 	protected void _initEditor() {
 		super._initEditor();
-		bndMember.getTable().setHqlFilters(new CCHibernateFilter() {
-			@Override
-			public String getFieldName() {
-				return "id";
-			}
-
-			@Override
-			public String getParameterName() {
-				return "ids";
-			}
-
+		bndMember.getTable().setHqlFilters(new isIdInIds() {
 			@Override
 			public Object getFieldValue() {
 				return getIds(returningBo.getUnlimitedBorrowingMembers());

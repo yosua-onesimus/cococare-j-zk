@@ -11,8 +11,8 @@ import model.obj.lib.LibBorrowingItem;
 import model.obj.lib.LibMember;
 import model.obj.lib.LibReturning;
 import model.obj.lib.LibReturningItem;
-import cococare.database.CCHibernateBo;
 import cococare.database.CCHibernate.Transaction;
+import cococare.database.CCHibernateBo;
 
 /**
  * @author Yosua Onesimus

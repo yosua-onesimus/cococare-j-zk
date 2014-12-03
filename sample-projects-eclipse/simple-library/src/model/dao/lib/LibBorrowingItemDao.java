@@ -3,7 +3,6 @@ package model.dao.lib;
 import java.util.List;
 
 import model.mdl.lib.LibraryDao;
-import model.obj.lib.LibBook;
 import model.obj.lib.LibBorrowing;
 import model.obj.lib.LibBorrowingItem;
 import model.obj.lib.LibMember;
@@ -17,14 +16,6 @@ public class LibBorrowingItemDao extends LibraryDao {
 	@Override
 	protected Class getEntity() {
 		return LibBorrowingItem.class;
-	}
-
-	public List<LibBook> getUnlimitedBorrowedBooks() {
-		hql.start().//
-				alias("borrowingItem").//
-				select("borrowingItem.book").//
-				where("borrowingItem.returned = FALSE");
-		return getListUnlimitedBy(hql.value(), parameters.value());
 	}
 
 	public List<LibBorrowingItem> getUnlimitedBorrowingItems(LibBorrowing borrowing) {
