@@ -41,8 +41,10 @@ public class ZulReportListCtrl extends CFZkCtrl {
 
 	@Override
 	protected void _doView() {
-		ZulReportCtrl reportCtrl = new ZulReportCtrl();
-		parameter.put(reportCtrl.toString(), zkView.getTabEntity().getTabs().getChildren().size());
-		reportCtrl.with(parameter).with(this).init(edtEntity.getValueFromEditor());
+		if (edtEntity.isValueValid()) {
+			ZulReportCtrl reportCtrl = new ZulReportCtrl();
+			parameter.put(reportCtrl.toString(), zkView.getTabEntity().getTabs().getChildren().size());
+			reportCtrl.with(parameter).with(this).init(edtEntity.getValueFromEditor());
+		}
 	}
 }

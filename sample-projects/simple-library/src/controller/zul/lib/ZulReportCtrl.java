@@ -6,6 +6,7 @@ import model.obj.lib.LibReport;
 import org.zkoss.zul.Iframe;
 
 import cococare.framework.zk.CFZkCtrl;
+import controller.zul.bil.ZulReportListCtrl;
 
 public class ZulReportCtrl extends CFZkCtrl {
 	private Iframe frmReport;
@@ -21,6 +22,11 @@ public class ZulReportCtrl extends CFZkCtrl {
 	}
 
 	@Override
+	protected ShowMode _getShowMode() {
+		return (callerCtrl instanceof ZulReportListCtrl) ? ShowMode.TAB_MODE : ShowMode.DIALOG_MODE;
+	}
+
+	@Override
 	protected void _initComponent() {
 		super._initComponent();
 		setIframeContent(frmReport, ((LibReport) objEntity).newReport().getPdfStream());
@@ -28,7 +34,7 @@ public class ZulReportCtrl extends CFZkCtrl {
 
 	@Override
 	protected String _getSysRef(Object objEntity) {
-		return parameter.get(toString()).toString();
+		return (callerCtrl instanceof ZulReportListCtrl) ? parameter.get(toString()).toString() : "";
 	}
 
 	@Override
