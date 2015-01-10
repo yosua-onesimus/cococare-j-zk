@@ -6,7 +6,6 @@ import model.obj.lib.LibReport;
 import org.zkoss.zul.Iframe;
 
 import cococare.framework.zk.CFZkCtrl;
-import controller.zul.bil.ZulReportListCtrl;
 
 public class ZulReportCtrl extends CFZkCtrl {
 	private Iframe frmReport;
