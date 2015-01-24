@@ -97,7 +97,7 @@ public class ZulExportImportCtrl extends CFZkCtrl {
                 _doImport();
             }
         });
-        optParameter.addEventListener(new EventListener() {
+        optParameter.addListenerOnClick(new EventListener() {
             @Override
             public void onEvent(Event event) throws Exception {
                 _doUpdateAccessible();

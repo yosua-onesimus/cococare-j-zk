@@ -1,3 +1,5 @@
+<?link rel="shortcut icon" type="image/x-icon" href="/img/icon-cococare.jpg"?>
+<?link rel="icon" type="image/x-icon" href="/img/icon-cococare.jpg"?>
 <?page id="pgIndex" title="cococare-j-zk" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:h="http://www.w3.org/1999/xhtml">
 	<style src="/css/cococare.css" />
@@ -27,7 +29,8 @@
 						<menubar id="aMenuBarH" />
 					</north>
 					<west id="aMenuBarV" width="200px"
-						sclass="aMenuBarV" />
+						sclass="aMenuBarV" collapsible="true" splittable="true"
+						maxsize="250" minsize="200" />
 					<center id="aContent" />
 				</borderlayout>
 			</center>

@@ -31,6 +31,11 @@ public abstract class CFZkMain extends CFApplCtrl {
 
 //<editor-fold defaultstate="collapsed" desc=" public method ">
     @Override
+    public void end() {
+        throw logp(new UnsupportedOperationException(turn(Not_supported_yet)));
+    }
+
+    @Override
     protected void _loadInternalSetting() {
         PLAT_MODE = PlatformMode.WEB;
         initApplPath(getWebRoot());
@@ -48,11 +53,6 @@ public abstract class CFZkMain extends CFApplCtrl {
         getApplName().setValue(APPL_NAME);
         getApplVer().setValue(APPL_VER);
         _clearUserConfig();
-    }
-
-    @Override
-    public void end() {
-        throw logp(new UnsupportedOperationException(turn(Not_supported_yet)));
     }
 
     @Override

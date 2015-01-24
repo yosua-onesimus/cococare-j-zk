@@ -6,6 +6,7 @@ import cococare.database.model.bo.cc.CCCustomFieldConfigBo;
 import cococare.database.model.obj.cc.CCCustomFieldConfig;
 import cococare.framework.zk.CFZkCtrl;
 import cococare.zk.CCCombobox;
+import static cococare.zk.CCZk.addListener;
 import static cococare.zk.CCZk.newCCCombobox;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -59,7 +60,7 @@ public class ZulScreenSettingListCtrl extends CFZkCtrl {
     @Override
     protected void _initListener() {
         super._initListener();
-        cmbEntity.addListenerOnSelect(new EventListener() {
+        addListener(cmbEntity.getCombobox(), new EventListener() {
             @Override
             public void onEvent(Event event) throws Exception {
                 _doSearch();

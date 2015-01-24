@@ -16,6 +16,11 @@
 			org.zkoss.zk.ui.http.HttpSessionListener
 		</listener-class>
 	</listener>
+	<listener>
+		<listener-class>
+			cococare.zk.CCServletContextListener
+		</listener-class>
+	</listener>
 	<servlet>
 		<description>The ZK loader for ZUML pages</description>
 		<servlet-name>zkLoader</servlet-name>

@@ -138,6 +138,10 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             zkView.getTblEntity().setFocus(true);
             //parent-childs-screen
             if (isNotNull(parameter.get(toString() + parentValue))) {
+                if (getBoolean(parameter.get(toString() + parentNewEntity))) {
+                    zkView.getTxtKeyword().setVisible(false);
+                    zkView.getPgnEntity().setVisible(false);
+                }
                 final Object dummy = this;
                 tblEntity.setVisibleField(false, parameter.get(toString() + parentField).toString());
                 tblEntity.setHqlFilters(new CCHibernateFilter() {
@@ -173,6 +177,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             if (newEntity) {
                 _initObjEntity();
             }
+            initSpecialComponent(getContainer(), this);
         }
     }
 
@@ -261,7 +266,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             addListener(zkView.getBtnEdit(), elEdit);
             addListener(zkView.getBtnDelete(), elDelete);
             addListener(zkView.getBtnExport(), elExport);
-            addListener(zkView.getTxtKeyword(), elSearch);
+//            addListener(zkView.getTxtKeyword(), elSearch);
         } else if (BaseFunction.FORM_FUNCTION.equals(_getBaseFunction())) {
             elNew = new EventListener() {
                 @Override
@@ -294,6 +299,12 @@ public abstract class CFZkCtrl extends CFViewCtrl {
                     setReadonly(true);
                 }
             };
+            elExport = new EventListener() {
+                @Override
+                public void onEvent(Event t) throws Exception {
+                    _doExport();
+                }
+            };
             elClose = new EventListener() {
                 @Override
                 public void onEvent(Event t) throws Exception {
@@ -308,6 +319,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             addListener(zkView.getBtnSave(), elSave);
             addListener(zkView.getBtnSaveAndNew(), elSaveAndNew);
             addListener(zkView.getBtnCancel(), elCancel);
+            addListener(zkView.getBtnExport(), elExport);
             addListener(zkView.getBtnClose(), elClose);
         }
     }

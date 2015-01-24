@@ -26,12 +26,12 @@
 					</row>
 				</rows>
 			</grid>
-			<hbox hflex="1" vflex="1">
+			<hlayout hflex="1" vflex="1">
 				<div id="zulNoteReference" hflex="2" vflex="1" />
-				<hbox hflex="1" vflex="1">
+				<hlayout hflex="1" vflex="1" style="overflow:auto;">
 					<grid id="optTag" />
-				</hbox>
-			</hbox>
+				</hlayout>
+			</hlayout>
 		</vbox>
 	</window>
 </zk>

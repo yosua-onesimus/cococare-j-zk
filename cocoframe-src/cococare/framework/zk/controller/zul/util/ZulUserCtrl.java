@@ -152,7 +152,7 @@ public class ZulUserCtrl extends CFZkCtrl {
     protected void _initListener() {
         super._initListener();
         //privilege
-        bndUserGroup.addListenerOnSelect(new EventListener() {
+        addListener(bndUserGroup.getBandbox(), new EventListener() {
             @Override
             public void onEvent(Event event) throws Exception {
                 UtilUserGroup userGroup = (UtilUserGroup) bndUserGroup.getObject();
