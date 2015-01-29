@@ -11,6 +11,11 @@ import org.zkoss.zul.Intbox;
 
 import cococare.framework.zk.CFZkCtrl;
 
+/**
+ * @author Yosua Onesimus
+ * @since 13.03.17
+ * @version 13.03.17
+ */
 public class ZulBorrowingItemListCtrl extends CFZkCtrl {
 	private Datebox dtpDate;
 	private Intbox txtTotalItem;

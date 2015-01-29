@@ -15,6 +15,11 @@ import cococare.framework.model.obj.util.UtilFilter.isIdInIds;
 import cococare.framework.zk.CFZkCtrl;
 import cococare.zk.CCBandbox;
 
+/**
+ * @author Yosua Onesimus
+ * @since 13.03.17
+ * @version 13.03.17
+ */
 public class ZulReturningCtrl extends CFZkCtrl {
 	private LibReturningBo returningBo;
 	private Datebox dtpDate;

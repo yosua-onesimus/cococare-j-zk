@@ -2,6 +2,11 @@ package model.obj.lib;
 
 import cococare.database.CCHibernateFilter;
 
+/**
+ * @author Yosua Onesimus
+ * @since 13.03.17
+ * @version 13.03.17
+ */
 public class LibFilter {
 	public static CCHibernateFilter isSuspendFalse = new CCHibernateFilter() {
 		@Override

@@ -22,6 +22,11 @@ import cococare.framework.model.obj.util.UtilFilter.isIdNotInIds;
 import cococare.framework.zk.CFZkCtrl;
 import cococare.zk.CCBandbox;
 
+/**
+ * @author Yosua Onesimus
+ * @since 13.03.17
+ * @version 13.03.17
+ */
 public class ZulBorrowingItemCtrl extends CFZkCtrl {
 	private LibBorrowingItemBo borrowingItemBo;
 	private Datebox dtpdate;

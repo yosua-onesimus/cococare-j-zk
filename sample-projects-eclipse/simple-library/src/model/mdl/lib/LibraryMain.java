@@ -82,8 +82,4 @@ public class LibraryMain extends CFZkMain {
 		uae.addMenuChild("Dialog Flow Sample", "/img/Sample.png", ZulBook2ListCtrl.class);
 		uae.addMenuChild("Panel Flow Sample", "/img/Sample.png", ZulBook3ListCtrl.class);
 	}
-
-	public static void main(String[] args) {
-		new LibraryMain().showScreen();
-	}
 }

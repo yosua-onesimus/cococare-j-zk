@@ -7,6 +7,11 @@ import org.zkoss.zul.Iframe;
 
 import cococare.framework.zk.CFZkCtrl;
 
+/**
+ * @author Yosua Onesimus
+ * @since 13.03.17
+ * @version 13.03.17
+ */
 public class ZulReportCtrl extends CFZkCtrl {
 	private Iframe frmReport;
 

@@ -10,6 +10,11 @@ import org.zkoss.zul.Button;
 import cococare.framework.zk.CFZkCtrl;
 import cococare.zk.CCEditor;
 
+/**
+ * @author Yosua Onesimus
+ * @since 13.03.17
+ * @version 13.03.17
+ */
 public class ZulReportListCtrl extends CFZkCtrl {
 	private Button _btnView;
 

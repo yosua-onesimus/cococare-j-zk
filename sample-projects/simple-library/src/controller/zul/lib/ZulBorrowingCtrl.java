@@ -14,6 +14,11 @@ import cococare.common.CCFieldConfig.Accessible;
 import cococare.framework.zk.CFZkCtrl;
 import cococare.zk.CCBandbox;
 
+/**
+ * @author Yosua Onesimus
+ * @since 13.03.17
+ * @version 13.03.17
+ */
 public class ZulBorrowingCtrl extends CFZkCtrl {
 	private LibBorrowingBo borrowingBo;
 	private Datebox dtpDate;

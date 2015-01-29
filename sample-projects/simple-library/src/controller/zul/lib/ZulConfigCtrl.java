@@ -4,6 +4,11 @@ import model.bo.lib.LibConfigBo;
 import model.obj.lib.LibConfig;
 import cococare.framework.zk.CFZkCtrl;
 
+/**
+ * @author Yosua Onesimus
+ * @since 13.03.17
+ * @version 13.03.17
+ */
 public class ZulConfigCtrl extends CFZkCtrl {
 	private LibConfigBo configBo;
 
