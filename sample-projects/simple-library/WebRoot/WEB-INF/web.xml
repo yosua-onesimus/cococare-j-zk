@@ -6,7 +6,7 @@
 	id="WebApp_ID" version="2.5">
 	<!-- Spring -->
 	<!-- ZK -->
-	<display-name>cococare-j-zk</display-name>
+	<display-name>simple-library</display-name>
 	<listener>
 		<description>
 			Used to cleanup when a session is destroyed

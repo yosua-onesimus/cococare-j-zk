@@ -1,4 +1,4 @@
-<?page id="pgIndex" title="cococare-j-zk" contentType="text/html;charset=UTF-8"?>
+<?page id="pgIndex" title="simple-library" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:h="http://www.w3.org/1999/xhtml">
 	<style src="/css/cococare.css" />
 	<script type="text/javascript" src="/js/jquery.filter_input.js" />
