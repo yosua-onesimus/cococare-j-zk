@@ -29,7 +29,7 @@
 	</library-property>
 	<library-property>
 		<name>org.zkoss.zul.listbox.rod</name>
-		<value>true</value>
+		<value>false</value>
 	</library-property>
 	<library-property>
 		<name>org.zkoss.zul.listbox.groupSelect</name>

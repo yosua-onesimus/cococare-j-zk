@@ -147,7 +147,8 @@ a:hover
 }
 
 /* Selectors Class : Bandbox */
-.txtKeyword .z-bandbox-inp {
+.txtKeyword .z-bandbox-inp 
+,.z-textbox.txtKeyword {
     border: 1px #000 solid;
 }
 

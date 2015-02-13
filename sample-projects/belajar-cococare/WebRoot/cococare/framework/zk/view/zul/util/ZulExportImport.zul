@@ -1,5 +1,5 @@
 <zk>
-	<window vflex="1">
+	<window title="Export Import" vflex="1">
 		<vbox vflex="1">
 			<hbox align="center">
 				<button id="btnExport" label="Export" />

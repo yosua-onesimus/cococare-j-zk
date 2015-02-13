@@ -20,19 +20,19 @@
 					<north>
 						<menubar id="aMenuBarH" />
 					</north>
-					<west id="aMenuBarV" width="200px" visible="false" />
+					<west id="aMenuBarV" width="200px"
+						sclass="aMenuBarV" />
 					<center id="aContent" />
 				</borderlayout>
 			</center>
 			<south>
-				<hbox align="center" height="30px" hflex="1">
-					<div align="center" width="150px">
-						<label id="aCopyright" style="font-size:10px;"
-							value="Copyright © 2013" />
-						<space />
-						<label id="aApplVer" style="font-size:10px;"
-							value="1.0.130317" />
-					</div>
+				<hbox align="center" height="20px" hflex="1">
+					<space />
+					<label id="aCopyright" style="font-size:10px;"
+						value="Copyright © 2013" />
+					<space />
+					<label id="aApplVer" style="font-size:10px;"
+						value="1.0.130317" />
 				</hbox>
 			</south>
 		</borderlayout>

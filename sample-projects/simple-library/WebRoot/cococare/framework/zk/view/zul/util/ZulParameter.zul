@@ -5,7 +5,9 @@
 				<button id="btnSave" label="Save" />
 				<button id="btnClose" label="Close" />
 			</hbox>
-			<grid id="pnlGenerator" sclass="input-field" />
+			<vlayout vflex="1" style="overflow:auto;">
+				<grid id="pnlGenerator" sclass="input-field" />
+			</vlayout>
 		</vbox>
 	</window>
 </zk>
