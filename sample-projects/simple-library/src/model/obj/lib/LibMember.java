@@ -27,6 +27,7 @@ import cococare.database.CCEntity;
 @Table(name = "lib_members")
 @CCTypeConfig(label = "Member", uniqueKey = "fullName")
 public class LibMember implements CCEntity {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -103,7 +104,7 @@ public class LibMember implements CCEntity {
 	@Column(length = 8)
 	@CCFieldConfig(maxLength = 8, visible = false, visible2 = false)
 	private String gender;
-	@Column()
+	@Column(length = 255)
 	@CCFieldConfig(componentId = "txtAddress", visible = false)
 	private String address;
 	@Column(length = 48)
@@ -115,6 +116,15 @@ public class LibMember implements CCEntity {
 	@Column(length = 16)
 	@CCFieldConfig(componentId = "txtPhone", type = Type.PHONE_NUMBER, maxLength = 16)
 	private String phone;
+	@Column(length = 32)
+	@CCFieldConfig(componentId = "txtEmail", type = Type.EMAIL, maxLength = 32, visible = false)
+	private String email;
+	@Column(length = Integer.MAX_VALUE)
+	@CCFieldConfig(componentId = "attPhoto", type = Type.THUMB_FILE, optionReflectKey = "photoName", visible = false)
+	private byte[] photo;
+	@Column(length = 255)
+	@CCFieldConfig(visible = false, visible2 = false)
+	private String photoName;
 	@Column(length = 16)
 	@CCFieldConfig(componentId = "txtKtp", maxLength = 16)
 	private String ktp;
@@ -191,6 +201,30 @@ public class LibMember implements CCEntity {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
+
+	public String getPhotoName() {
+		return photoName;
+	}
+
+	public void setPhotoName(String photoName) {
+		this.photoName = photoName;
 	}
 
 	public String getKtp() {

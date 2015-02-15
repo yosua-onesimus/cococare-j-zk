@@ -4,8 +4,10 @@ package cococare.framework.zk;
 import cococare.common.CCAccessibleListener;
 import static cococare.common.CCClass.newObject;
 import static cococare.common.CCClass.setValue;
+import static cococare.common.CCFinal._after_start;
 import static cococare.common.CCFinal.btnEdit;
 import static cococare.common.CCFormat.getBoolean;
+import static cococare.common.CCLanguage.turn;
 import static cococare.common.CCLogic.*;
 import static cococare.common.CCMessage.logp;
 import cococare.database.CCHibernateFilter;
@@ -26,6 +28,7 @@ import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Tab;
 import org.zkoss.zul.Tabpanel;
 import org.zkoss.zul.Window;
+import org.zkoss.zul.impl.XulElement;
 //</editor-fold>
 
 /**
@@ -73,16 +76,18 @@ public abstract class CFZkCtrl extends CFViewCtrl {
 
     @Override
     public void doShowTab(String sysRef, String title, CFViewCtrl viewCtrl) {
-        //
-        Tab tab = new Tab(title);
-        sysRef_tab.put(sysRef, tab);
-        tab.setParent(zkView.getTabEntity().getTabs());
-        //
-        sysRef_tabpanel.put(sysRef, new Tabpanel());
-        sysRef_zkCtrl.put(sysRef, (CFZkCtrl) viewCtrl);
-        sysRef_zkCtrl.get(sysRef).getContainer().setParent(sysRef_tabpanel.get(sysRef));
-        sysRef_tabpanel.get(sysRef).setParent(zkView.getTabEntity().getTabpanels());
-        //
+        if (isNull(sysRef_zkCtrl.get(sysRef))) {
+            //
+            sysRef_tab.put(sysRef, new Tab(turn(title)));
+            sysRef_tab.get(sysRef).setParent(zkView.getTabEntity().getTabs());
+            //
+            sysRef_tabpanel.put(sysRef, new Tabpanel());
+            sysRef_zkCtrl.put(sysRef, (CFZkCtrl) viewCtrl);
+            sysRef_zkCtrl.get(sysRef).getContainer().setParent(sysRef_tabpanel.get(sysRef));
+            sysRef_tabpanel.get(sysRef).setParent(zkView.getTabEntity().getTabpanels());
+        } else if (isNotNull(viewCtrl)) {
+            ((CFZkCtrl) viewCtrl).getContainer().detach();
+        }
         zkView.getTabEntity().setSelectedPanel(sysRef_tabpanel.get(sysRef));
     }
 
@@ -113,12 +118,12 @@ public abstract class CFZkCtrl extends CFViewCtrl {
     @Override
     protected void _initObject() {
         super._initObject();
-        if (_hasEntity()) {
-            if (BaseFunction.LIST_FUNCTION.equals(_getBaseFunction())) {
-                sysRef_tab = new HashMap();
-                sysRef_zkCtrl = new HashMap();
-                sysRef_tabpanel = new HashMap();
-            } else if (BaseFunction.FORM_FUNCTION.equals(_getBaseFunction())) {
+        if (BaseFunction.LIST_FUNCTION.equals(_getBaseFunction())) {
+            sysRef_tab = new HashMap();
+            sysRef_zkCtrl = new HashMap();
+            sysRef_tabpanel = new HashMap();
+        } else if (BaseFunction.FORM_FUNCTION.equals(_getBaseFunction())) {
+            if (_hasEntity()) {
                 sysRef = _getSysRef(objEntity);
             }
         }
@@ -139,8 +144,9 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             //parent-childs-screen
             if (isNotNull(parameter.get(toString() + parentValue))) {
                 if (getBoolean(parameter.get(toString() + parentNewEntity))) {
-                    zkView.getTxtKeyword().setVisible(false);
-                    zkView.getPgnEntity().setVisible(false);
+                    setVisible(zkView.getTxtKeyword(), false);
+                    setVisible(zkView.getBtnFilter(), false);
+                    setVisible(zkView.getPgnEntity(), false);
                 }
                 final Object dummy = this;
                 tblEntity.setVisibleField(false, parameter.get(toString() + parentField).toString());
@@ -164,6 +170,20 @@ public abstract class CFZkCtrl extends CFViewCtrl {
         if (_hasTblEntity()) {
             tblEntity.setNaviElements(zkView.getPgnEntity(), zkView.getTxtKeyword(),
                     zkView.getBtnView(), zkView.getBtnEdit(), zkView.getBtnDelete());
+        }
+    }
+
+    @Override
+    protected void _initFilterElements() {
+        if (_hasTblEntity() && isNotNull(zkView.getBtnFilter())) {
+            final String popupId = zkView.getBtnFilter().toString();
+            showPopup((XulElement) getContainer(), zkView.getBtnFilter(), tblEntity.getFilterContainer(), popupId, _after_start);
+            addListener(tblEntity.getFilterBtnFilter(), new EventListener() {
+                @Override
+                public void onEvent(Event arg0) throws Exception {
+                    getPopup(getContainer(), popupId).close();
+                }
+            });
         }
     }
 //</editor-fold>
@@ -227,37 +247,37 @@ public abstract class CFZkCtrl extends CFViewCtrl {
         if (BaseFunction.LIST_FUNCTION.equals(_getBaseFunction())) {
             elAdd = new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     _doAdd();
                 }
             };
             elView = new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     _doView();
                 }
             };
             elEdit = new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     _doEdit();
                 }
             };
             elDelete = new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     _doDelete();
                 }
             };
             elExport = new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     _doExport();
                 }
             };
             elSearch = new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     _doSearch();
                 }
             };
@@ -270,44 +290,44 @@ public abstract class CFZkCtrl extends CFViewCtrl {
         } else if (BaseFunction.FORM_FUNCTION.equals(_getBaseFunction())) {
             elNew = new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     //new data
                 }
             };
             elEdit = new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     setReadonly(false);
                 }
             };
             elSave = new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     _doSave();
                 }
             };
             elSaveAndNew = new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     _doSave();
                     //new data
                 }
             };
             elCancel = new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     setReadonly(true);
                 }
             };
             elExport = new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     _doExport();
                 }
             };
             elClose = new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     _doClose();
                 }
             };
@@ -467,7 +487,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
         sysRef = _getSysRef(objEntity);
         if (isNotNull(sysRef_zkCtrl.get(sysRef))) {
             sysRef_zkCtrl.get(sysRef).setReadonly(readonly);
-            zkView.getTabEntity().setSelectedPanel(sysRef_tabpanel.get(sysRef));
+            doShowTab(sysRef, null, null);
             return false;
         } else {
             return newObject(getControllerZul(getClass())).with(parameter).with(this).with(readonly).init(objEntity);

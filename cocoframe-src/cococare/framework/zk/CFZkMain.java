@@ -76,7 +76,7 @@ public abstract class CFZkMain extends CFApplCtrl {
         if (!HIBERNATE.getCustomizableClasses().isEmpty()) {
             uae.reg(Utility, Screen_Setting, ZulScreenSettingListCtrl.class);
         }
-        uae.reg(Utility, Application_Setting, ZulApplicationSettingCtrl.class);
+        uae.reg(Utility, Application_Setting, ZulApplicationSettingListCtrl.class);
         uae.reg(Utility, Database_Setting, ZulDatabaseSettingCtrl.class);
         if (LICENSE_ACTIVE) {
             uae.reg(Utility, Registration, ZulRegistrationCtrl.class);
@@ -109,30 +109,30 @@ public abstract class CFZkMain extends CFApplCtrl {
     @Override
     protected void _applyUserConfigUaeEnd(CFApplUae uae) {
         uae.changeMenuSide();
-        uae.addMenuParent(Utility, null, null);
-        uae.addMenuChild(User_Group, null, ZulUserGroupListCtrl.class);
-        uae.addMenuChild(User, null, ZulUserListCtrl.class);
-        uae.addMenuChild(Change_Password, null, ZulChangePasswordCtrl.class);
+        uae.addMenuParent(Utility, "/img/icon-menu-parent.png", null);
+        uae.addMenuChild(User_Group, "/img/icon-menu-user-group.png", ZulUserGroupListCtrl.class);
+        uae.addMenuChild(User, "/img/icon-menu-user.png", ZulUserListCtrl.class);
+        uae.addMenuChild(Change_Password, "/img/icon-menu-change-password.png", ZulChangePasswordCtrl.class);
         uae.addMenuSeparator();
         if (!HIBERNATE.getParameterClasses().isEmpty()) {
-            uae.addMenuChild(Parameter, null, ZulParameterListCtrl.class);
-            uae.addMenuChild(Export_Import, null, ZulExportImportCtrl.class);
+            uae.addMenuChild(Parameter, "/img/icon-menu-parameter.png", ZulParameterListCtrl.class);
+            uae.addMenuChild(Export_Import, "/img/icon-menu-export-import.png", ZulExportImportCtrl.class);
         }
         if (!HIBERNATE.getAuditableClasses().isEmpty()) {
-            uae.addMenuChild(Audit_Trail, null, ZulAuditTrailListCtrl.class);
+            uae.addMenuChild(Audit_Trail, "/img/icon-menu-audit-trail.png", ZulAuditTrailListCtrl.class);
         }
-        uae.addMenuChild(Logger_History, null, ZulLoggerListCtrl.class);
+        uae.addMenuChild(Logger_History, "/img/icon-menu-logger-history.png", ZulLoggerListCtrl.class);
         uae.addMenuSeparator();
         if (!HIBERNATE.getCustomizableClasses().isEmpty()) {
-            uae.addMenuChild(Screen_Setting, null, ZulScreenSettingListCtrl.class);
+            uae.addMenuChild(Screen_Setting, "/img/icon-menu-screen-setting.png", ZulScreenSettingListCtrl.class);
         }
-        uae.addMenuChild(Application_Setting, null, ZulApplicationSettingCtrl.class);
-        uae.addMenuChild(Database_Setting, null, ZulDatabaseSettingCtrl.class);
+        uae.addMenuChild(Application_Setting, "/img/icon-menu-application-setting.png", ZulApplicationSettingListCtrl.class);
+        uae.addMenuChild(Database_Setting, "/img/icon-menu-database-setting.png", ZulDatabaseSettingCtrl.class);
         if (LICENSE_ACTIVE) {
             uae.addMenuSeparator();
-            uae.addMenuChild(Registration, null, ZulRegistrationCtrl.class);
+            uae.addMenuChild(Registration, "/img/icon-menu-registration.png", ZulRegistrationCtrl.class);
         }
-        uae.addMenuParent(Log_Out, null, ZulLoginCtrl.class);
+        uae.addMenuParent(Log_Out, "/img/icon-menu-log-out.png", ZulLoginCtrl.class);
         uae.compileMenu();
     }
 

@@ -47,6 +47,14 @@
 						<textbox id="txtPhone" width="100px" />
 					</row>
 					<row>
+						<label value="Email" />
+						<textbox id="txtEmail" width="200px" />
+					</row>
+					<row>
+						<label value="Photo" />
+						<div id="attPhoto" />
+					</row>
+					<row>
 						<label id="xKtp" value="Ktp" />
 						<textbox id="txtKtp" width="100px" />
 					</row>

@@ -158,7 +158,7 @@ public class CFZkUae extends CFApplUae {
                     isNull(menuCandidate.getControllerClass()) ? null
                     : new EventListener() {
                 @Override
-                public void onEvent(Event t) throws Exception {
+                public void onEvent(Event event) throws Exception {
                     newObject(menuCandidate.getControllerClass()).init();
                 }
             });

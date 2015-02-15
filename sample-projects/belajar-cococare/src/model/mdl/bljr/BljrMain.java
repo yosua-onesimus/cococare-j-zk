@@ -26,8 +26,8 @@ public class BljrMain extends CFZkMain {
 
 	@Override
 	protected void _applyUserConfigUaeBody(CFApplUae uae) {
-		uae.addMenuParent(CCLanguage.Archive, null, null);
-		uae.addMenuChild("Employee", null, ZulEmployeeListCtrl.class);
+		uae.addMenuParent(CCLanguage.Archive, "/img/icon-menu-parent.png", null);
+		uae.addMenuChild("Employee", "/img/icon-menu-child.png", ZulEmployeeListCtrl.class);
 	}
 
 	@Override

@@ -53,6 +53,10 @@ public class CFZkView {
         return getButton(getContainer(), btnExport);
     }
 
+    public Button getBtnFilter() {
+        return getButton(getContainer(), "_" + btnFilter);
+    }
+
     public Button getBtnNew() {
         return getButton(getContainer(), btnNew);
     }

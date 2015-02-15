@@ -187,8 +187,8 @@ public class CFZkMap {
      *
      * @return the menu bar.
      */
-    public static West getMenubarV() {
-        return getWest(getMainScreen(), aMenuBarV);
+    public static LayoutRegion getMenubarV() {
+        return getLayoutRegion(getMainScreen(), aMenuBarV);
     }
 
     /**

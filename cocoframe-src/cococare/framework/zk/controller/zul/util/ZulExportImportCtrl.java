@@ -138,6 +138,7 @@ public class ZulExportImportCtrl extends CFZkCtrl {
                         }
                     }
                 }
+                excel.closeWorkbook();
                 showImport(updateCaller);
             }
         }

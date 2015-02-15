@@ -13,7 +13,7 @@ import cococare.datafile.CCSetup;
  * @version 13.03.17
  */
 public class LibReport extends CCJasper {
-	private enum Report {
+	public enum Report {
 		BOOK_LIST("Book List", "LibBook.jasper", "RptHeader.jasper"), MEMBER_LIST("Member List", "LibMember.jasper"), BOOK_HISTORY("Book History", "LibBookHistory.jasper"), MEMBER_HISTORY("Member History", "LibMemberHistory.jasper");
 		private String string;
 		private String jasperFile;

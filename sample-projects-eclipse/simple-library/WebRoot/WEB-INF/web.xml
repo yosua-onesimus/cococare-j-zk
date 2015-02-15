@@ -6,7 +6,7 @@
 	id="WebApp_ID" version="2.5">
 	<!-- Spring -->
 	<!-- ZK -->
-	<display-name>simple-library</display-name>
+	<display-name>Simple Library</display-name>
 	<listener>
 		<description>
 			Used to cleanup when a session is destroyed
@@ -14,6 +14,11 @@
 		<display-name>ZK Session cleaner</display-name>
 		<listener-class>
 			org.zkoss.zk.ui.http.HttpSessionListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			cococare.zk.CCServletContextListener
 		</listener-class>
 	</listener>
 	<servlet>

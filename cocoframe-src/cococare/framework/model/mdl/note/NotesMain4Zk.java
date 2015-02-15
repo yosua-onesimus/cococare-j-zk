@@ -43,8 +43,8 @@ public class NotesMain4Zk extends CFZkMain {
 
     @Override
     protected void _applyUserConfigUaeBody(CFApplUae uae) {
-        uae.addMenuParent(Notes, null, null);
-        uae.addMenuChild(Reference, null, ZulReferenceListCtrl.class);
-        uae.addMenuChild(Note, null, ZulNoteListCtrl.class);
+        uae.addMenuParent(Notes, "/img/icon-menu-parent.png", null);
+        uae.addMenuChild(Reference, "/img/icon-menu-child.png", ZulReferenceListCtrl.class);
+        uae.addMenuChild(Note, "/img/icon-menu-child.png", ZulNoteListCtrl.class);
     }
 }
