@@ -1,0 +1,294 @@
+<?link rel="shortcut icon" type="image/x-icon" href="/img/icon-cococare.jpg"?>
+<?link rel="icon" type="image/x-icon" href="/img/icon-cococare.jpg"?>
+<?page id="pgIndex" title="View Controller Sample" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="http://www.w3.org/1999/xhtml">
+	<style src="/css/cococare.css" />
+	<script type="text/javascript" src="/js/jquery.filter_input.js" />
+	<script type="text/javascript" src="/js/jquery.maskedinput.min.js" />
+	<window id="ZulIndex" border="normal" hflex="1" vflex="1"
+		use="controller.zul.ZulVCSampleCtrl">
+		<tabbox hflex="1" vflex="1">
+			<tabs>
+				<tab label="List Sample" />
+				<tab label="Form Sample" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<tabbox hflex="1" vflex="1">
+						<tabs>
+							<tab label="Pure ZK" />
+							<tab label="Pure ZK@Ctrl" />
+							<tab label="With CCTable 1" />
+							<tab label="With CCTable 2" />
+							<tab label="With CCTable 3" />
+							<tab label="With CCTable 4" />
+							<tab label="With CCTable 5" />
+						</tabs>
+						<tabpanels>
+							<tabpanel>
+								<vbox hflex="1" vflex="1">
+									<grid hflex="1" vflex="1">
+										<columns>
+											<column label="Column A"
+												width="100px" />
+											<column label="Column B"
+												width="100px" />
+											<column label="Column C"
+												width="100px" />
+											<column label="Column D" />
+										</columns>
+										<rows>
+											<row>
+												<label value="Row 1 A" />
+												<label value="Row 1 B" />
+												<label value="Row 1 C" />
+												<label value="Row 1 D" />
+											</row>
+											<row>
+												<label value="Row 2 A" />
+												<label value="Row 2 B" />
+												<label value="Row 2 C" />
+												<label value="Row 2 D" />
+											</row>
+											<group
+												label="Group Sample (Span)" />
+											<row>
+												<cell colspan="2">
+													<label
+														value="Row 3 A - Row 3 B" />
+												</cell>
+												<label value="Row 3 C" />
+												<cell rowspan="2">
+													<label
+														value="Row 3 D - Row 4 D" />
+												</cell>
+											</row>
+											<row>
+												<label value="Row 4 A" />
+												<label value="Row 4 B" />
+												<label value="Row 4 C" />
+											</row>
+										</rows>
+									</grid>
+									<listbox hflex="1" vflex="1">
+										<listhead>
+											<listheader label="Column A"
+												width="100px" />
+											<listheader label="Column B"
+												width="100px" />
+											<listheader label="Column C"
+												width="100px" />
+											<listheader
+												label="Column D" />
+										</listhead>
+										<listitem>
+											<listcell label="Row 1 A" />
+											<listcell label="Row 1 B" />
+											<listcell label="Row 1 C" />
+											<listcell label="Row 1 D" />
+										</listitem>
+										<listitem>
+											<listcell label="Row 2 A" />
+											<listcell label="Row 2 B" />
+											<listcell label="Row 2 C" />
+											<listcell label="Row 2 D" />
+										</listitem>
+										<listgroup label="Group Sample" />
+										<listitem>
+											<listcell label="Row 3 A" />
+											<listcell label="Row 3 B" />
+											<listcell label="Row 3 C" />
+											<listcell label="Row 3 D" />
+										</listitem>
+										<listitem>
+											<listcell label="Row 4 A" />
+											<listcell label="Row 4 B" />
+											<listcell label="Row 4 C" />
+											<listcell label="Row 4 D" />
+										</listitem>
+									</listbox>
+									<tree hflex="1" vflex="1">
+										<treecols>
+											<treecol label="Column A"
+												width="100px" />
+											<treecol label="Column B"
+												width="100px" />
+											<treecol label="Column C"
+												width="100px" />
+											<treecol label="Column D" />
+										</treecols>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Row 1 A" />
+													<treecell
+														label="Row 1 B" />
+													<treecell
+														label="Row 1 C" />
+													<treecell
+														label="Row 1 D" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell
+														label="Row 2 A" />
+													<treecell
+														label="Row 2 B" />
+													<treecell
+														label="Row 2 C" />
+													<treecell
+														label="Row 2 D" />
+												</treerow>
+												<treechildren>
+													<treeitem>
+														<treerow>
+															<treecell
+																label="3 A" />
+															<treecell
+																label="3 B" />
+															<treecell
+																label="3 C" />
+															<treecell
+																label="3 D" />
+														</treerow>
+														<treechildren>
+															<treeitem>
+																<treerow>
+																	<treecell
+																		label="4 A" />
+																	<treecell
+																		label="4 B" />
+																	<treecell
+																		label="4 C" />
+																	<treecell
+																		label="4 D" />
+																</treerow>
+															</treeitem>
+														</treechildren>
+													</treeitem>
+												</treechildren>
+											</treeitem>
+										</treechildren>
+									</tree>
+								</vbox>
+							</tabpanel>
+							<tabpanel>
+								<vbox hflex="1" vflex="1">
+									<grid id="grid1" hflex="1"
+										vflex="1" />
+									<listbox id="listbox1" hflex="1"
+										vflex="1" />
+									<tree id="tree1" hflex="1"
+										vflex="1" />
+								</vbox>
+							</tabpanel>
+							<tabpanel>
+								<vbox hflex="1" vflex="1">
+									<grid id="grid2" hflex="1"
+										vflex="1" />
+									<listbox id="listbox2" hflex="1"
+										vflex="1" />
+									<tree id="tree2" hflex="1"
+										vflex="1" />
+								</vbox>
+							</tabpanel>
+							<tabpanel>
+								<vbox hflex="1" vflex="1">
+									<grid id="grid3" hflex="1"
+										vflex="1" />
+									<listbox id="listbox3" hflex="1"
+										vflex="1" />
+									<tree id="tree3" hflex="1"
+										vflex="1" />
+								</vbox>
+							</tabpanel>
+							<tabpanel>
+								<vbox hflex="1" vflex="1">
+									<grid id="grid4" hflex="1"
+										vflex="1" />
+									<listbox id="listbox4" hflex="1"
+										vflex="1" />
+									<tree id="tree4" hflex="1"
+										vflex="1" />
+								</vbox>
+							</tabpanel>
+							<tabpanel>
+								<vbox hflex="1" vflex="1">
+									<grid id="grid5" hflex="1"
+										vflex="1" />
+									<listbox id="listbox5" hflex="1"
+										vflex="1" />
+									<tree id="tree5" hflex="1"
+										vflex="1" />
+								</vbox>
+							</tabpanel>
+							<tabpanel>
+								<borderlayout>
+									<north>
+										<hbox align="center"
+											hflex="1">
+											<button id="btnAdd"
+												label="Add" />
+											<button id="btnEdit"
+												label="Edit" />
+											<button id="btnDelete"
+												label="Delete" />
+											<space hflex="1" />
+											<textbox id="txtKeyword"
+												sclass="txtKeyword" />
+										</hbox>
+									</north>
+									<center>
+										<listbox id="tblEntity"
+											hflex="1" vflex="1" />
+									</center>
+									<south>
+										<paging id="pgnEntity" />
+									</south>
+								</borderlayout>
+							</tabpanel>
+						</tabpanels>
+					</tabbox>
+				</tabpanel>
+				<tabpanel>
+					<tabbox hflex="1" vflex="1">
+						<tabs>
+							<tab label="With CCEditor" />
+							<tab label="With CCEditor (autogen)" />
+						</tabs>
+						<tabpanels>
+							<tabpanel>
+								<window id="winEditor">
+									<grid>
+										<columns>
+											<column width="100px" />
+										</columns>
+										<rows>
+											<row>
+												<label value="Code" />
+												<textbox id="txtCode"
+													width="100px" />
+											</row>
+											<row>
+												<label value="Title" />
+												<textbox id="txtTitle"
+													width="100px" />
+											</row>
+										</rows>
+									</grid>
+								</window>
+							</tabpanel>
+							<tabpanel>
+								<window id="winEditor2">
+									<grid id="pnlGenerator" />
+								</window>
+							</tabpanel>
+						</tabpanels>
+					</tabbox>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>

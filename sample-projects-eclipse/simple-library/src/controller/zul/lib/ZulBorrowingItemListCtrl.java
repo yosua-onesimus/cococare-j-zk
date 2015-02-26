@@ -43,7 +43,7 @@ public class ZulBorrowingItemListCtrl extends CFZkCtrl {
 	@Override
 	protected void _initTable() {
 		super._initTable();
-		tblEntity.addListenerOnSelect(new EventListener() {
+		tblEntity.addListenerOnChange(new EventListener() {
 			public void onEvent(Event event) throws Exception {
 				_doUpdateParentField(event);
 			}
