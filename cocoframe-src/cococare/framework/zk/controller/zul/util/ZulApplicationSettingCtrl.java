@@ -2,6 +2,7 @@ package cococare.framework.zk.controller.zul.util;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import static cococare.common.CCClass.getLabel;
+import cococare.common.CCFieldConfig.Accessible;
 import static cococare.common.CCLogic.isNotNull;
 import cococare.database.CCEntity;
 import static cococare.datafile.CCFile.writeObject;
@@ -14,6 +15,7 @@ import static cococare.framework.zk.CFZkMap.newContainer;
 import cococare.framework.zk.CFZkView;
 import static cococare.zk.CCZk.initComponent;
 import static cococare.zk.CCZk.initSpecialComponent;
+import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Grid;
 //</editor-fold>
 
@@ -27,6 +29,7 @@ public class ZulApplicationSettingCtrl extends CFZkCtrl {
 //<editor-fold defaultstate="collapsed" desc=" private object ">
     private UtilConfigBo configBo;
     private Grid pnlGenerator;
+    private Combobox cmbApplLookAndFeel;
 //</editor-fold>
 
     @Override
@@ -53,8 +56,11 @@ public class ZulApplicationSettingCtrl extends CFZkCtrl {
     }
 
     @Override
-    protected String _getTabTitle() {
-        return getLabel(_getEntity());
+    protected void _doUpdateAccessible() {
+        super._doUpdateAccessible();
+        if (objEntity instanceof UtilConfAppl) {
+            edtEntity.setAccessible(cmbApplLookAndFeel, Accessible.READONLY_SET_NULL);
+        }
     }
 
     @Override
@@ -64,5 +70,10 @@ public class ZulApplicationSettingCtrl extends CFZkCtrl {
             CFApplCtrl.INSTANCE.updateNonContent(objEntity);
         }
         return updateCaller;
+    }
+
+    @Override
+    protected String _getTabTitle() {
+        return getLabel(_getEntity());
     }
 }

@@ -9,6 +9,7 @@ import static cococare.common.CCMessage.logp;
 import cococare.common.CCTypeConfig;
 import cococare.framework.model.bo.util.UtilConfigBo;
 import cococare.framework.model.obj.util.UtilConfAppl;
+import cococare.framework.model.obj.util.UtilScheduler;
 import cococare.framework.zk.CFZkCtrl;
 import static cococare.zk.CCZk.addListener;
 import java.util.ArrayList;
@@ -49,6 +50,7 @@ public class ZulApplicationSettingListCtrl extends CFZkCtrl {
         settingClasses = new ArrayList();
         settingClasses.add(UtilConfAppl.class);
         settingClasses.addAll(configBo.loadConfAppl().getUtilAdditionalSettingClass());
+        settingClasses.add(UtilScheduler.class);
         typeConfig_settingClass = new LinkedHashMap();
         for (Class settingClass : settingClasses) {
             typeConfig_settingClass.put(getCCTypeConfig(settingClass), settingClass);
@@ -110,7 +112,7 @@ public class ZulApplicationSettingListCtrl extends CFZkCtrl {
         }
     }
 
-    protected void _doEdit(CCTypeConfig typeConfig) {
+    private void _doEdit(CCTypeConfig typeConfig) {
         String controllerClass = typeConfig.controllerClass();
         objEntity = configBo.loadHash(typeConfig_settingClass.get(typeConfig));
         if (isNullOrEmpty(controllerClass)) {

@@ -1,10 +1,14 @@
 package cococare.framework.zk;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
+import static cococare.common.CCFinal._background_position_center;
+import static cococare.common.CCFinal._background_size_cover;
 import static cococare.common.CCFormat.*;
 import cococare.common.CCLanguage;
 import static cococare.common.CCLanguage.*;
+import static cococare.common.CCLogic.isNull;
 import static cococare.common.CCMessage.logp;
+import static cococare.database.CCLoginInfo.INSTANCE_getDomain;
 import static cococare.datafile.CCFile.*;
 import cococare.framework.common.CFApplCtrl;
 import cococare.framework.common.CFApplUae;
@@ -15,8 +19,10 @@ import cococare.framework.zk.controller.zul.util.*;
 import cococare.zk.CCMenubar;
 import static cococare.zk.CCSession.getWebRoot;
 import static cococare.zk.CCZk.setImageContent;
+import static cococare.zk.CCZk.setStyle;
 import cococare.zk.database.CCLoginInfo;
 import java.io.File;
+import org.zkoss.zk.ui.HtmlBasedComponent;
 //</editor-fold>
 
 /**
@@ -89,10 +95,25 @@ public abstract class CFZkMain extends CFApplCtrl {
         return new ZulDatabaseSettingCtrl().init();
     }
 
+    private void _setWallpaper() {
+        File wallpaper = getFileUserConfFile("wallpaper.png");
+        if (isNull(confAppl.getApplWallpaper())) {
+            delete(wallpaper);
+        } else {
+            writeByteA(confAppl.getApplWallpaper(), wallpaper);
+            setStyle((HtmlBasedComponent) getContent(), "background-image:url('files/user/" + INSTANCE_getDomain() + "/config/wallpaper.png');");
+            setStyle((HtmlBasedComponent) getContent(), _background_position_center);
+            setStyle((HtmlBasedComponent) getContent(), _background_size_cover);
+        }
+    }
+
     @Override
     public void updateNonContent(Object object) {
         if (object instanceof UtilConfAppl) {
+            confAppl = (UtilConfAppl) object;
             load(CCLanguage.LanguagePack.values()[parseInt(confAppl.getApplLanguage())]);
+            //no setLookAndFeel
+            _setWallpaper();
             setImageContent(getCompLogo(), confAppl.getCompanyLogo());
             getCompName().setValue(wordWrap(false, getStringOrBlank(confAppl.getCompanyName()), getStringOrBlank(confAppl.getCompanyAddress())));
         }

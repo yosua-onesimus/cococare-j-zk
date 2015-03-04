@@ -1,0 +1,18 @@
+<zk>
+	<window hflex="1" vflex="1">
+		<tabbox id="tabEntity" hflex="1" vflex="1">
+			<tabs>
+				<tab label="Scheduler Setting" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<borderlayout>
+						<center>
+							<grid id="tblEntity" hflex="1" vflex="1" />
+						</center>
+					</borderlayout>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>
