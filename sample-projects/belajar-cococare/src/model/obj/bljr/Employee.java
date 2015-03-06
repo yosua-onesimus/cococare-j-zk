@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -112,6 +113,7 @@ public class Employee implements CCEntity {
 	@Column(length = 32)
 	@CCFieldConfig(componentId = "txtEmail", maxLength = 32, type = Type.EMAIL)
 	private String email;
+	@Lob
 	@Column(length = Integer.MAX_VALUE)
 	@CCFieldConfig(componentId = "attPhoto", type = Type.THUMB_FILE, optionReflectKey = "photoName", visible = false)
 	private byte[] photo;
