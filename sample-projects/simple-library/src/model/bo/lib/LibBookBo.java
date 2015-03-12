@@ -14,7 +14,11 @@ import cococare.database.CCHibernateBo;
 public class LibBookBo extends CCHibernateBo {
 	private LibBookDao bookDao;
 
-	public synchronized List<LibBook> getList() {
-		return bookDao.getList();
+	public synchronized List<LibBook> getBooks() {
+		return bookDao.getBooks();
+	}
+
+	public synchronized boolean saveOrUpdateBook(LibBook book) {
+		return bookDao.saveOrUpdateBook(book);
 	}
 }

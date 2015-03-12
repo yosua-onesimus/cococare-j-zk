@@ -261,23 +261,56 @@
 						<tabpanels>
 							<tabpanel>
 								<window id="winEditor">
-									<grid>
-										<columns>
-											<column width="100px" />
-										</columns>
-										<rows>
-											<row>
-												<label value="Code" />
-												<textbox id="txtCode"
-													width="100px" />
-											</row>
-											<row>
-												<label value="Title" />
-												<textbox id="txtTitle"
-													width="100px" />
-											</row>
-										</rows>
-									</grid>
+									<vbox vflex="1">
+										<hbox align="center">
+											<button id="btnSave"
+												label="Save" />
+											<button id="btnSave2"
+												label="Save2" />
+										</hbox>
+										<grid>
+											<columns>
+												<column width="100px" />
+											</columns>
+											<rows>
+												<row>
+													<label value="Code" />
+													<textbox
+														id="txtCode" width="100px" />
+												</row>
+												<row>
+													<label
+														value="Title" />
+													<textbox
+														id="txtTitle" width="200px" />
+												</row>
+												<row>
+													<label
+														value="Remarks" />
+													<textbox
+														id="txtRemarks" width="200px" />
+												</row>
+												<row>
+													<label
+														value="Book Type" />
+													<bandbox
+														id="bndBookType" width="200px" />
+												</row>
+												<row>
+													<label
+														value="Author" />
+													<bandbox
+														id="bndAuthor" width="200px" />
+												</row>
+												<row>
+													<label
+														value="Publisher" />
+													<bandbox
+														id="bndPublisher" width="200px" />
+												</row>
+											</rows>
+										</grid>
+									</vbox>
 								</window>
 							</tabpanel>
 							<tabpanel>

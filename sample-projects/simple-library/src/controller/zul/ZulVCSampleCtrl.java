@@ -1,8 +1,14 @@
 package controller.zul;
 
 import model.bo.lib.LibBookBo;
+import model.obj.lib.LibAuthor;
 import model.obj.lib.LibBook;
+import model.obj.lib.LibBookType;
+import model.obj.lib.LibPublisher;
 
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zul.Button;
 import org.zkoss.zul.Cell;
 import org.zkoss.zul.Column;
 import org.zkoss.zul.Columns;
@@ -17,6 +23,7 @@ import org.zkoss.zul.Listheader;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.Row;
 import org.zkoss.zul.Rows;
+import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Tree;
 import org.zkoss.zul.Treecell;
 import org.zkoss.zul.Treechildren;
@@ -26,7 +33,9 @@ import org.zkoss.zul.Treeitem;
 import org.zkoss.zul.Treerow;
 import org.zkoss.zul.Window;
 
+import cococare.zk.CCBandbox;
 import cococare.zk.CCEditor;
+import cococare.zk.CCMessage;
 import cococare.zk.CCTable;
 import cococare.zk.CCZk;
 
@@ -53,6 +62,14 @@ public class ZulVCSampleCtrl extends Window {
 	private CCTable listbox5;
 	private CCTable tree5;
 	private CCTable tblEntity;
+	private Button btnSave;
+	private Button btnSave2;
+	private Textbox txtCode;
+	private Textbox txtTitle;
+	private Textbox txtRemarks;
+	private CCBandbox bndBookType;
+	private CCBandbox bndAuthor;
+	private CCBandbox bndPublisher;
 	private CCEditor edtEntity;
 	private CCEditor edtEntityAutoGen;
 
@@ -197,17 +214,17 @@ public class ZulVCSampleCtrl extends Window {
 		bookBo = new LibBookBo();
 		grid3 = new CCTable(CCZk.getMeshElement(this, "grid3"), "Code", "Title", "Book Type", "Author", "Publisher");
 		grid3.setColumnWidth(100, 100, 100, 100, null);
-		for (LibBook book : bookBo.getList()) {
+		for (LibBook book : bookBo.getBooks()) {
 			grid3.addRow(book.getCode(), book.getTitle(), book.getBookType().getName(), book.getAuthor().getName(), book.getPublisher().getName());
 		}
 		listbox3 = new CCTable(CCZk.getMeshElement(this, "listbox3"), "Code", "Title", "Book Type", "Author", "Publisher");
 		listbox3.setColumnWidth(100, 100, 100, 100, null);
-		for (LibBook book : bookBo.getList()) {
+		for (LibBook book : bookBo.getBooks()) {
 			listbox3.addRow(book.getCode(), book.getTitle(), book.getBookType().getName(), book.getAuthor().getName(), book.getPublisher().getName());
 		}
 		tree3 = new CCTable(CCZk.getMeshElement(this, "tree3"), "Code", "Title", "Book Type", "Author", "Publisher");
 		tree3.setColumnWidth(100, 100, 100, 100, null);
-		for (LibBook book : bookBo.getList()) {
+		for (LibBook book : bookBo.getBooks()) {
 			tree3.addRow(book.getCode(), book.getTitle(), book.getBookType().getName(), book.getAuthor().getName(), book.getPublisher().getName());
 		}
 	}
@@ -216,16 +233,16 @@ public class ZulVCSampleCtrl extends Window {
 		bookBo = new LibBookBo();
 		grid4 = new CCTable(CCZk.getMeshElement(this, "grid4"), LibBook.class);
 		grid4.setGroupBy("bookType");
-		for (LibBook book : bookBo.getList()) {
+		for (LibBook book : bookBo.getBooks()) {
 			grid4.addItem(book);
 		}
 		listbox4 = new CCTable(CCZk.getMeshElement(this, "listbox4"), LibBook.class);
 		listbox4.setGroupBy("bookType");
-		for (LibBook book : bookBo.getList()) {
+		for (LibBook book : bookBo.getBooks()) {
 			listbox4.addItem(book);
 		}
 		tree4 = new CCTable(CCZk.getMeshElement(this, "tree4"), LibBook.class);
-		for (LibBook book : bookBo.getList()) {
+		for (LibBook book : bookBo.getBooks()) {
 			tree4.addItem(book);
 		}
 	}
@@ -248,7 +265,34 @@ public class ZulVCSampleCtrl extends Window {
 	}
 
 	private void _WithCCEditor() {
+		bookBo = new LibBookBo();
+		CCZk.initComponent(CCZk.getWindow(this, "winEditor"), this, null);
 		edtEntity = new CCEditor(CCZk.getWindow(this, "winEditor"), LibBook.class);
+		CCZk.initSpecialComponent(CCZk.getWindow(this, "winEditor"), this);
+		CCZk.addListener(btnSave, new EventListener() {
+			public void onEvent(Event event) throws Exception {
+				if (txtCode.getText().isEmpty() || txtTitle.getText().isEmpty() || bndBookType.getObject() == null || bndAuthor.getObject() == null || bndPublisher.getObject() == null) {
+					CCMessage.showInformation("Please input all mandatory field!");
+				} else {
+					LibBook book = new LibBook();
+					book.setCode(txtCode.getText());
+					book.setTitle(txtTitle.getText());
+					book.setRemarks(txtRemarks.getText());
+					book.setBookType((LibBookType) bndBookType.getObject());
+					book.setAuthor((LibAuthor) bndAuthor.getObject());
+					book.setPublisher((LibPublisher) bndPublisher.getObject());
+					CCMessage.showSaved(bookBo.saveOrUpdateBook(book));
+				}
+			}
+		});
+		CCZk.addListener(btnSave2, new EventListener() {
+			public void onEvent(Event event) throws Exception {
+				if (edtEntity.isValueValid()) {
+					LibBook book = edtEntity.getValueFromEditor();
+					CCMessage.showSaved(edtEntity.saveOrUpdate(book));
+				}
+			}
+		});
 	}
 
 	private void _WithCCEditorAutoGen() {
