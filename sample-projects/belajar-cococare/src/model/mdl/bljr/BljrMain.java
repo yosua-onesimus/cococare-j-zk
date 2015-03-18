@@ -7,10 +7,14 @@ import cococare.framework.zk.CFZkMain;
 import controller.zul.bljr.ZulEmployeeListCtrl;
 
 public class BljrMain extends CFZkMain {
+	private static final boolean withoutLogin = true;
+
 	@Override
 	protected void _loadInternalSetting() {
 		super._loadInternalSetting();
-		CCLoginInfo.INSTANCE = null;// without login
+		if (withoutLogin) {
+			CCLoginInfo.INSTANCE = null;
+		}
 	}
 
 	@Override
@@ -32,7 +36,10 @@ public class BljrMain extends CFZkMain {
 
 	@Override
 	public void showScreen() {
-		// super.showScreen();// with login
-		_applyUserConfig();// without login
+		if (withoutLogin) {
+			_applyUserConfig();
+		} else {
+			super.showScreen();
+		}
 	}
 }
