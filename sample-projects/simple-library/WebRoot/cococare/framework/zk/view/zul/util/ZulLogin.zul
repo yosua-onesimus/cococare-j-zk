@@ -21,7 +21,7 @@
 							width="200px" />
 					</row>
 					<row>
-						<button id="btnLogin" label="Login" />
+						<button id="btnLogIn" label="Log In" />
 					</row>
 				</rows>
 			</grid>
