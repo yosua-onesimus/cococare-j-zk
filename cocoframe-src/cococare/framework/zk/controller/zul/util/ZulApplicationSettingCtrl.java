@@ -11,12 +11,7 @@ import cococare.framework.model.bo.util.UtilConfigBo;
 import cococare.framework.model.obj.util.UtilConfAppl;
 import cococare.framework.model.obj.util.UtilConfig;
 import cococare.framework.zk.CFZkCtrl;
-import static cococare.framework.zk.CFZkMap.newContainer;
-import cococare.framework.zk.CFZkView;
-import static cococare.zk.CCZk.initComponent;
-import static cococare.zk.CCZk.initSpecialComponent;
 import org.zkoss.zul.Combobox;
-import org.zkoss.zul.Grid;
 //</editor-fold>
 
 /**
@@ -28,9 +23,13 @@ public class ZulApplicationSettingCtrl extends CFZkCtrl {
 
 //<editor-fold defaultstate="collapsed" desc=" private object ">
     private UtilConfigBo configBo;
-    private Grid pnlGenerator;
     private Combobox cmbApplLookAndFeel;
 //</editor-fold>
+
+    @Override
+    protected Class _getClass() {
+        return ZulApplicationSettingCtrl.class;
+    }
 
     @Override
     protected Class _getEntity() {
@@ -40,27 +39,6 @@ public class ZulApplicationSettingCtrl extends CFZkCtrl {
     @Override
     protected BaseFunction _getBaseFunction() {
         return BaseFunction.FORM_FUNCTION;
-    }
-
-    @Override
-    protected void _initContainer() {
-        zkView = new CFZkView(newContainer(ZulApplicationSettingCtrl.class));
-    }
-
-    @Override
-    protected void _initEditor() {
-        super._initEditor();
-        edtEntity.generateDefaultEditor(pnlGenerator);
-        initComponent(getContainer(), this, reinitComponents);
-        initSpecialComponent(getContainer(), this);
-    }
-
-    @Override
-    protected void _doUpdateAccessible() {
-        super._doUpdateAccessible();
-        if (objEntity instanceof UtilConfAppl) {
-            edtEntity.setAccessible(cmbApplLookAndFeel, Accessible.READONLY_SET_NULL);
-        }
     }
 
     @Override
@@ -75,5 +53,13 @@ public class ZulApplicationSettingCtrl extends CFZkCtrl {
     @Override
     protected String _getTabTitle() {
         return getLabel(_getEntity());
+    }
+
+    @Override
+    protected void _doUpdateEditor() {
+        super._doUpdateEditor();
+        if (objEntity instanceof UtilConfAppl) {
+            edtEntity.setAccessible(cmbApplLookAndFeel, Accessible.READONLY_SET_NULL);
+        }
     }
 }

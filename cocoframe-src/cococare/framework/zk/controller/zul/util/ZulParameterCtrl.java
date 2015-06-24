@@ -5,11 +5,6 @@ import static cococare.common.CCClass.getLabel;
 import static cococare.common.CCLogic.isNotNull;
 import cococare.framework.model.obj.util.UtilConfig;
 import cococare.framework.zk.CFZkCtrl;
-import static cococare.framework.zk.CFZkMap.newContainer;
-import cococare.framework.zk.CFZkView;
-import static cococare.zk.CCZk.initComponent;
-import static cococare.zk.CCZk.initSpecialComponent;
-import org.zkoss.zul.Grid;
 //</editor-fold>
 
 /**
@@ -19,9 +14,10 @@ import org.zkoss.zul.Grid;
  */
 public class ZulParameterCtrl extends CFZkCtrl {
 
-//<editor-fold defaultstate="collapsed" desc=" private object ">
-    private Grid pnlGenerator;
-//</editor-fold>
+    @Override
+    protected Class _getClass() {
+        return ZulParameterCtrl.class;
+    }
 
     @Override
     protected Class _getEntity() {
@@ -31,19 +27,6 @@ public class ZulParameterCtrl extends CFZkCtrl {
     @Override
     protected BaseFunction _getBaseFunction() {
         return BaseFunction.FORM_FUNCTION;
-    }
-
-    @Override
-    protected void _initContainer() {
-        zkView = new CFZkView(newContainer(ZulParameterCtrl.class));
-    }
-
-    @Override
-    protected void _initEditor() {
-        super._initEditor();
-        edtEntity.generateDefaultEditor(pnlGenerator);
-        initComponent(getContainer(), this, reinitComponents);
-        initSpecialComponent(getContainer(), this);
     }
 
     @Override

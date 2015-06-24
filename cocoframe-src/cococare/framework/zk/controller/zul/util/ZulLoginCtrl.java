@@ -22,7 +22,7 @@ public class ZulLoginCtrl extends CFZkCtrl {
 //<editor-fold defaultstate="collapsed" desc=" private object ">
     private Textbox txtUsername;
     private Textbox txtPassword;
-    private Button btnLogin;
+    private Button btnLogIn;
 //</editor-fold>
 
     @Override
@@ -52,7 +52,7 @@ public class ZulLoginCtrl extends CFZkCtrl {
         };
         addListener(txtUsername, elLogin);
         addListener(txtPassword, elLogin);
-        addListener(btnLogin, elLogin);
+        addListener(btnLogIn, elLogin);
     }
 
     private void _doLogin() {

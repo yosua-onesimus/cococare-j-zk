@@ -3,6 +3,7 @@ package cococare.framework.zk.controller.zul.util;
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import static cococare.common.CCClass.getCCTypeConfig;
 import static cococare.common.CCClass.newObject;
+import static cococare.common.CCConfig.HBN_WORKFLOW_MODULE_INCLUDED;
 import cococare.common.CCCustomField;
 import static cococare.common.CCLogic.isNullOrEmpty;
 import static cococare.common.CCMessage.logp;
@@ -10,6 +11,7 @@ import cococare.common.CCTypeConfig;
 import cococare.framework.model.bo.util.UtilConfigBo;
 import cococare.framework.model.obj.util.UtilConfAppl;
 import cococare.framework.model.obj.util.UtilScheduler;
+import cococare.framework.model.obj.wf.WfWorkflow;
 import cococare.framework.zk.CFZkCtrl;
 import static cococare.zk.CCZk.addListener;
 import java.util.ArrayList;
@@ -49,8 +51,11 @@ public class ZulApplicationSettingListCtrl extends CFZkCtrl {
         super._initObject();
         settingClasses = new ArrayList();
         settingClasses.add(UtilConfAppl.class);
-        settingClasses.addAll(configBo.loadConfAppl().getUtilAdditionalSettingClass());
+        settingClasses.addAll(configBo.getConfAppl().getUtilAdditionalSettingClass());
         settingClasses.add(UtilScheduler.class);
+        if (HBN_WORKFLOW_MODULE_INCLUDED) {
+            settingClasses.add(WfWorkflow.class);
+        }
         typeConfig_settingClass = new LinkedHashMap();
         for (Class settingClass : settingClasses) {
             typeConfig_settingClass.put(getCCTypeConfig(settingClass), settingClass);
@@ -116,7 +121,7 @@ public class ZulApplicationSettingListCtrl extends CFZkCtrl {
         String controllerClass = typeConfig.controllerClass();
         objEntity = configBo.loadHash(typeConfig_settingClass.get(typeConfig));
         if (isNullOrEmpty(controllerClass)) {
-            _doShowEditor(false, objEntity);
+            _doShowEditor(readonly, objEntity);
         } else {
             try {
                 ((CFZkCtrl) newObject(controllerClass)).with(parameter).with(this).with(readonly).init(objEntity);

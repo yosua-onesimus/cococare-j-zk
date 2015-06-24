@@ -22,6 +22,7 @@ import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Button;
+import org.zkoss.zul.Checkbox;
 //</editor-fold>
 
 /**
@@ -32,6 +33,7 @@ import org.zkoss.zul.Button;
 public class ZulExportImportCtrl extends CFZkCtrl {
 
 //<editor-fold defaultstate="collapsed" desc=" private object ">
+    private Checkbox chkHumanize;
     private Button btnTemplate;
     private Button btnImport;
     private CCOptionbox optParameter;
@@ -113,7 +115,7 @@ public class ZulExportImportCtrl extends CFZkCtrl {
             for (int index : optParameter.getSelectedIndexes()) {
                 Class clazz = CCEntityModule.INSTANCE.getCCHibernate().getParameterClasses().get(index);
                 excel.newSheet(clazz.getSimpleName());
-                excel.initEntity(clazz, false);
+                excel.initEntity(clazz, chkHumanize.isChecked());
                 excel.writeRowEntityHeader();
                 if (withData) {
                     excel.writeRowEntity(CCEntityBo.INSTANCE.getListBy(clazz, null, null, null, 0, null));
@@ -132,7 +134,7 @@ public class ZulExportImportCtrl extends CFZkCtrl {
                 for (int index : optParameter.getSelectedIndexes()) {
                     Class clazz = CCEntityModule.INSTANCE.getCCHibernate().getParameterClasses().get(index);
                     if (isNotNull(excel.getSheet(clazz.getSimpleName()))) {
-                        excel.initEntity(clazz, false);
+                        excel.initEntity(clazz, chkHumanize.isChecked());
                         if (!(updateCaller = CCEntityModule.INSTANCE.getCCHibernate().restore(excel.readRowEntity(1, excel.getRowCount() - 1)))) {
                             break;
                         }

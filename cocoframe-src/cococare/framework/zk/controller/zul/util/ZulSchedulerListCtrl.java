@@ -5,8 +5,6 @@ import static cococare.common.CCClass.getLabel;
 import cococare.common.CCCustomField;
 import cococare.framework.model.obj.util.UtilScheduler;
 import cococare.framework.zk.CFZkCtrl;
-import static cococare.framework.zk.CFZkMap.newContainer;
-import cococare.framework.zk.CFZkView;
 import static cococare.zk.CCZk.addListener;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -21,6 +19,11 @@ import org.zkoss.zul.A;
 public class ZulSchedulerListCtrl extends CFZkCtrl {
 
     @Override
+    protected Class _getClass() {
+        return ZulSchedulerListCtrl.class;
+    }
+
+    @Override
     protected Class _getEntity() {
         return UtilScheduler.class;
     }
@@ -33,11 +36,6 @@ public class ZulSchedulerListCtrl extends CFZkCtrl {
     @Override
     protected ShowMode _getShowMode() {
         return ShowMode.TAB_MODE;
-    }
-
-    @Override
-    protected void _initContainer() {
-        zkView = new CFZkView(newContainer(ZulSchedulerListCtrl.class));
     }
 
     @Override
@@ -57,7 +55,7 @@ public class ZulSchedulerListCtrl extends CFZkCtrl {
                 addListener(a, new EventListener() {
                     @Override
                     public void onEvent(Event event) throws Exception {
-                        _doEdit(scheduler);
+                        _doShowEditor(readonly, scheduler);
                     }
                 });
                 return a;
@@ -69,10 +67,6 @@ public class ZulSchedulerListCtrl extends CFZkCtrl {
             }
         });
         tblEntity.setEditableColumn(true, 0);
-    }
-
-    private void _doEdit(UtilScheduler scheduler) {
-        new ZulSchedulerCtrl().with(parameter).with(this).with(readonly).init(scheduler);
     }
 
     @Override

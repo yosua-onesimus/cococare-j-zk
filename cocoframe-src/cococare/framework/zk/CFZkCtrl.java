@@ -7,6 +7,7 @@ import static cococare.common.CCClass.setValue;
 import static cococare.common.CCFinal._after_start;
 import static cococare.common.CCFinal.btnEdit;
 import static cococare.common.CCFormat.getBoolean;
+import static cococare.common.CCFormat.getStringOrNull;
 import static cococare.common.CCLanguage.turn;
 import static cococare.common.CCLogic.*;
 import static cococare.common.CCMessage.logp;
@@ -15,6 +16,7 @@ import static cococare.database.CCLoginInfo.INSTANCE_isCompAccessible;
 import cococare.framework.common.CFViewCtrl;
 import static cococare.framework.zk.CFZkMap.*;
 import cococare.zk.CCEditor;
+import static cococare.zk.CCEditor.requestFocusInWindow;
 import static cococare.zk.CCMessage.*;
 import cococare.zk.CCTable;
 import cococare.zk.CCZk;
@@ -67,7 +69,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
 
     @Override
     protected void _initContainer() {
-        zkView = new CFZkView(newContainer(getClass()));
+        zkView = new CFZkView(newContainer(_getClass()));
     }
 
     public Component getContainer() {
@@ -112,7 +114,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
 
     @Override
     protected void _initPrivilege() {
-        new CFZkUae().isAccessible(getClass(), getContainer());
+        new CFZkUae().isAccessible(_getClass(), getContainer());
     }
 
     @Override
@@ -140,7 +142,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
     protected void _initTable() {
         if (_hasEntity() && isNotNull(zkView.getTblEntity())) {
             tblEntity = new CCTable(zkView.getTblEntity(), _getEntity());
-            zkView.getTblEntity().setFocus(true);
+            requestFocusInWindow(zkView.getTblEntity());
             //parent-childs-screen
             if (isNotNull(parameter.get(toString() + parentValue))) {
                 if (getBoolean(parameter.get(toString() + parentNewEntity))) {
@@ -194,6 +196,10 @@ public abstract class CFZkCtrl extends CFViewCtrl {
         if (_hasEntity()) {
             edtEntity = new CCEditor(getContainer(), _getEntity());
             edtEntity.getAfterMount().compile().setParent(getContainer());
+            if (isNotNull(zkView.getPnlGenerator())) {
+                edtEntity.generateDefaultEditor(zkView.getPnlGenerator(), getStringOrNull(parameter.get(toString() + parentField)));
+                initComponent(getContainer(), this, reinitComponents);
+            }
             if (newEntity) {
                 _initObjEntity();
             }
@@ -218,7 +224,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             addAccessibleListener(zkView.getBtnEdit(), accessibleIfEditable);
             addAccessibleListener(zkView.getBtnDelete(), accessibleIfEditable);
         } else if (_hasEdtEntity()) {
-            if (isNotNull(getControllerZul(getClass())) && !INSTANCE_isCompAccessible(getControllerZul(getClass()).getName() + "." + btnEdit)) {
+            if (isNotNull(getControllerZul(_getClass())) && !INSTANCE_isCompAccessible(getControllerZul(_getClass()).getName() + "." + btnEdit)) {
                 addAccessibleListener(zkView.getBtnEdit(), CCAccessibleListener.nonAccessible);
             }
             addAccessibleListener(zkView.getBtnEdit(), accessibleIfReadonly);
@@ -476,6 +482,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             if (isNull(callerCtrl)) {
                 showPanel(_getContent(), zkView.getContainer());
             } else {
+                sysRef = _getSysRef(objEntity);
                 callerCtrl.doShowTab(sysRef, _getTabTitle(), this);
             }
         }
@@ -490,7 +497,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             doShowTab(sysRef, null, null);
             return false;
         } else {
-            return newObject(getControllerZul(getClass())).with(parameter).with(this).with(readonly).init(objEntity);
+            return newObject(getControllerZul(_getClass())).with(parameter).with(this).with(readonly).init(objEntity);
         }
     }
 //</editor-fold>

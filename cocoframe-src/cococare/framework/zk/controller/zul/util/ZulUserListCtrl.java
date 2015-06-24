@@ -55,6 +55,7 @@ public class ZulUserListCtrl extends CFZkCtrl {
     }
 
     private void _doChangePassword() {
+        doCloseTab(_getSysRef(_getSelectedItem()));
         new ZulChangePasswordCtrl().with(this).init(tblEntity.getSelectedItem());
     }
 

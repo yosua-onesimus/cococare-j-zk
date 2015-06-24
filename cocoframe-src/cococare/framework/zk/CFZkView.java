@@ -4,10 +4,7 @@ package cococare.framework.zk;
 import static cococare.common.CCFinal.*;
 import static cococare.zk.CCZk.*;
 import org.zkoss.zk.ui.Component;
-import org.zkoss.zul.Button;
-import org.zkoss.zul.Paging;
-import org.zkoss.zul.Tabbox;
-import org.zkoss.zul.Textbox;
+import org.zkoss.zul.*;
 import org.zkoss.zul.impl.MeshElement;
 //</editor-fold>
 
@@ -95,6 +92,10 @@ public class CFZkView {
 
     public Component getPnlEntity() {
         return getComponent(getContainer(), pnlEntity);
+    }
+
+    public Grid getPnlGenerator() {
+        return getGrid(getContainer(), pnlGenerator);
     }
 
     public Button getBtnFirst() {
