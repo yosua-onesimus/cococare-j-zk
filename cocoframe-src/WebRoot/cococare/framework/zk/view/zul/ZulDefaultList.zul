@@ -2,15 +2,13 @@
 	<window hflex="1" vflex="1">
 		<tabbox id="tabEntity" hflex="1" vflex="1">
 			<tabs>
-				<tab label="Parameter" />
+				<tab label="" />
 			</tabs>
 			<tabpanels>
 				<tabpanel>
 					<borderlayout>
 						<north>
 							<hbox align="center" hflex="1">
-								<combobox id="cmbEntity" width="200px"
-									readonly="true" />
 								<button id="btnAdd" label="Add" />
 								<button id="btnEdit" label="Edit" />
 								<button id="btnDelete" label="Delete" />

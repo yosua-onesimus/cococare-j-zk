@@ -2,10 +2,11 @@
 	<window title="Export Import" vflex="1">
 		<vbox vflex="1">
 			<hbox align="center">
+				<checkbox id="chkHumanize" label="Humanize" />
+				<space />
 				<button id="btnExport" label="Export" />
 				<button id="btnTemplate" label="Template" />
 				<button id="btnImport" label="Import" />
-				<button id="btnClose" label="Close" />
 			</hbox>
 			<grid id="optParameter" sclass="input-field" />
 		</vbox>

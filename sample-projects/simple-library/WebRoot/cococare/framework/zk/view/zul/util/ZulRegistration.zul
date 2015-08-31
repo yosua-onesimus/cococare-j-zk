@@ -3,7 +3,6 @@
 		<vbox>
 			<hbox align="center">
 				<button id="btnRegister" label="Register" />
-				<button id="btnClose" label="Close" />
 			</hbox>
 			<grid sclass="input-field">
 				<columns>

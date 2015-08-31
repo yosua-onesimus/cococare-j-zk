@@ -10,8 +10,6 @@ import cococare.database.CCEntityModule;
 import cococare.framework.model.obj.util.UtilConfig;
 import cococare.framework.zk.CFZkCtrl;
 import static cococare.zk.CCZk.*;
-import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Combobox;
 //</editor-fold>
 
@@ -66,12 +64,7 @@ public class ZulParameterListCtrl extends CFZkCtrl {
     @Override
     protected void _initListener() {
         super._initListener();
-        addListener(cmbEntity, new EventListener() {
-            @Override
-            public void onEvent(Event arg0) throws Exception {
-                _doSearch();
-            }
-        });
+        addListener(cmbEntity, elSearch);
     }
 
     @Override

@@ -192,7 +192,7 @@ public class CFZkUae extends CFApplUae {
 
     @Override
     public boolean compile() {
-        return new UtilPrivilegeBo().initFirstData(privileges);
+        return new UtilPrivilegeBo().initInitialData(privileges);
     }
 //</editor-fold>
 

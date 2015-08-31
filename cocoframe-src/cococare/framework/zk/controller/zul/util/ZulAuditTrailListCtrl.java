@@ -8,8 +8,6 @@ import cococare.database.CCHibernateFilter;
 import cococare.database.model.obj.cc.CCAuditData;
 import cococare.framework.zk.CFZkCtrl;
 import static cococare.zk.CCZk.addListener;
-import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Combobox;
 //</editor-fold>
 
@@ -99,11 +97,6 @@ public class ZulAuditTrailListCtrl extends CFZkCtrl {
     @Override
     protected void _initListener() {
         super._initListener();
-        addListener(cmbEntity, new EventListener() {
-            @Override
-            public void onEvent(Event event) throws Exception {
-                _doSearch();
-            }
-        });
+        addListener(cmbEntity, elSearch);
     }
 }

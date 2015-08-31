@@ -9,8 +9,6 @@ import cococare.framework.model.obj.util.UtilLogger;
 import cococare.framework.zk.CFZkCtrl;
 import static cococare.zk.CCZk.addListener;
 import static cococare.zk.CCZk.fillUp;
-import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Combobox;
 //</editor-fold>
 
@@ -97,12 +95,6 @@ public class ZulLoggerListCtrl extends CFZkCtrl {
     @Override
     protected void _initListener() {
         super._initListener();
-        EventListener elSearch = new EventListener() {
-            @Override
-            public void onEvent(Event arg0) throws Exception {
-                _doSearch();
-            }
-        };
         addListener(cmbUsername, elSearch);
         addListener(cmbScreen, elSearch);
         addListener(cmbAction, elSearch);

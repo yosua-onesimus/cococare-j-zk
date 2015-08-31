@@ -1,7 +1,6 @@
 package cococare.framework.zk.controller.zul.util;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
-import static cococare.common.CCClass.getLabel;
 import cococare.common.CCCustomField;
 import cococare.framework.model.obj.util.UtilScheduler;
 import cococare.framework.zk.CFZkCtrl;
@@ -71,6 +70,6 @@ public class ZulSchedulerListCtrl extends CFZkCtrl {
 
     @Override
     protected String _getTabTitle() {
-        return getLabel(_getEntity());
+        return _getEntityLabel();
     }
 }

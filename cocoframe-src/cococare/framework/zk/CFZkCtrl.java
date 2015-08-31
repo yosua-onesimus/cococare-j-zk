@@ -140,29 +140,37 @@ public abstract class CFZkCtrl extends CFViewCtrl {
 //<editor-fold defaultstate="collapsed" desc=" LIST_FUNCTION ">
     @Override
     protected void _initTable() {
-        if (_hasEntity() && isNotNull(zkView.getTblEntity())) {
-            tblEntity = new CCTable(zkView.getTblEntity(), _getEntity());
-            requestFocusInWindow(zkView.getTblEntity());
-            //parent-childs-screen
-            if (isNotNull(parameter.get(toString() + parentValue))) {
-                if (getBoolean(parameter.get(toString() + parentNewEntity))) {
-                    setVisible(zkView.getTxtKeyword(), false);
-                    setVisible(zkView.getBtnFilter(), false);
-                    setVisible(zkView.getPgnEntity(), false);
+        if (_hasEntity()) {
+            if (isNotNull(zkView.getTabEntity())) {
+                Tab tab = (Tab) zkView.getTabEntity().getTabs().getFirstChild();
+                if (isNullOrEmpty(tab.getLabel())) {
+                    tab.setLabel(_getEntityLabel());
                 }
-                final Object dummy = this;
-                tblEntity.setVisibleField(false, parameter.get(toString() + parentField).toString());
-                tblEntity.setHqlFilters(new CCHibernateFilter() {
-                    @Override
-                    public String getFieldName() {
-                        return parameter.get(dummy.toString() + parentField).toString();
+            }
+            if (isNotNull(zkView.getTblEntity())) {
+                tblEntity = new CCTable(zkView.getTblEntity(), _getEntity());
+                requestFocusInWindow(zkView.getTblEntity());
+                //parent-childs-screen
+                if (isNotNull(parameter.get(toString() + parentValue))) {
+                    if (getBoolean(parameter.get(toString() + parentNewEntity))) {
+                        setVisible(zkView.getTxtKeyword(), false);
+                        setVisible(zkView.getBtnFilter(), false);
+                        setVisible(zkView.getPgnEntity(), false);
                     }
+                    final Object dummy = this;
+                    tblEntity.setVisibleField(false, parameter.get(toString() + parentField).toString());
+                    tblEntity.setHqlFilters(new CCHibernateFilter() {
+                        @Override
+                        public String getFieldName() {
+                            return parameter.get(dummy.toString() + parentField).toString();
+                        }
 
-                    @Override
-                    public Object getFieldValue() {
-                        return parameter.get(dummy.toString() + parentValue);
-                    }
-                });
+                        @Override
+                        public Object getFieldValue() {
+                            return parameter.get(dummy.toString() + parentValue);
+                        }
+                    });
+                }
             }
         }
     }
