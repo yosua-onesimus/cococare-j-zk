@@ -37,7 +37,7 @@ public class LibraryMain extends CFZkMain {
 	@Override
 	protected void _loadInternalSetting() {
 		APPL_LOGO = "/cococare/resource/icon-cococare.jpg";
-		APPL_VER = "1.0.130317";
+		APPL_VER = "1.0.150901";
 		APPL_CODE = "simple-library";
 		APPL_NAME = "Simple Library";
 		super._loadInternalSetting();
