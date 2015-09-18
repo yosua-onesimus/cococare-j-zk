@@ -36,10 +36,11 @@ import controller.zul.sample.ZulBook3ListCtrl;
 public class LibraryMain extends CFZkMain {
 	@Override
 	protected void _loadInternalSetting() {
-		APPL_LOGO = "/cococare/resource/icon-cococare.jpg";
-		APPL_VER = "1.0.130317";
+		APPL_ID = "simple-library";
 		APPL_CODE = "simple-library";
+		APPL_LOGO = "/cococare/resource/icon-cococare.jpg";
 		APPL_NAME = "Simple Library";
+		APPL_VER = "2.0.150913";
 		super._loadInternalSetting();
 		LibReport.setupReportFile();
 	}
