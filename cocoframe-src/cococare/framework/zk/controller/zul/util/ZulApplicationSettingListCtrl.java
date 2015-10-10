@@ -10,6 +10,7 @@ import static cococare.common.CCMessage.logp;
 import cococare.common.CCTypeConfig;
 import cococare.framework.model.bo.util.UtilConfigBo;
 import cococare.framework.model.obj.util.UtilConfAppl;
+import cococare.framework.model.obj.util.UtilConfServ;
 import cococare.framework.model.obj.util.UtilScheduler;
 import cococare.framework.model.obj.wf.WfWorkflow;
 import cococare.framework.zk.CFZkCtrl;
@@ -51,6 +52,7 @@ public class ZulApplicationSettingListCtrl extends CFZkCtrl {
         super._initObject();
         settingClasses = new ArrayList();
         settingClasses.add(UtilConfAppl.class);
+        settingClasses.add(UtilConfServ.class);
         settingClasses.addAll(configBo.getConfAppl().getUtilAdditionalSettingClass());
         settingClasses.add(UtilScheduler.class);
         if (HBN_WORKFLOW_MODULE_INCLUDED) {

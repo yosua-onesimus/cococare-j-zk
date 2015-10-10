@@ -11,8 +11,7 @@ import org.zkoss.zul.*;
 //</editor-fold>
 
 /**
- * CFZkMap is a class that contains a mapping for the zk so easy retrieval of
- * common components.
+ * CFZkMap is a class that contains a mapping for the zk so easy retrieval of common components.
  *
  * @author Yosua Onesimus
  * @since 13.03.17
@@ -26,8 +25,8 @@ public class CFZkMap {
         MODEL_OBJ("model.obj", ""),
         MODEL_DAO("model.dao", "Dao"),
         MODEL_BO("model.bo", "Bo"),
-        ZUL("view/zul", ".zul"),
-        ZUL_LIST("view/zul", "List.zul"),
+        VIEW_ZUL("view/zul", ".zul"),
+        VIEW_ZUL_LIST("view/zul", "List.zul"),
         CONTROLLER_ZUL("controller.zul", "Ctrl"),
         CONTROLLER_ZUL_LIST("controller.zul", "ListCtrl");
         private String prefix;
@@ -58,18 +57,18 @@ public class CFZkMap {
     }
 
     /**
-     * @param clazz CONTROLLER_ZUL | ZUL_LIST | ZUL
-     * @return ZUL
+     * @param clazz CONTROLLER_ZUL | VIEW_ZUL_LIST | VIEW_ZUL
+     * @return VIEW_ZUL
      */
     public static String getZul(Class clazz) {
         String className = clazz.getName();
         String viewForm = null;
         if (_isClassType(className, ClassType.CONTROLLER_ZUL)) {
-            viewForm = className.replace(".", "/").replaceFirst(ClassType.CONTROLLER_ZUL.getPrefix(), ClassType.ZUL.getPrefix()).replaceFirst(ClassType.CONTROLLER_ZUL.getSuffix(), ClassType.ZUL.getSuffix());
-        } else if (_isClassType(className, ClassType.ZUL_LIST)) {
-            viewForm = className.replaceFirst(ClassType.ZUL_LIST.getSuffix(), ClassType.ZUL.getSuffix());
-        } else if (_isClassType(className, ClassType.ZUL)) {
-            viewForm = className.replaceFirst(ClassType.ZUL.getSuffix(), ClassType.ZUL_LIST.getSuffix());
+            viewForm = className.replace(".", "/").replaceFirst(ClassType.CONTROLLER_ZUL.getPrefix(), ClassType.VIEW_ZUL.getPrefix()).replaceFirst(ClassType.CONTROLLER_ZUL.getSuffix(), ClassType.VIEW_ZUL.getSuffix());
+        } else if (_isClassType(className, ClassType.VIEW_ZUL_LIST)) {
+            viewForm = className.replaceFirst(ClassType.VIEW_ZUL_LIST.getSuffix(), ClassType.VIEW_ZUL.getSuffix());
+        } else if (_isClassType(className, ClassType.VIEW_ZUL)) {
+            viewForm = className.replaceFirst(ClassType.VIEW_ZUL.getSuffix(), ClassType.VIEW_ZUL_LIST.getSuffix());
         }
         return viewForm;
     }
@@ -83,14 +82,14 @@ public class CFZkMap {
     }
 
     /**
-     * @param clazz ZUL | CONTROLLER_ZUL_LIST | CONTROLLER_ZUL
+     * @param clazz VIEW_ZUL | CONTROLLER_ZUL_LIST | CONTROLLER_ZUL
      * @return CONTROLLER_ZUL
      */
     public static Class<? extends CFZkCtrl> getControllerZul(Class clazz) {
         String className = clazz.getName();
         String controllerForm = null;
-        if (_isClassType(className, ClassType.ZUL)) {
-            controllerForm = className.replaceFirst(ClassType.ZUL.getSuffix(), ClassType.CONTROLLER_ZUL.getSuffix()).replaceFirst(ClassType.ZUL.getPrefix(), ClassType.CONTROLLER_ZUL.getPrefix()).replace("/", ".");
+        if (_isClassType(className, ClassType.VIEW_ZUL)) {
+            controllerForm = className.replaceFirst(ClassType.VIEW_ZUL.getSuffix(), ClassType.CONTROLLER_ZUL.getSuffix()).replaceFirst(ClassType.VIEW_ZUL.getPrefix(), ClassType.CONTROLLER_ZUL.getPrefix()).replace("/", ".");
         } else if (_isClassType(className, ClassType.CONTROLLER_ZUL_LIST)) {
             controllerForm = className.replaceFirst(ClassType.CONTROLLER_ZUL_LIST.getSuffix(), ClassType.CONTROLLER_ZUL.getSuffix());
         } else if (_isClassType(className, ClassType.CONTROLLER_ZUL)) {
@@ -207,6 +206,33 @@ public class CFZkMap {
      */
     public static Component getFooter() {
         return getComponent(getMainScreen(), aFooter);
+    }
+
+    /**
+     * Returns a file transfer.
+     *
+     * @return the file transfer.
+     */
+    public static A getFileTransfer() {
+        return getA(getMainScreen(), aFileTransfer);
+    }
+
+    /**
+     * Returns a send mail.
+     *
+     * @return the send mail.
+     */
+    public static A getSendMail() {
+        return getA(getMainScreen(), aSendMail);
+    }
+
+    /**
+     * Returns a bug report.
+     *
+     * @return the bug report.
+     */
+    public static A getBugReport() {
+        return getA(getMainScreen(), aBugReport);
     }
 
     /**

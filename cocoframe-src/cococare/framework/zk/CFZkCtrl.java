@@ -19,7 +19,6 @@ import cococare.zk.CCEditor;
 import static cococare.zk.CCEditor.requestFocusInWindow;
 import static cococare.zk.CCMessage.*;
 import cococare.zk.CCTable;
-import cococare.zk.CCZk;
 import static cococare.zk.CCZk.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,8 +33,8 @@ import org.zkoss.zul.impl.XulElement;
 //</editor-fold>
 
 /**
- * CFZkCtrl is an abstract class which functions as an view controller, in
- * charge of controlling the flow of applications in specific view.
+ * CFZkCtrl is an abstract class which functions as an view controller, in charge of controlling the
+ * flow of applications in specific view.
  *
  * @author Yosua Onesimus
  * @since 13.03.17
@@ -114,7 +113,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
 
     @Override
     protected void _initPrivilege() {
-        new CFZkUae().isAccessible(_getClass(), getContainer());
+        new CFZkUae().isAccessible(getClass(), getContainer());
     }
 
     @Override
@@ -137,9 +136,8 @@ public abstract class CFZkCtrl extends CFViewCtrl {
         super._initComponent();
     }
 
-//<editor-fold defaultstate="collapsed" desc=" LIST_FUNCTION ">
     @Override
-    protected void _initTable() {
+    protected void _initTab() {
         if (_hasEntity()) {
             if (isNotNull(zkView.getTabEntity())) {
                 Tab tab = (Tab) zkView.getTabEntity().getTabs().getFirstChild();
@@ -147,6 +145,13 @@ public abstract class CFZkCtrl extends CFViewCtrl {
                     tab.setLabel(_getEntityLabel());
                 }
             }
+        }
+    }
+
+//<editor-fold defaultstate="collapsed" desc=" LIST_FUNCTION ">
+    @Override
+    protected void _initTable() {
+        if (_hasEntity()) {
             if (isNotNull(zkView.getTblEntity())) {
                 tblEntity = new CCTable(zkView.getTblEntity(), _getEntity());
                 requestFocusInWindow(zkView.getTblEntity());
@@ -244,10 +249,8 @@ public abstract class CFZkCtrl extends CFViewCtrl {
 
     @Override
     protected void _doUpdateAccessible() {
-        if (_hasTblEntity()) {
-            applyAccessible(zkView.getBtnAdd(), zkView.getBtnEdit(), zkView.getBtnDelete());
-        } else if (_hasEdtEntity()) {
-            applyAccessible(zkView.getBtnEdit(), zkView.getBtnSave(), zkView.getBtnSaveAndNew(), zkView.getBtnCancel());
+        applyAccessible(zkView.getBtnAdd(), zkView.getBtnEdit(), zkView.getBtnDelete(), zkView.getBtnSave(), zkView.getBtnSaveAndNew(), zkView.getBtnCancel());
+        if (_hasEdtEntity()) {
             if (readonly) {
                 edtEntity.setAccessible2Readonly();
             } else {
@@ -346,7 +349,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
                 }
             };
             if (ShowMode.DIALOG_MODE.equals(_getShowMode())) {
-                addListener(getContainer(), elClose, CCZk.EventName.onCancel);
+                addListener(getContainer(), elClose, EventName.onCancel);
             }
             addListener(zkView.getBtnNew(), elNew);
             addListener(zkView.getBtnEdit(), elEdit);

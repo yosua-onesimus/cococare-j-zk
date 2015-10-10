@@ -14,20 +14,22 @@ import cococare.framework.common.CFApplCtrl;
 import cococare.framework.common.CFApplUae;
 import cococare.framework.model.obj.util.UtilConfAppl;
 import cococare.framework.model.obj.util.UtilConfAppl.MenuPosition;
+import cococare.framework.model.obj.util.UtilConfServ;
 import static cococare.framework.zk.CFZkMap.*;
 import cococare.framework.zk.controller.zul.util.*;
 import cococare.zk.CCMenubar;
 import static cococare.zk.CCSession.getWebRoot;
-import static cococare.zk.CCZk.setImageContent;
-import static cococare.zk.CCZk.setStyle;
+import static cococare.zk.CCZk.*;
 import cococare.zk.database.CCLoginInfo;
 import java.io.File;
 import org.zkoss.zk.ui.HtmlBasedComponent;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
 //</editor-fold>
 
 /**
- * CFZkMain is an abstract class which functions as an application controller,
- * in charge of controlling the flow of applications in general.
+ * CFZkMain is an abstract class which functions as an application controller, in charge of
+ * controlling the flow of applications in general.
  *
  * @author Yosua Onesimus
  * @since 13.03.17
@@ -59,6 +61,25 @@ public abstract class CFZkMain extends CFApplCtrl {
         getApplName().setValue(APPL_NAME);
         getApplVer().setValue(APPL_VER);
         _clearUserConfig();
+        //add listener to service components
+        addListener(getFileTransfer(), new EventListener() {
+            @Override
+            public void onEvent(Event event) throws Exception {
+                new ZulFileTransferCtrl().init();
+            }
+        });
+        addListener(getSendMail(), new EventListener() {
+            @Override
+            public void onEvent(Event event) throws Exception {
+                System.out.println("SEND-MAIL");
+            }
+        });
+        addListener(getBugReport(), new EventListener() {
+            @Override
+            public void onEvent(Event event) throws Exception {
+                System.out.println("BUG-REPORT");
+            }
+        });
     }
 
     @Override
@@ -71,6 +92,7 @@ public abstract class CFZkMain extends CFApplCtrl {
         uae.reg(Utility, User_Group, ZulUserGroupListCtrl.class);
         uae.reg(Utility, User, ZulUserListCtrl.class);
         uae.reg(Utility, Change_Password, ZulChangePasswordCtrl.class);
+        uae.reg(Utility, Logger_History, ZulLoggerListCtrl.class);
         if (!HIBERNATE.getParameterClasses().isEmpty()) {
             uae.reg(Utility, Parameter, ZulParameterListCtrl.class);
             uae.reg(Utility, Export_Import, ZulExportImportCtrl.class);
@@ -78,7 +100,6 @@ public abstract class CFZkMain extends CFApplCtrl {
         if (!HIBERNATE.getAuditableClasses().isEmpty()) {
             uae.reg(Utility, Audit_Trail, ZulAuditTrailListCtrl.class);
         }
-        uae.reg(Utility, Logger_History, ZulLoggerListCtrl.class);
         if (!HIBERNATE.getCustomizableClasses().isEmpty()) {
             uae.reg(Utility, Screen_Setting, ZulScreenSettingListCtrl.class);
         }
@@ -116,6 +137,11 @@ public abstract class CFZkMain extends CFApplCtrl {
             _setWallpaper();
             setImageContent(getCompLogo(), confAppl.getCompanyLogo());
             getCompName().setValue(wordWrap(false, getStringOrBlank(confAppl.getCompanyName()), getStringOrBlank(confAppl.getCompanyAddress())));
+        } else if (object instanceof UtilConfServ) {
+            confServ = (UtilConfServ) object;
+            getFileTransfer().setVisible(confServ.getFileTransferEnable());
+            getSendMail().setVisible(confServ.getMailSendMailEnable());
+            getBugReport().setVisible(confServ.getMailBugReportEnable());
         }
     }
 
@@ -134,6 +160,7 @@ public abstract class CFZkMain extends CFApplCtrl {
         uae.addMenuChild(User_Group, "/img/icon-menu-user-group.png", ZulUserGroupListCtrl.class);
         uae.addMenuChild(User, "/img/icon-menu-user.png", ZulUserListCtrl.class);
         uae.addMenuChild(Change_Password, "/img/icon-menu-change-password.png", ZulChangePasswordCtrl.class);
+        uae.addMenuChild(Logger_History, "/img/icon-menu-logger-history.png", ZulLoggerListCtrl.class);
         uae.addMenuSeparator();
         if (!HIBERNATE.getParameterClasses().isEmpty()) {
             uae.addMenuChild(Parameter, "/img/icon-menu-parameter.png", ZulParameterListCtrl.class);
@@ -142,7 +169,6 @@ public abstract class CFZkMain extends CFApplCtrl {
         if (!HIBERNATE.getAuditableClasses().isEmpty()) {
             uae.addMenuChild(Audit_Trail, "/img/icon-menu-audit-trail.png", ZulAuditTrailListCtrl.class);
         }
-        uae.addMenuChild(Logger_History, "/img/icon-menu-logger-history.png", ZulLoggerListCtrl.class);
         uae.addMenuSeparator();
         if (!HIBERNATE.getCustomizableClasses().isEmpty()) {
             uae.addMenuChild(Screen_Setting, "/img/icon-menu-screen-setting.png", ZulScreenSettingListCtrl.class);
@@ -161,6 +187,10 @@ public abstract class CFZkMain extends CFApplCtrl {
     protected void _clearUserConfig() {
         getMenubarH().getParent().setVisible(false);
         getMenubarV().setVisible(false);
+        //
+        getFileTransfer().setVisible(false);
+        getSendMail().setVisible(false);
+        getBugReport().setVisible(false);
     }
 
     @Override

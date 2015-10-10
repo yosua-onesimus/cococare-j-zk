@@ -9,7 +9,7 @@
 					<borderlayout>
 						<north>
 							<hbox align="center" hflex="1">
-								<combobox id="cmbEntity" width="150px"
+								<combobox id="cmbEntity" width="200px"
 									readonly="true" />
 								<button id="btnView" label="View" />
 								<space hflex="1" />

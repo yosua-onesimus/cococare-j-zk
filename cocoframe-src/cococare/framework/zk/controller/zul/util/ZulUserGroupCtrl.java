@@ -3,7 +3,7 @@ package cococare.framework.zk.controller.zul.util;
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import static cococare.common.CCClass.getCCTypeConfig;
 import cococare.common.CCCustomField;
-import static cococare.common.CCFinal._padding_left_10px;
+import static cococare.common.CCFinal._padding_left_20px;
 import static cococare.common.CCLanguage.Privilege;
 import static cococare.common.CCLanguage.turn;
 import static cococare.common.CCLogic.*;
@@ -103,7 +103,7 @@ public class ZulUserGroupCtrl extends CFZkCtrl {
                 UtilPrivilege privilege = (UtilPrivilege) object;
                 Label label = new Label(privilege.getCode() + "-" + privilege.getName());
                 if (isNotNull(privilege.getParent())) {
-                    setStyle(label, _padding_left_10px);
+                    setStyle(label, _padding_left_20px);
                 }
                 return label;
             }
