@@ -8,6 +8,7 @@ import cococare.framework.common.CFApplCtrl;
 import cococare.framework.model.bo.util.UtilConfigBo;
 import cococare.framework.model.obj.util.UtilConfAppl;
 import cococare.framework.model.obj.util.UtilConfServ;
+import cococare.framework.model.obj.util.UtilConfServ.MailProtocol;
 import cococare.framework.zk.controller.zul.ZulDefaultCtrl;
 import static cococare.zk.CCZk.addListener;
 import org.zkoss.zk.ui.Component;
@@ -39,6 +40,7 @@ public class ZulApplicationSettingCtrl extends ZulDefaultCtrl {
     //
     private Checkbox txtMailSendMailEnable;
     private Checkbox txtMailBugReportEnable;
+    private Combobox txtMailProtocol;
     private Textbox txtMailMailSmtpHost;
     private Textbox txtMailGmailUsername;
     private Textbox txtMailGmailPassword;
@@ -48,15 +50,16 @@ public class ZulApplicationSettingCtrl extends ZulDefaultCtrl {
     protected void _initListener() {
         super._initListener();
         if (objEntity instanceof UtilConfServ) {
-            EventListener alUpdateAccessible = new EventListener() {
+            EventListener elUpdateAccessible = new EventListener() {
                 @Override
                 public void onEvent(Event event) throws Exception {
                     _doUpdateAccessible(event.getTarget());
                 }
             };
-            addListener(txtFileTransferEnable, alUpdateAccessible);
-            addListener(txtMailSendMailEnable, alUpdateAccessible);
-            addListener(txtMailBugReportEnable, alUpdateAccessible);
+            addListener(txtFileTransferEnable, elUpdateAccessible);
+            addListener(txtMailSendMailEnable, elUpdateAccessible);
+            addListener(txtMailBugReportEnable, elUpdateAccessible);
+            addListener(txtMailProtocol, elUpdateAccessible);
         }
     }
 
@@ -67,11 +70,18 @@ public class ZulApplicationSettingCtrl extends ZulDefaultCtrl {
             edtEntity.setAccessible(txtFileTransferPort, accessible);
             edtEntity.setAccessible(txtFileTransferUsername, accessible);
             edtEntity.setAccessible(txtFileTransferPassword, accessible);
-        } else if (component.equals(txtMailSendMailEnable) || component.equals(txtMailBugReportEnable)) {
-            Accessible accessible = txtMailSendMailEnable.isChecked() || txtMailBugReportEnable.isChecked() ? Accessible.MANDATORY : Accessible.NORMAL;
-            edtEntity.setAccessible(txtMailMailSmtpHost, accessible);
-            edtEntity.setAccessible(txtMailGmailUsername, accessible);
-            edtEntity.setAccessible(txtMailGmailPassword, accessible);
+        } else if (component.equals(txtMailSendMailEnable)
+                || component.equals(txtMailBugReportEnable)
+                || component.equals(txtMailProtocol)) {
+            boolean mandatory = txtMailSendMailEnable.isChecked() || txtMailBugReportEnable.isChecked();
+            Accessible accessible = mandatory ? Accessible.MANDATORY : Accessible.NORMAL;
+            edtEntity.setAccessible(txtMailProtocol, accessible);
+            int selectedIndex = txtMailProtocol.getSelectedIndex();
+            Accessible accessibleHost = mandatory && selectedIndex == MailProtocol.SMTP_HOST.ordinal() ? Accessible.MANDATORY : Accessible.NORMAL;
+            Accessible accessibleGmail = mandatory && selectedIndex == MailProtocol.SMTP_GMAIL.ordinal() ? Accessible.MANDATORY : Accessible.NORMAL;
+            edtEntity.setAccessible(txtMailMailSmtpHost, accessibleHost);
+            edtEntity.setAccessible(txtMailGmailUsername, accessibleGmail);
+            edtEntity.setAccessible(txtMailGmailPassword, accessibleGmail);
         }
     }
 

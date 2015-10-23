@@ -569,5 +569,16 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             edtEntity.setValueToEditor(objEntity);
         }
     }
+
+    @Override
+    protected void _addChildScreen(String tabTitle, String parentField, CFViewCtrl childCtrl, String childContentId) {
+        if (isNull(getTabpanel(getContainer(), childContentId))) {
+            new Tab(turn(tabTitle)).setParent(zkView.getTabEntity().getTabs());
+            Tabpanel tabpanel = new Tabpanel();
+            tabpanel.setId(childContentId);
+            tabpanel.setParent(zkView.getTabEntity().getTabpanels());
+        }
+        _addChildScreen(parentField, childCtrl, childContentId);
+    }
 //</editor-fold>
 }

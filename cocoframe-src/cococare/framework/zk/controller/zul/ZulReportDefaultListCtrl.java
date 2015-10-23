@@ -44,8 +44,8 @@ public abstract class ZulReportDefaultListCtrl extends CFZkCtrl {
     @Override
     protected void _initComponent() {
         _initEditor();
-        fillUp(cmbReport, _getReportEnum(), false, false);
         super._initComponent();
+        fillUp(cmbReport, _getReportEnum(), false, false);
     }
 
     @Override

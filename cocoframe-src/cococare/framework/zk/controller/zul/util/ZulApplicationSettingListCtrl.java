@@ -3,6 +3,7 @@ package cococare.framework.zk.controller.zul.util;
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import static cococare.common.CCClass.getCCTypeConfig;
 import static cococare.common.CCClass.newObject;
+import static cococare.common.CCConfig.COM_SHOW_JAVAX_COMM_MODULE;
 import static cococare.common.CCConfig.HBN_WORKFLOW_MODULE_INCLUDED;
 import cococare.common.CCCustomField;
 import static cococare.common.CCLogic.isNullOrEmpty;
@@ -52,6 +53,8 @@ public class ZulApplicationSettingListCtrl extends CFZkCtrl {
         super._initObject();
         settingClasses = new ArrayList();
         settingClasses.add(UtilConfAppl.class);
+        if (COM_SHOW_JAVAX_COMM_MODULE) {
+        }
         settingClasses.add(UtilConfServ.class);
         settingClasses.addAll(configBo.getConfAppl().getUtilAdditionalSettingClass());
         settingClasses.add(UtilScheduler.class);
