@@ -1,0 +1,23 @@
+<zk>
+	<window vflex="1">
+		<vbox vflex="1">
+			<hbox align="center">
+				<button id="btnSave" label="Save" />
+				<button id="btnClose" label="Close" />
+			</hbox>
+			<tabbox id="tabEntity" hflex="1" vflex="1">
+				<tabs>
+					<tab label="" />
+				</tabs>
+				<tabpanels>
+					<tabpanel>
+						<vlayout vflex="1" style="overflow:auto;">
+							<grid id="pnlGenerator"
+								sclass="input-field" />
+						</vlayout>
+					</tabpanel>
+				</tabpanels>
+			</tabbox>
+		</vbox>
+	</window>
+</zk>

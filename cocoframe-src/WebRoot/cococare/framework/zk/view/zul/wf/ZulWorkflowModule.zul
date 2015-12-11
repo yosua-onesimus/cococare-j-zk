@@ -1,0 +1,42 @@
+<zk>
+	<window hflex="1" vflex="1">
+		<borderlayout>
+			<west width="300px" collapsible="true" splittable="true"
+				maxsize="400" minsize="300">
+				<tree id="treeProcess" hflex="1" vflex="1" />
+			</west>
+			<center>
+				<tabbox id="tabEntity" hflex="1" vflex="1">
+					<tabs>
+						<tab label="" />
+					</tabs>
+					<tabpanels>
+						<tabpanel>
+							<borderlayout>
+								<north>
+									<hbox align="center" hflex="1">
+										<button id="btnAdd" label="Add" />
+										<button id="btnEdit"
+											label="Edit" />
+										<button id="btnDelete"
+											label="Delete" />
+										<space hflex="1" />
+										<textbox id="txtKeyword"
+											sclass="txtKeyword" />
+									</hbox>
+								</north>
+								<center>
+									<listbox id="tblEntity" hflex="1"
+										vflex="1" />
+								</center>
+								<south>
+									<paging id="pgnEntity" />
+								</south>
+							</borderlayout>
+						</tabpanel>
+					</tabpanels>
+				</tabbox>
+			</center>
+		</borderlayout>
+	</window>
+</zk>

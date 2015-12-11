@@ -9,6 +9,7 @@ import static cococare.common.CCLanguage.*;
 import static cococare.common.CCLogic.isNull;
 import static cococare.common.CCMessage.logp;
 import static cococare.database.CCLoginInfo.INSTANCE_getDomain;
+import static cococare.database.CCLoginInfo.INSTANCE_getLogUser;
 import static cococare.datafile.CCFile.*;
 import cococare.framework.common.CFApplCtrl;
 import cococare.framework.common.CFApplUae;
@@ -92,11 +93,11 @@ public abstract class CFZkMain extends CFApplCtrl {
         uae.reg(Utility, User_Group, ZulUserGroupListCtrl.class);
         uae.reg(Utility, User, ZulUserListCtrl.class);
         uae.reg(Utility, Change_Password, ZulChangePasswordCtrl.class);
-        uae.reg(Utility, Logger_History, ZulLoggerListCtrl.class);
         if (!HIBERNATE.getParameterClasses().isEmpty()) {
             uae.reg(Utility, Parameter, ZulParameterListCtrl.class);
             uae.reg(Utility, Export_Import, ZulExportImportCtrl.class);
         }
+        uae.reg(Utility, Logger_History, ZulLoggerListCtrl.class);
         if (!HIBERNATE.getAuditableClasses().isEmpty()) {
             uae.reg(Utility, Audit_Trail, ZulAuditTrailListCtrl.class);
         }
@@ -159,13 +160,13 @@ public abstract class CFZkMain extends CFApplCtrl {
         uae.addMenuParent(Utility, "/img/icon-menu-parent.png", null);
         uae.addMenuChild(User_Group, "/img/icon-menu-user-group.png", ZulUserGroupListCtrl.class);
         uae.addMenuChild(User, "/img/icon-menu-user.png", ZulUserListCtrl.class);
-        uae.addMenuChild(Change_Password, "/img/icon-menu-change-password.png", ZulChangePasswordCtrl.class);
-        uae.addMenuChild(Logger_History, "/img/icon-menu-logger-history.png", ZulLoggerListCtrl.class);
-        uae.addMenuSeparator();
         if (!HIBERNATE.getParameterClasses().isEmpty()) {
+            uae.addMenuSeparator();
             uae.addMenuChild(Parameter, "/img/icon-menu-parameter.png", ZulParameterListCtrl.class);
             uae.addMenuChild(Export_Import, "/img/icon-menu-export-import.png", ZulExportImportCtrl.class);
         }
+        uae.addMenuSeparator();
+        uae.addMenuChild(Logger_History, "/img/icon-menu-logger-history.png", ZulLoggerListCtrl.class);
         if (!HIBERNATE.getAuditableClasses().isEmpty()) {
             uae.addMenuChild(Audit_Trail, "/img/icon-menu-audit-trail.png", ZulAuditTrailListCtrl.class);
         }
@@ -179,7 +180,9 @@ public abstract class CFZkMain extends CFApplCtrl {
             uae.addMenuSeparator();
             uae.addMenuChild(Registration, "/img/icon-menu-registration.png", ZulRegistrationCtrl.class);
         }
-        uae.addMenuParent(Log_Out, "/img/icon-menu-log-out.png", ZulLoginCtrl.class);
+        uae.addMenuParent(INSTANCE_getLogUser(), "/img/icon-menu-user.png", null);
+        uae.addMenuChild(Change_Password, "/img/icon-menu-change-password.png", ZulChangePasswordCtrl.class);
+        uae.addMenuChild(Log_Out, "/img/icon-menu-log-out.png", ZulLoginCtrl.class);
         uae.compileMenu();
     }
 
@@ -188,9 +191,7 @@ public abstract class CFZkMain extends CFApplCtrl {
         getMenubarH().getParent().setVisible(false);
         getMenubarV().setVisible(false);
         //
-        getFileTransfer().setVisible(false);
-        getSendMail().setVisible(false);
-        getBugReport().setVisible(false);
+        setVisible(false, getFileTransfer(), getSendMail(), getBugReport());
     }
 
     @Override

@@ -158,9 +158,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
                 //parent-childs-screen
                 if (isNotNull(parameter.get(toString() + parentValue))) {
                     if (getBoolean(parameter.get(toString() + parentNewEntity))) {
-                        setVisible(zkView.getTxtKeyword(), false);
-                        setVisible(zkView.getBtnFilter(), false);
-                        setVisible(zkView.getPgnEntity(), false);
+                        setVisible(false, zkView.getTxtKeyword(), zkView.getBtnFilter(), zkView.getPgnEntity());
                     }
                     final Object dummy = this;
                     tblEntity.setVisibleField(false, parameter.get(toString() + parentField).toString());
