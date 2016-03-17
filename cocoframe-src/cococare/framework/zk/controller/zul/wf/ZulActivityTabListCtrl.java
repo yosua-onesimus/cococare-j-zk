@@ -1,7 +1,6 @@
 package cococare.framework.zk.controller.zul.wf;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
-import static cococare.common.CCLogic.nvl2;
 import cococare.framework.model.obj.wf.WfActivityTab;
 import cococare.framework.zk.controller.zul.ZulDefaultListCtrl;
 //</editor-fold>
@@ -15,7 +14,7 @@ public class ZulActivityTabListCtrl extends ZulDefaultListCtrl {
 
     @Override
     protected Class _getClass() {
-        return nvl2(zkView, getClass(), super._getClass());
+        return _getClassByZkView();
     }
 
     @Override

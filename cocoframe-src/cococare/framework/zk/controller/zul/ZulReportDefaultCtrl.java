@@ -15,7 +15,7 @@ import org.zkoss.zul.Iframe;
 public class ZulReportDefaultCtrl extends CFZkCtrl {
 
 //<editor-fold defaultstate="collapsed" desc=" private object ">
-    private Iframe frmReport;
+    protected Iframe frmReport;
 //</editor-fold>
 
     @Override
@@ -41,6 +41,10 @@ public class ZulReportDefaultCtrl extends CFZkCtrl {
     @Override
     protected void _initComponent() {
         super._initComponent();
+        _initReport();
+    }
+
+    protected void _initReport() {
         setIframeContent(frmReport, ((CCReport) objEntity).newReport().getPdfStream());
     }
 

@@ -2,6 +2,7 @@ package cococare.framework.zk.controller.zul;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import static cococare.common.CCClass.newObject;
+import static cococare.common.CCLanguage.Report;
 import cococare.common.jasperreports.CCReport;
 import static cococare.datafile.CCFile.getFileUserTempFile;
 import cococare.framework.zk.CFZkCtrl;
@@ -32,6 +33,11 @@ public abstract class ZulReportDefaultListCtrl extends CFZkCtrl {
     @Override
     protected Class _getClass() {
         return ZulReportDefaultListCtrl.class;
+    }
+
+    @Override
+    protected String _getEntityLabel() {
+        return Report;
     }
 
     protected abstract Class _getReportEnum();

@@ -66,6 +66,13 @@ public abstract class CFZkCtrl extends CFViewCtrl {
     protected EventListener elClose;
 //</editor-fold>
 
+    /**
+     * @return nvl2(zkView, getClass(), _getSuperclass())
+     */
+    protected Class _getClassByZkView() {
+        return nvl2(zkView, getClass(), _getSuperclass());
+    }
+
     @Override
     protected void _initContainer() {
         zkView = new CFZkView(newContainer(_getClass()));
@@ -142,7 +149,7 @@ public abstract class CFZkCtrl extends CFViewCtrl {
             if (isNotNull(zkView.getTabEntity())) {
                 Tab tab = (Tab) zkView.getTabEntity().getTabs().getFirstChild();
                 if (isNullOrEmpty(tab.getLabel())) {
-                    tab.setLabel(_getEntityLabel());
+                    tab.setLabel(turn(_getEntityLabel()));
                 }
             }
         }
@@ -206,11 +213,11 @@ public abstract class CFZkCtrl extends CFViewCtrl {
     protected void _initEditor() {
         if (_hasEntity()) {
             edtEntity = new CCEditor(getContainer(), _getEntity());
-            edtEntity.getAfterMount().compile().setParent(getContainer());
             if (isNotNull(zkView.getPnlGenerator())) {
                 edtEntity.generateDefaultEditor(zkView.getPnlGenerator(), getStringOrNull(parameter.get(toString() + parentField)));
                 initComponent(getContainer(), this, reinitComponents);
             }
+            edtEntity.getAfterMount().compile().setParent(getContainer());
             if (newEntity) {
                 _initObjEntity();
             }
@@ -569,14 +576,15 @@ public abstract class CFZkCtrl extends CFViewCtrl {
     }
 
     @Override
-    protected void _addChildScreen(String tabTitle, String parentField, CFViewCtrl childCtrl, String childContentId) {
-        if (isNull(getTabpanel(getContainer(), childContentId))) {
+    protected void _addChildScreen2(String tabTitle, String parentField, CFViewCtrl childCtrl) {
+        String componentId = childCtrl.getClass().getSimpleName();
+        if (isNull(getTabpanel(getContainer(), componentId))) {
             new Tab(turn(tabTitle)).setParent(zkView.getTabEntity().getTabs());
             Tabpanel tabpanel = new Tabpanel();
-            tabpanel.setId(childContentId);
+            tabpanel.setId(componentId);
             tabpanel.setParent(zkView.getTabEntity().getTabpanels());
         }
-        _addChildScreen(parentField, childCtrl, childContentId);
+        _addChildScreen(parentField, childCtrl, componentId);
     }
 //</editor-fold>
 }

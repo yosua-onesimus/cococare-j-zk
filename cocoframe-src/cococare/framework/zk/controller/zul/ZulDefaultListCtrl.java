@@ -17,6 +17,11 @@ public abstract class ZulDefaultListCtrl extends CFZkCtrl {
     }
 
     @Override
+    protected Class _getSuperclass() {
+        return ZulDefaultListCtrl.class;
+    }
+
+    @Override
     protected BaseFunction _getBaseFunction() {
         return BaseFunction.LIST_FUNCTION;
     }
