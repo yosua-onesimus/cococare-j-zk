@@ -4,10 +4,8 @@ package cococare.framework.zk;
 import cococare.common.CCAccessibleListener;
 import static cococare.common.CCClass.newObject;
 import static cococare.common.CCClass.setValue;
-import static cococare.common.CCFinal._after_start;
-import static cococare.common.CCFinal.btnEdit;
-import static cococare.common.CCFormat.getBoolean;
-import static cococare.common.CCFormat.getStringOrNull;
+import static cococare.common.CCFinal.*;
+import static cococare.common.CCFormat.*;
 import static cococare.common.CCLanguage.turn;
 import static cococare.common.CCLogic.*;
 import static cococare.common.CCMessage.logp;
@@ -84,19 +82,23 @@ public abstract class CFZkCtrl extends CFViewCtrl {
 
     @Override
     public void doShowTab(String sysRef, String title, CFViewCtrl viewCtrl) {
-        if (isNull(sysRef_zkCtrl.get(sysRef))) {
-            //
-            sysRef_tab.put(sysRef, new Tab(turn(title)));
-            sysRef_tab.get(sysRef).setParent(zkView.getTabEntity().getTabs());
-            //
-            sysRef_tabpanel.put(sysRef, new Tabpanel());
-            sysRef_zkCtrl.put(sysRef, (CFZkCtrl) viewCtrl);
-            sysRef_zkCtrl.get(sysRef).getContainer().setParent(sysRef_tabpanel.get(sysRef));
-            sysRef_tabpanel.get(sysRef).setParent(zkView.getTabEntity().getTabpanels());
-        } else if (isNotNull(viewCtrl)) {
-            ((CFZkCtrl) viewCtrl).getContainer().detach();
+        try {
+            if (isNull(sysRef_zkCtrl.get(sysRef))) {
+                //
+                sysRef_tab.put(sysRef, new Tab(turn(title)));
+                sysRef_tab.get(sysRef).setParent(zkView.getTabEntity().getTabs());
+                //
+                sysRef_tabpanel.put(sysRef, new Tabpanel());
+                sysRef_zkCtrl.put(sysRef, (CFZkCtrl) viewCtrl);
+                sysRef_zkCtrl.get(sysRef).getContainer().setParent(sysRef_tabpanel.get(sysRef));
+                sysRef_tabpanel.get(sysRef).setParent(zkView.getTabEntity().getTabpanels());
+            } else if (isNotNull(viewCtrl)) {
+                ((CFZkCtrl) viewCtrl).getContainer().detach();
+            }
+            zkView.getTabEntity().setSelectedPanel(sysRef_tabpanel.get(sysRef));
+        } catch (Exception exception) {
+            throw new RuntimeException(replaceFirst(SHOW_MODE_TAB_MODE_NOT_APPLICABLE_FOR___AND_IT_CHILD, getClass().getSimpleName()), exception);
         }
-        zkView.getTabEntity().setSelectedPanel(sysRef_tabpanel.get(sysRef));
     }
 
     @Override

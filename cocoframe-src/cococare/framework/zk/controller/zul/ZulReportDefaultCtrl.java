@@ -45,7 +45,9 @@ public class ZulReportDefaultCtrl extends CFZkCtrl {
     }
 
     protected void _initReport() {
-        setIframeContent(frmReport, ((CCReport) objEntity).newReport().getPdfStream());
+        CCReport report = (CCReport) objEntity;
+        frmReport.setName(report.getReportName());
+        setIframeContent(frmReport, report.newReport().getPdfStream());
     }
 
     @Override

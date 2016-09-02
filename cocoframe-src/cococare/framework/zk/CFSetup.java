@@ -8,6 +8,13 @@ import cococare.datafile.CCSetup;
 import java.io.File;
 //</editor-fold>
 
+/**
+ * CFSetup is a class which functions for copying internal files to external path.
+ *
+ * @author Yosua Onesimus
+ * @since 13.03.17
+ * @version 13.03.17
+ */
 public class CFSetup {
 
     /**

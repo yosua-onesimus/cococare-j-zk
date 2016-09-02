@@ -9,12 +9,12 @@
 					<borderlayout>
 						<north>
 							<hbox align="center" hflex="1">
-								<combobox id="cmbUsername" width="100px"
-									readonly="true" />
-								<combobox id="cmbScreen" width="150px"
-									readonly="true" />
-								<combobox id="cmbAction" width="100px"
-									readonly="true" />
+								<combobox id="cmbUsername"
+									tooltiptext="Username" width="100px" readonly="true" />
+								<combobox id="cmbScreen"
+									tooltiptext="Screen" width="150px" readonly="true" />
+								<combobox id="cmbAction"
+									tooltiptext="Action" width="100px" readonly="true" />
 								<space hflex="1" />
 								<textbox id="txtKeyword"
 									sclass="txtKeyword" />
