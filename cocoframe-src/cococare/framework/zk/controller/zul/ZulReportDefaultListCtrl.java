@@ -3,6 +3,7 @@ package cococare.framework.zk.controller.zul;
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import static cococare.common.CCClass.newObject;
 import static cococare.common.CCLanguage.Report;
+import cococare.common.jasperreports.CCJasper.ExporterType;
 import cococare.common.jasperreports.CCReport;
 import static cococare.datafile.CCFile.getFileUserTempFile;
 import cococare.framework.zk.CFZkCtrl;
@@ -81,7 +82,7 @@ public abstract class ZulReportDefaultListCtrl extends CFZkCtrl {
         if (edtEntity.isValueValid()) {
             CCReport report = edtEntity.getValueFromEditor();
             File file = getFileUserTempFile(report.getReportName() + ".xls");
-            if (report.newReport().exportAsXlsFile(file.getPath())) {
+            if (report.newReport().loadObject().fillReport().exportReport(ExporterType.XLS, null, file.getPath())) {
                 download(file);
             }
         }

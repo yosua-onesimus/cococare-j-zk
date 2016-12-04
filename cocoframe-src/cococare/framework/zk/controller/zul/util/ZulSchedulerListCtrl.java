@@ -18,11 +18,6 @@ import org.zkoss.zul.A;
 public class ZulSchedulerListCtrl extends CFZkCtrl {
 
     @Override
-    protected Class _getClass() {
-        return ZulSchedulerListCtrl.class;
-    }
-
-    @Override
     protected Class _getEntity() {
         return UtilScheduler.class;
     }

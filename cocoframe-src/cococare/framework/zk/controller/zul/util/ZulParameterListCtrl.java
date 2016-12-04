@@ -27,7 +27,7 @@ public class ZulParameterListCtrl extends CFZkCtrl {
     @Override
     protected Class _getEntity() {
         if (isNotNull(cmbEntity) && cmbEntity.getSelectedIndex() > -1) {
-            return CCEntityModule.INSTANCE.getCCHibernate().getParameterClasses().get(cmbEntity.getSelectedIndex());
+            return CCEntityModule.getParameterClasses().get(cmbEntity.getSelectedIndex());
         } else {
             return UtilConfig.class;
         }
@@ -41,7 +41,7 @@ public class ZulParameterListCtrl extends CFZkCtrl {
     @Override
     protected void _initComponent() {
         super._initComponent();
-        for (Class clazz : CCEntityModule.INSTANCE.getCCHibernate().getParameterClasses()) {
+        for (Class clazz : CCEntityModule.getParameterClasses()) {
             cmbEntity.appendItem(getLabel(clazz));
         }
         cmbEntity.setSelectedIndex(0);

@@ -2,7 +2,6 @@ package cococare.framework.zk;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import cococare.common.CCAccessibleListener;
-import static cococare.common.CCClass.instanceOf;
 import static cococare.common.CCClass.newObject;
 import static cococare.zk.CCFinal.iconMenuChild;
 import static cococare.zk.CCFinal.iconMenuParent;
@@ -12,7 +11,6 @@ import static cococare.common.CCLanguage.Not_supported_yet;
 import static cococare.common.CCLanguage.turn;
 import static cococare.common.CCLogic.*;
 import static cococare.common.CCMessage.logp;
-import cococare.common.CCTrackable;
 import static cococare.database.CCLoginInfo.INSTANCE_isCompAccessible;
 import cococare.framework.common.CFApplUae;
 import cococare.framework.common.CFViewCtrl;
@@ -180,10 +178,6 @@ public class CFZkUae extends CFApplUae {
     public void reg(String moduleCode, String screenName, Class<? extends CFViewCtrl> controllerClass) {
         screenName = turn(screenName);
         Component container = newContainer(controllerClass);
-        Class trackableClass = controllerClass;
-        while (isNull(container) && instanceOf(CCTrackable.class, trackableClass.getSuperclass())) {
-            container = newContainer(trackableClass = trackableClass.getSuperclass());
-        }
         if (isNotNull(container)) {
             UtilPrivilege screen = new UtilPrivilege(_getScreenComp(controllerClass), _getScreenCode(moduleCode), screenName);
             for (Component component : container.getFellows()) {

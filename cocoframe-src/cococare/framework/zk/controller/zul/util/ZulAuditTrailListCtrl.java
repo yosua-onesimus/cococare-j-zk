@@ -41,7 +41,7 @@ public class ZulAuditTrailListCtrl extends CFZkCtrl {
     protected void _initComponent() {
         super._initComponent();
         cmbEntity.appendItem("");
-        for (Class clazz : CCEntityModule.INSTANCE.getCCHibernate().getAuditableClasses()) {
+        for (Class clazz : CCEntityModule.getAuditableClasses()) {
             cmbEntity.appendItem(getLabel(clazz));
         }
     }
@@ -85,7 +85,7 @@ public class ZulAuditTrailListCtrl extends CFZkCtrl {
             @Override
             public Object getFieldValue() {
                 if (cmbEntity.getSelectedIndex() > 0) {
-                    return CCEntityModule.INSTANCE.getCCHibernate().getAuditableClasses().get(cmbEntity.getSelectedIndex() - 1).getName();
+                    return CCEntityModule.getAuditableClasses().get(cmbEntity.getSelectedIndex() - 1).getName();
                 } else {
                     return null;
                 }

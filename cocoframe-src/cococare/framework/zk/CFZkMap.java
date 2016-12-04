@@ -2,7 +2,10 @@ package cococare.framework.zk;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import cococare.common.CCClass;
+import static cococare.common.CCClass.instanceOf;
 import static cococare.common.CCFinal.*;
+import static cococare.common.CCLogic.isNull;
+import cococare.common.CCTrackable;
 import cococare.zk.CCZk;
 import static cococare.zk.CCZk.*;
 import org.zkoss.zk.ui.Component;
@@ -78,7 +81,11 @@ public class CFZkMap {
      * @return Component
      */
     public static Component newContainer(Class controllerClass) {
-        return createComponents(getZul(controllerClass), null, null);
+        Component container = createComponents(getZul(controllerClass), null, null);
+        while (isNull(container) && instanceOf(CCTrackable.class, controllerClass.getSuperclass())) {
+            container = createComponents(getZul(controllerClass = controllerClass.getSuperclass()), null, null);
+        }
+        return container;
     }
 
     /**

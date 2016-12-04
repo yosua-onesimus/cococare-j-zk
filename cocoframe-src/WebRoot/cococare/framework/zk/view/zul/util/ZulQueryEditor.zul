@@ -1,0 +1,29 @@
+<zk>
+	<window hflex="1" vflex="1">
+		<tabbox id="tabEntity" hflex="1" vflex="1">
+			<tabs>
+				<tab label="Query Editor" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<borderlayout>
+						<north>
+							<vbox align="center" hflex="1">
+								<hbox align="center" hflex="1">
+									<combobox id="cmbDatabaseConfig"
+										width="200px" readonly="true" />
+									<button id="_btnRun" label="Run" />
+								</hbox>
+								<textbox id="txtSql" height="89px"
+									hflex="1" multiline="true" />
+							</vbox>
+						</north>
+						<center>
+							<listbox id="tblEntity" hflex="1" vflex="1" />
+						</center>
+					</borderlayout>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>

@@ -4,8 +4,8 @@ package cococare.framework.zk.controller.zul.util;
 import static cococare.common.CCClass.getCCFields;
 import cococare.common.CCCustomField;
 import cococare.common.CCField;
+import cococare.database.CCEntityBo;
 import static cococare.database.CCEntityConfig.EX_FIELD;
-import cococare.database.CCEntityModule;
 import cococare.database.CCHibernateFilter;
 import cococare.database.model.obj.cc.CCAuditData;
 import cococare.framework.zk.CFZkCtrl;
@@ -133,6 +133,6 @@ public class ZulAuditTrailCtrl extends CFZkCtrl {
 
     @Override
     protected boolean _doSaveEntity() {
-        return CCEntityModule.INSTANCE.getCCHibernate().approve((CCAuditData) objEntity);
+        return CCEntityBo.INSTANCE.approve((CCAuditData) objEntity);
     }
 }

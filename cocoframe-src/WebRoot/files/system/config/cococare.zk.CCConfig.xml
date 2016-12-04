@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ROOT>
+  <CCConfig APPL_CF_ZK_MAIN_EXT="" BND_BTN_CLEAR_IMAGE="/cococare/resource/CCNaviCrude-delete.png" BND_BTN_SEARCH_IMAGE="/cococare/resource/CCNaviCrude-search.png" BND_BTN_SEARCH_LABEL="Search" DLG_DEFAULT_HEIGHT="600" DLG_DEFAULT_WIDTH="800" EDT_COLOR_MANDATORY="#FFFFCC" EDT_COLOR_MANDATORY_READONLY="#EEF0D8" EDT_COLOR_NORMAL="white" EDT_COLOR_ON_FOCUS="#D6FFFF" EDT_COLOR_READONLY="#DEE1E5"/>
+</ROOT>

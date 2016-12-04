@@ -1,8 +1,8 @@
 package cococare.framework.zk;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
-import static cococare.common.CCFinal._background_position_center;
-import static cococare.common.CCFinal._background_size_cover;
+import static cococare.common.CCClass.newObject;
+import static cococare.common.CCFinal.*;
 import static cococare.common.CCFormat.*;
 import cococare.common.CCLanguage;
 import static cococare.common.CCLanguage.*;
@@ -10,6 +10,7 @@ import static cococare.common.CCLogic.isNull;
 import static cococare.common.CCMessage.logp;
 import static cococare.database.CCLoginInfo.INSTANCE_getDomain;
 import static cococare.database.CCLoginInfo.INSTANCE_getLogUser;
+import cococare.datafile.CCDom;
 import static cococare.datafile.CCFile.*;
 import cococare.framework.common.CFApplCtrl;
 import cococare.framework.common.CFApplUae;
@@ -18,6 +19,8 @@ import cococare.framework.model.obj.util.UtilConfAppl.MenuPosition;
 import cococare.framework.model.obj.util.UtilConfServ;
 import static cococare.framework.zk.CFZkMap.*;
 import cococare.framework.zk.controller.zul.util.*;
+import cococare.zk.CCConfig;
+import static cococare.zk.CCConfig.APPL_CF_ZK_MAIN_EXT;
 import cococare.zk.CCMenubar;
 import static cococare.zk.CCSession.getWebRoot;
 import static cococare.zk.CCZk.*;
@@ -47,7 +50,6 @@ public abstract class CFZkMain extends CFApplCtrl {
     @Override
     protected void _loadInternalSetting() {
         PLAT_MODE = PlatformMode.WEB;
-        initApplPath(getWebRoot());
         FILE_APPL_CONF = new File(getFileUserConfPath(), S_APPL_CONF);
         FILE_APPL_LCNS = new File(getFileSystConfPath(), S_APPL_LCNS);
         FILE_DTBS_CONF = new File(getFileSystConfPath(), S_DTBS_CONF);
@@ -97,6 +99,7 @@ public abstract class CFZkMain extends CFApplCtrl {
             uae.reg(Utility, Parameter, ZulParameterListCtrl.class);
             uae.reg(Utility, Export_Import, ZulExportImportCtrl.class);
         }
+        uae.reg(Utility, Query_Editor, ZulQueryEditorCtrl.class);
         uae.reg(Utility, Logger_History, ZulLoggerListCtrl.class);
         if (!HIBERNATE.getAuditableClasses().isEmpty()) {
             uae.reg(Utility, Audit_Trail, ZulAuditTrailListCtrl.class);
@@ -160,11 +163,12 @@ public abstract class CFZkMain extends CFApplCtrl {
         uae.addMenuParent(Utility, "/img/icon-menu-parent.png", null);
         uae.addMenuChild(User_Group, "/img/icon-menu-user-group.png", ZulUserGroupListCtrl.class);
         uae.addMenuChild(User, "/img/icon-menu-user.png", ZulUserListCtrl.class);
+        uae.addMenuSeparator();
         if (!HIBERNATE.getParameterClasses().isEmpty()) {
-            uae.addMenuSeparator();
             uae.addMenuChild(Parameter, "/img/icon-menu-parameter.png", ZulParameterListCtrl.class);
             uae.addMenuChild(Export_Import, "/img/icon-menu-export-import.png", ZulExportImportCtrl.class);
         }
+        uae.addMenuChild(Query_Editor, "/img/icon-menu-query-editor.png", ZulQueryEditorCtrl.class);
         uae.addMenuSeparator();
         uae.addMenuChild(Logger_History, "/img/icon-menu-logger-history.png", ZulLoggerListCtrl.class);
         if (!HIBERNATE.getAuditableClasses().isEmpty()) {
@@ -199,4 +203,15 @@ public abstract class CFZkMain extends CFApplCtrl {
         return new ZulLoginCtrl().init();
     }
 //</editor-fold>
+
+    public static void start() {
+        initApplPath(getWebRoot());
+        CCDom dom = new CCDom();
+        dom.read(getFileSystConfFile(CCConfig.class.getName() + ".xml"));
+        dom.readEntity(CCConfig.class);
+        if (isNull(INSTANCE)) {
+            newObject(APPL_CF_ZK_MAIN_EXT);
+        }
+        INSTANCE.showScreen();
+    }
 }

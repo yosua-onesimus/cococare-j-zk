@@ -16,11 +16,11 @@ import static cococare.zk.CCMessage.showImport;
 import cococare.zk.CCOptionbox;
 import static cococare.zk.CCZk.*;
 import static cococare.zk.datafile.CCFile.download;
-import static cococare.zk.datafile.CCFile.upload;
 import java.io.File;
 import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Checkbox;
 //</editor-fold>
@@ -53,7 +53,7 @@ public class ZulExportImportCtrl extends CFZkCtrl {
     protected void _initComponent() {
         optParameter = newCCOptionbox(getContainer(), "optParameter");
         super._initComponent();
-        for (Class clazz : CCEntityModule.INSTANCE.getCCHibernate().getParameterClasses()) {
+        for (Class clazz : CCEntityModule.getParameterClasses()) {
             optParameter.addItem(getLabel(clazz));
         }
     }
@@ -93,10 +93,10 @@ public class ZulExportImportCtrl extends CFZkCtrl {
                 _doExport(false);
             }
         });
-        addListener(btnImport, new EventListener() {
+        addListenerOnUpload(btnImport, new EventListener<UploadEvent>() {
             @Override
-            public void onEvent(Event event) throws Exception {
-                _doImport();
+            public void onEvent(UploadEvent event) throws Exception {
+                _doImport(event);
             }
         });
         optParameter.addListenerOnClick(new EventListener() {
@@ -113,7 +113,7 @@ public class ZulExportImportCtrl extends CFZkCtrl {
             CCExcel excel = new CCExcel();
             excel.newWorkbook();
             for (int index : optParameter.getSelectedIndexes()) {
-                Class clazz = CCEntityModule.INSTANCE.getCCHibernate().getParameterClasses().get(index);
+                Class clazz = CCEntityModule.getParameterClasses().get(index);
                 excel.newSheet(clazz.getSimpleName());
                 excel.initEntity(clazz, chkHumanize.isChecked());
                 excel.writeRowEntityHeader();
@@ -125,17 +125,17 @@ public class ZulExportImportCtrl extends CFZkCtrl {
         }
     }
 
-    private void _doImport() {
-        if (isSureImport()) {
-            Media media;
-            if (isNotNull(media = upload())) {
+    private void _doImport(UploadEvent event) {
+        Media media = event.getMedia();
+        if (isNotNull(media)) {
+            if (isSureImport()) {
                 CCExcel excel = new CCExcel();
                 excel.openWorkbook(media.getStreamData());
                 for (int index : optParameter.getSelectedIndexes()) {
-                    Class clazz = CCEntityModule.INSTANCE.getCCHibernate().getParameterClasses().get(index);
+                    Class clazz = CCEntityModule.getParameterClasses().get(index);
                     if (isNotNull(excel.getSheet(clazz.getSimpleName()))) {
                         excel.initEntity(clazz, chkHumanize.isChecked());
-                        if (!(updateCaller = CCEntityModule.INSTANCE.getCCHibernate().restore(excel.readRowEntity(1, excel.getRowCount() - 1)))) {
+                        if (!(updateCaller = CCEntityBo.INSTANCE.getCCHibernate(clazz).restore(excel.readRowEntity(1, excel.getRowCount() - 1)))) {
                             break;
                         }
                     }
