@@ -14,7 +14,7 @@ public class ZulActivityTabListCtrl extends ZulDefaultListCtrl {
 
     @Override
     protected Class _getClass() {
-        return _getClassByZkView();
+        return _getDefaultToCustomClass();
     }
 
     @Override

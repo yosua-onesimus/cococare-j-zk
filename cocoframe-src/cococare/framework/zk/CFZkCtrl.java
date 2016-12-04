@@ -65,9 +65,18 @@ public abstract class CFZkCtrl extends CFViewCtrl {
 //</editor-fold>
 
     /**
+     * @return nvl2(zkView, _getSuperclass(), getClass())
+     */
+    @Override
+    protected Class _getCustomToDefaultClass() {
+        return nvl2(zkView, _getSuperclass(), getClass());
+    }
+
+    /**
      * @return nvl2(zkView, getClass(), _getSuperclass())
      */
-    protected Class _getClassByZkView() {
+    @Override
+    protected Class _getDefaultToCustomClass() {
         return nvl2(zkView, getClass(), _getSuperclass());
     }
 
