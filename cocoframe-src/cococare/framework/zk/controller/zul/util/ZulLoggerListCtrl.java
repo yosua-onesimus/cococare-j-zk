@@ -4,6 +4,8 @@ package cococare.framework.zk.controller.zul.util;
 import cococare.common.CCCustomField;
 import static cococare.common.CCFinal.FORMAT_MYSQL;
 import static cococare.common.CCFormat.getString;
+import static cococare.common.CCLanguage.Logger_History;
+import static cococare.common.CCLanguage.turn;
 import cococare.database.CCHibernateFilter;
 import cococare.framework.model.obj.util.UtilLogger;
 import cococare.framework.zk.CFZkCtrl;
@@ -28,6 +30,11 @@ public class ZulLoggerListCtrl extends CFZkCtrl {
     @Override
     protected Class _getEntity() {
         return UtilLogger.class;
+    }
+
+    @Override
+    protected String _getEntityLabel() {
+        return turn(Logger_History);
     }
 
     @Override

@@ -3,6 +3,8 @@ package cococare.framework.zk.controller.zul.util;
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import cococare.common.CCAccessibleListener;
 import static cococare.common.CCClass.*;
+import static cococare.common.CCLanguage.Parameter;
+import static cococare.common.CCLanguage.turn;
 import static cococare.common.CCLogic.isNotNull;
 import static cococare.common.CCLogic.isNullOrEmpty;
 import static cococare.common.CCMessage.logp;
@@ -31,6 +33,11 @@ public class ZulParameterListCtrl extends CFZkCtrl {
         } else {
             return UtilConfig.class;
         }
+    }
+
+    @Override
+    protected String _getEntityLabel() {
+        return turn(Parameter);
     }
 
     @Override

@@ -2,7 +2,7 @@
 	<window hflex="1" vflex="1">
 		<tabbox id="tabEntity" hflex="1" vflex="1">
 			<tabs>
-				<tab label="Logger History" />
+				<tab label="" />
 			</tabs>
 			<tabpanels>
 				<tabpanel>

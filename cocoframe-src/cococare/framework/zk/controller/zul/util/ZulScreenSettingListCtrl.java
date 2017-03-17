@@ -1,6 +1,8 @@
 package cococare.framework.zk.controller.zul.util;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
+import static cococare.common.CCLanguage.Screen_Setting;
+import static cococare.common.CCLanguage.turn;
 import cococare.database.CCHibernateFilter;
 import cococare.database.model.bo.cc.CCCustomFieldConfigBo;
 import cococare.database.model.obj.cc.CCCustomFieldConfig;
@@ -25,6 +27,11 @@ public class ZulScreenSettingListCtrl extends CFZkCtrl {
     @Override
     protected Class _getEntity() {
         return CCCustomFieldConfig.class;
+    }
+
+    @Override
+    protected String _getEntityLabel() {
+        return turn(Screen_Setting);
     }
 
     @Override

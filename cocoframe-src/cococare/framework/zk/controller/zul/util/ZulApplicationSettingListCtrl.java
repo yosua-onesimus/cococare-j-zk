@@ -5,6 +5,8 @@ import static cococare.common.CCClass.getCCTypeConfig;
 import static cococare.common.CCClass.newObject;
 import static cococare.common.CCConfig.*;
 import cococare.common.CCCustomField;
+import static cococare.common.CCLanguage.Application_Setting;
+import static cococare.common.CCLanguage.turn;
 import static cococare.common.CCLogic.isNullOrEmpty;
 import static cococare.common.CCMessage.logp;
 import cococare.common.CCTypeConfig;
@@ -40,6 +42,11 @@ public class ZulApplicationSettingListCtrl extends CFZkCtrl {
     @Override
     protected Class _getEntity() {
         return CCTypeConfig.class;
+    }
+
+    @Override
+    protected String _getEntityLabel() {
+        return turn(Application_Setting);
     }
 
     @Override

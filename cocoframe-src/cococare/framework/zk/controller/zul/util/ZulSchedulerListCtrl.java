@@ -2,6 +2,8 @@ package cococare.framework.zk.controller.zul.util;
 
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import cococare.common.CCCustomField;
+import static cococare.common.CCLanguage.Scheduler_Setting;
+import static cococare.common.CCLanguage.turn;
 import cococare.framework.model.obj.util.UtilScheduler;
 import cococare.framework.zk.CFZkCtrl;
 import static cococare.zk.CCZk.addListener;
@@ -20,6 +22,11 @@ public class ZulSchedulerListCtrl extends CFZkCtrl {
     @Override
     protected Class _getEntity() {
         return UtilScheduler.class;
+    }
+
+    @Override
+    protected String _getEntityLabel() {
+        return turn(Scheduler_Setting);
     }
 
     @Override

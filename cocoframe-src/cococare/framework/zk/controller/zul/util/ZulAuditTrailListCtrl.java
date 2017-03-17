@@ -3,6 +3,8 @@ package cococare.framework.zk.controller.zul.util;
 //<editor-fold defaultstate="collapsed" desc=" import ">
 import static cococare.common.CCClass.getLabel;
 import cococare.common.CCCustomField;
+import static cococare.common.CCLanguage.Audit_Trail;
+import static cococare.common.CCLanguage.turn;
 import cococare.database.CCEntityModule;
 import cococare.database.CCHibernateFilter;
 import cococare.database.model.obj.cc.CCAuditData;
@@ -25,6 +27,11 @@ public class ZulAuditTrailListCtrl extends CFZkCtrl {
     @Override
     protected Class _getEntity() {
         return CCAuditData.class;
+    }
+
+    @Override
+    protected String _getEntityLabel() {
+        return turn(Audit_Trail);
     }
 
     @Override
