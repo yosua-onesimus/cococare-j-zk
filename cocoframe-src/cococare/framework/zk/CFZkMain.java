@@ -65,24 +65,26 @@ public abstract class CFZkMain extends CFApplCtrl {
         getApplVer().setValue(APPL_VER);
         _clearUserConfig();
         //add listener to service components
-        addListener(getFileTransfer(), new EventListener() {
-            @Override
-            public void onEvent(Event event) throws Exception {
-                new ZulFileTransferCtrl().init();
-            }
-        });
-        addListener(getSendMail(), new EventListener() {
-            @Override
-            public void onEvent(Event event) throws Exception {
-                System.out.println("SEND-MAIL");
-            }
-        });
-        addListener(getBugReport(), new EventListener() {
-            @Override
-            public void onEvent(Event event) throws Exception {
-                System.out.println("BUG-REPORT");
-            }
-        });
+        if (!getFileTransfer().getEventListeners(EventName.onClick.toString()).iterator().hasNext()) {
+            addListener(getFileTransfer(), new EventListener() {
+                @Override
+                public void onEvent(Event event) throws Exception {
+                    new ZulFileTransferCtrl().init();
+                }
+            });
+            addListener(getSendMail(), new EventListener() {
+                @Override
+                public void onEvent(Event event) throws Exception {
+                    new ZulSendMailCtrl().init();
+                }
+            });
+            addListener(getBugReport(), new EventListener() {
+                @Override
+                public void onEvent(Event event) throws Exception {
+                    new ZulBugReportCtrl().init();
+                }
+            });
+        }
     }
 
     @Override
@@ -145,7 +147,7 @@ public abstract class CFZkMain extends CFApplCtrl {
             confServ = (UtilConfServ) object;
             getFileTransfer().setVisible(confServ.getFileTransferEnable());
             getSendMail().setVisible(confServ.getMailSendMailEnable());
-            getBugReport().setVisible(confServ.getMailBugReportEnable());
+            getBugReport().setVisible(true);
         }
     }
 

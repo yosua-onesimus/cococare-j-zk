@@ -5,7 +5,7 @@ import cococare.common.CCAccessibleListener;
 import static cococare.common.CCClass.newObject;
 import static cococare.common.CCClass.setValue;
 import static cococare.common.CCFinal.*;
-import static cococare.common.CCFormat.*;
+import static cococare.common.CCFormat.replaceFirst;
 import static cococare.common.CCLanguage.turn;
 import static cococare.common.CCLogic.*;
 import static cococare.common.CCMessage.logp;

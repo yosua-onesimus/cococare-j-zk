@@ -69,25 +69,25 @@ public class ZulFileTransferCtrl extends CFZkCtrl {
         addListener(btnStoreFile, new EventListener() {
             @Override
             public void onEvent(Event event) throws Exception {
-                _storeFile();
+                _doStoreFile();
             }
         });
         addListener(btnRetrieveFile, new EventListener() {
             @Override
             public void onEvent(Event event) throws Exception {
-                _retrieveFile();
+                _doRetrieveFile();
             }
         });
     }
 
-    private void _storeFile() {
+    private void _doStoreFile() {
         if (isNotNull(attFileTransfer.getInputStream())) {
             ftp.storeFile(attFileTransfer.getFileName(), attFileTransfer.getInputStream());
             doUpdateTable();
         }
     }
 
-    private void _retrieveFile() {
+    private void _doRetrieveFile() {
         if (tblFileTransfer.isSelected()) {
             String fileName = ((Listcell) tblFileTransfer.getCellElement(tblFileTransfer.getSelectedRow(), 0)).getLabel();
             File file = getFileUserTempFile(fileName);

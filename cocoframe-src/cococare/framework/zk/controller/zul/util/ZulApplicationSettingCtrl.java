@@ -39,7 +39,6 @@ public class ZulApplicationSettingCtrl extends ZulDefaultCtrl {
     private Textbox txtFileTransferPassword;
     //
     private Checkbox txtMailSendMailEnable;
-    private Checkbox txtMailBugReportEnable;
     private Combobox txtMailProtocol;
     private Textbox txtMailMailSmtpHost;
     private Textbox txtMailGmailUsername;
@@ -58,7 +57,6 @@ public class ZulApplicationSettingCtrl extends ZulDefaultCtrl {
             };
             addListener(txtFileTransferEnable, elUpdateAccessible);
             addListener(txtMailSendMailEnable, elUpdateAccessible);
-            addListener(txtMailBugReportEnable, elUpdateAccessible);
             addListener(txtMailProtocol, elUpdateAccessible);
         }
     }
@@ -71,9 +69,8 @@ public class ZulApplicationSettingCtrl extends ZulDefaultCtrl {
             edtEntity.setAccessible(txtFileTransferUsername, accessible);
             edtEntity.setAccessible(txtFileTransferPassword, accessible);
         } else if (component.equals(txtMailSendMailEnable)
-                || component.equals(txtMailBugReportEnable)
                 || component.equals(txtMailProtocol)) {
-            boolean mandatory = txtMailSendMailEnable.isChecked() || txtMailBugReportEnable.isChecked();
+            boolean mandatory = txtMailSendMailEnable.isChecked();
             Accessible accessible = mandatory ? Accessible.MANDATORY : Accessible.NORMAL;
             edtEntity.setAccessible(txtMailProtocol, accessible);
             int selectedIndex = txtMailProtocol.getSelectedIndex();
